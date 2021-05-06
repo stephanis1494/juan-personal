@@ -1,4 +1,5 @@
 import React, { useState, useEffect, Fragment } from 'react'
+import './test.css'
 
 const Test = () => {
   // first argument is the variable, second argument is the function to set the variable
@@ -6,7 +7,7 @@ const Test = () => {
 
   // ui state for hovering
   const [hover, setHover] = useState(false)
-  
+
   useEffect(() => {
     console.log('we have a new count!: ', { count })
   }, [count])
@@ -23,13 +24,10 @@ const Test = () => {
     <Fragment>
       <div>{count}</div>
       <button
+        className='red'
         onClick={() => setCount(count + 1)}
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
-        style={{
-          background: hover ? 'red' : 'yellow',
-          transition: 'background 250ms ease'
-        }}
       >increment</button>
     </Fragment>
   )
