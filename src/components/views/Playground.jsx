@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 
-const Home = () => {
+const Playground = () => {
+
     // useState
     const [name, setName] = useState('Juan');
     const [age, setAge] = useState(27);
@@ -35,4 +36,4 @@ const Home = () => {
     );
 }
  
-export default Home;
+export default Playground;
