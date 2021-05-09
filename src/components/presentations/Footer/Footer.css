@@ -1,0 +1,12 @@
+.footer-container {
+    background: rgba(0, 0, 0, 0.88);
+    width: 100%;
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    bottom: 0;
+    min-height: 64px;
+    padding: 0px 16px;
+}
