@@ -1,14 +1,10 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 // // import './App.css'
-import Navbar from './components/presentations/Navbar';
-import Home from './components/views/Home'
-import Blog from './components/views/Blog'
-import Projects from './components/views/Projects'
-import Play from './components/views/Play'
-import Tools from './components/views/Tools'
+import { Home, Blog, Projects, Play, Tools } from './components/views'
+import Navbar from './components/presentations/Navbar'
+import Footer from './components/presentations/Footer'
+// COOOOOOOOOOOOOOl
 
-// Didn't work with destructuring
-// import { Home, Blog, Projects, Play, Tools } from './components/views'
 
 const App = () => {
   return (
@@ -24,7 +20,7 @@ const App = () => {
           <Route path='/tools' component={Tools} />
         </Switch>
       </div>
-      
+      <Footer />
     </BrowserRouter>
   )
 }
