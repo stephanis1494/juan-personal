@@ -6,7 +6,11 @@ const GuitarList = ({ guitars, handleDelete}) => {
     return (
         <div className="guitarList">
             {guitars.map((guitar) => (
-                <div className="guitarDetailsPreview" serial={ guitar.serial }>
+                <div 
+                    key={guitar.serial}
+                    className="guitarDetailsPreview" 
+                    serial={ guitar.serial }
+                >
                     <h2>{ guitar.guitarModel }</h2>
                     <p>Made in { guitar.madeIn }</p>
                     <button onClick={() => handleDelete(guitar.serial)}>Remove</button>
