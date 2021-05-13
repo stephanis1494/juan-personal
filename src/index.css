@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,700;1,400;1,800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;800&display=swap');
 
 * {
   margin: 0;
@@ -20,6 +20,7 @@
 }
 
 .navbar .links {
+  font-weight: 400;
   margin-left: auto;
 }
 
@@ -34,12 +35,11 @@
 }
 
 .content {
+  font-weight: 400;
   max-width: 900px;
   margin: 40px auto;
   padding: 20px;
 }
-
-
 
 button {
   cursor: pointer;
