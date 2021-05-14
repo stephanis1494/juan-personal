@@ -1,0 +1,36 @@
+.footer-container {
+    background: rgba(0, 0, 0, 0.88);
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
+
+.buttons-container {
+    min-height: 64px;
+    align-items: center;
+    /* flex-direction: row; */
+    display: flex;
+    justify-content: flex-start;
+    padding: 0 2%;
+}
+
+.left-icons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.right-icons {
+    margin-left: auto;
+}
+
+.bi {
+    cursor: pointer;
+}
+
+.bi-search {
+    padding-left: 20px;
+}
+.bi-twitter {
+    padding-left: 20px;
+}
