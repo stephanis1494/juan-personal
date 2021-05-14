@@ -4,7 +4,7 @@ const ToggleOnIcon = ({ color = 'white', size = '16', style = {}, ...props}) => 
             xmlns="http://www.w3.org/2000/svg" 
             width={size} 
             height={size} 
-            class="bi bi-toggle-on" 
+            className="bi bi-toggle-on"
             viewBox="0 0 16 16"
             {...props}
         >

@@ -2,8 +2,19 @@ import React, { useState } from 'react'
 import './Footer.css'
 import { YoutubeIcon, TwitterIcon, ToggleOnIcon, SearchIcon } from '../Icons'
 
+const Icon = ({ children, color, hoverColor, ...props }) => {
+  const [hover, setHover] = useState(false)
+  const activeColor = (hover && hoverColor) || color
+
+  return React.cloneElement(children, {
+    onMouseEnter: () => setHover(true),
+    onMouseLeave: () =>  setHover(false),
+    color: activeColor,
+    ...props
+  })
+}
+
 const Footer = () => {
-    const [hover, setHover] = useState(false)
     return (
         <div className='footer-container'>
            <div className="buttons-container">
@@ -12,25 +23,18 @@ const Footer = () => {
                         size='30' 
                     />
                     <SearchIcon 
-                        size='24'
+                        size='20'
                     />
                 </div>
                 <div className='right-icons'>
-                    <YoutubeIcon 
-                        onMouseEnter={() => setHover(true)}
-                        onMouseLeave={() => setHover(false)}
-                        size='30' 
-                        color={(hover && 'red') || 'white'}
-                    />
-                    <TwitterIcon 
-                        onMouseEnter={() => setHover(true)}
-                        onMouseLeave={() => setHover(false)}
-                        size='30' 
-                        color={(hover && 'red') || 'white'}
-                    />
+                  <Icon size='24' color='white' hoverColor='#f70002'>
+                    <YoutubeIcon />
+                  </Icon>
+                  <Icon size='24' color='white' hoverColor='#00ACED' >
+                    <TwitterIcon />
+                  </Icon>
                 </div>
            </div>
-
         </div>
     )
 }
