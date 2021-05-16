@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './Footer.css'
 import { YoutubeIcon, TwitterIcon, ToggleOnIcon, SearchIcon } from '../Icons'
+import ToggleButton from '../ToggleButton'
 
 const Icon = ({ children, color, hoverColor, ...props }) => {
   const [hover, setHover] = useState(false)
@@ -19,9 +20,7 @@ const Footer = () => {
         <div className='footer-container'>
            <div className="buttons-container">
             <div className='left-icons'>
-                    <ToggleOnIcon 
-                        size='30' 
-                    />
+                    <ToggleButton />
                     <SearchIcon 
                         size='20'
                     />
