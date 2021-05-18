@@ -1,34 +1,47 @@
 import React, { memo,  useState } from 'react'
 import PropTypes from 'prop-types'
 
-const propTypes = {
-  initialPosition: PropTypes.bool,
-  background: PropTypes.string,
-  activeBackground: PropTypes.string,
-  toggleColor: PropTypes.string
-}
-
 const Toggle = ({ toggleColor = 'black', toggled = false, ...props}) => (
   <div style={styles.toggle(toggleColor, toggled)} {...props} />
 )
 
-const ToggleButton = ({ initialPosition = false, background = 'white', activeBackground = '#b5e7a0', toggleColor = 'black'  }) => {
+const propTypes = {
+  initialPosition: PropTypes.bool,
+  background: PropTypes.string,
+  activeBackground: PropTypes.string,
+  toggleColor: PropTypes.string,
+  onToggle: PropTypes.func
+}
+
+const ToggleButton = ({
+  initialPosition = false,
+  background = 'white',
+  activeBackground = '#b5e7a0',
+  toggleColor = 'black',
+  onToggle = () => {}
+}) => {
   // the state of the toggle, takes an initial position prop
   const  [toggled, setToggled] = useState(initialPosition)
 
   // the color of the toggle background
   const backgroundColor = (toggled && activeBackground) || background
 
+  // handle the toggle click
+  const handleToggle = () => {
+    setToggled(!toggled)
+    onToggle(!toggled)
+  }
+
   return (
-    <div style={{ ...styles.container, backgroundColor }} onClick={() => setToggled(!toggled)}>
+    <div style={{ ...styles.container, backgroundColor }} onClick={handleToggle}>
       <Toggle toggled={toggled} toggleColor={toggleColor} />
     </div>
   )
 }
 
-export default memo(ToggleButton)
+ToggleButton.propTypes = propTypes
 
-ToggleButton.propTypes =  propTypes
+export default memo(ToggleButton)
 
 const styles =  {
   container: {
@@ -43,7 +56,6 @@ const styles =  {
     transition: 'background-color 250ms ease'
   },
   toggle: (toggleColor = 'black', toggled = false) => {
-
     return (
       {
         height: '16px',
@@ -56,3 +68,4 @@ const styles =  {
     )
   }
 }
+
