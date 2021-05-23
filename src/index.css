@@ -7,7 +7,7 @@
   --transition-speed: 400ms;
   --text-primary: white;
   --text-accent: darkblue;
-  --background-color: rgba(0, 0, 0, 100);
+  --background-color: #000d1a;
 }
 
 body {
