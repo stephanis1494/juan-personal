@@ -9,7 +9,7 @@
 .navbar {
     position: fixed;
     background-color: var(--background-color);
-    transition: width 600ms ease;
+    transition: width 350ms ease;
     /* overflow: scroll; */
 }
 
@@ -54,11 +54,13 @@
     font-size: 1.5rem;
     font-weight: 800;
     text-align: center;
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .link-text {
     display: none;
     margin-left: 0rem;
+    transition: opacity 200ms ease;
 }
 
 
