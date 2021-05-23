@@ -1,8 +1,15 @@
 import React from 'react'
 
-const BlogIcon = ({ color = 'white' }) => {
+const BlogIcon = ({ color = 'white', hover = false }) => {
     return (
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" className="bi bi-stickies-fill" viewBox="0 0 16 16">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width={(hover && '18') || "16"}
+          height={(hover && '18') || "16"}
+          className="bi bi-stickies-fill"
+          viewBox="0 0 16 16"
+          style={{ transition: 'width 350ms ease, height 350ms ease'}}
+        >
             <path
               d="M0 1.5V13a1 1 0 0 0 1 1V1.5a.5.5 0 0 1 .5-.5H14a1 1 0 0 0-1-1H1.5A1.5 1.5 0 0 0 0 1.5z"
               fill={color}

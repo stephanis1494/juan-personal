@@ -15,7 +15,7 @@ const NavItem = ({ icon = <BlogIcon />, text = 'Blog', showText = false, active 
       onMouseLeave={() => setHover(false)}
     >
       <Link to={path} className="nav-link" style={{ color }}>
-        {React.cloneElement(icon, { color })}
+        {React.cloneElement(icon, { color, hover })}
         <span className="link-text" style={{ opacity: (showText && '1' || '0')}}>{text}</span>
       </Link>
     </li>
