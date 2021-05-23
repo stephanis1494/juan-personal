@@ -26,6 +26,7 @@ const Footer = () => {
                     />
                 </div>
                 <div className='right-icons'>
+                  {/* How do the props get to the icon? */}
                   <Icon size='24' color='white' hoverColor='#f70002'>
                     <YoutubeIcon />
                   </Icon>

@@ -1,17 +1,38 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;800&display=swap');
 
-* {
+:root {
+  /* is this :root available trough all my app? */
+  font-size: 16px;
+  font-family: 'Open Sans';
+  --transition-speed: 600ms;
+  --text-primary: white;
+  --text-accent: darkblue;
+  --background-color: rgba(0, 0, 0, 100);
+}
+
+body {
   margin: 0;
-  font-family: "Open Sans";
-  color: #333
+  padding: 0;
+  /* color: var(--text-primary); */
+}
+
+body::-webkit-scrollbar {
+  width: 0.25rem;
+}
+body::-webkit-scrollbar-track {
+  background: rgb(214, 214, 214) ;
+}
+body::-webkit-scrollbar-thumb {
+  background: darkblue;
 }
 
 .content {
-  font-weight: 400;
+  /* font-weight: 400; */
   /* max-width: 900px; */
-  width: 84%;
-  margin: 0px auto;
-  padding: 0px;
+  /* width: 84%; */
+  /* margin: 0px auto; */
+  margin-left: 5rem;
+  padding: 0 2rem;
 }
 
 button {

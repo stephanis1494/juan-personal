@@ -1,33 +1,101 @@
+
+/* Why do I need this container? */
 .navbar-container {
-    display: flex;
-    border-bottom: 1px solid #f2f2f2;
-    width: 100%;
-    margin: 0 auto;
+    height: 100%;
+    /* margin: 0;
+    padding: 0; */
 }
 
 .navbar {
+    position: fixed;
+    background-color: var(--background-color);
+    transition: width 600ms ease;
+    /* overflow: scroll; */
+}
+
+.navbar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
     display: flex;
-    width: 100%;
-    padding: 10px 8%;
-    /* vertical alignment */
+    flex-direction: column;
     align-items: center;
 }
 
-.navbar h1 {
-    color: darkblue;
+.nav-item {
+    width: 100%;
 }
+/* .navbar-nav .nav-item:last-child {
+    margin-top: auto;
+} */
 
-.navbar .links {
-    font-weight: 400;
-    margin-left: auto;
-}
-
-.navbar a {
-    margin-left: 6px;
+.nav-link {
+    display: flex;
+    align-items: center;
+    height: 5rem;
+    color: var(--text-primary);
     text-decoration: none;
-    padding: 6px;
+    filter: grayscale(10%) opacity(100);
+    transition: var(--transition-speed);
 }
 
-.navbar a:hover {
-    color: darkblue;
+.nav-link svg {
+    width: 2rem;
+    min-width: 2rem;
+    margin: 0 1.5rem;
+}
+
+.nav-link .icon {
+    width: 2rem;
+    min-width: 2rem;
+    margin: 0 1.5rem;
+
+    font-size: 1.5rem;
+    font-weight: 800;
+    text-align: center;
+}
+
+.link-text {
+    display: none;
+    margin-left: 0rem;
+}
+
+
+/* Small screens */
+@media only screen and (max-width: 600px) {
+    .navbar {
+        bottom: 0;
+        width: 100vw;
+        height: 5rem;
+      }
+      
+    /* .logo {
+    display: none;
+    } */
+
+    .navbar-nav {
+    flex-direction: row;
+    }
+
+
+}
+
+/* Large screens */
+@media only screen and (min-width: 600px) {
+    .navbar {
+        top: 0;
+        width: 5rem;
+        height: 100vh;
+      }
+
+    .navbar:hover {
+        width: 12rem;
+    }
+
+    .navbar:hover .link-text {
+        display: inline;
+    }
+    
+    
 }

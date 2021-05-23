@@ -1,5 +1,5 @@
 const ToggleOnIcon = ({ color = 'white', size = '16', style = {}, ...props}) => {
-    return ( 
+    return (
         <svg 
             xmlns="http://www.w3.org/2000/svg" 
             width={size} 

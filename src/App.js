@@ -9,8 +9,8 @@ import Footer from './components/presentations/Footer'
 const App = () => {
   return (
     <BrowserRouter>
-      <Navbar />        
-
+      <Navbar />
+      
       <div className="content">
         <Switch>
           <Route exact path='/' component={Home} />
@@ -20,7 +20,7 @@ const App = () => {
           <Route path='/tools' component={Tools} />
         </Switch>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </BrowserRouter>
   )
 }
