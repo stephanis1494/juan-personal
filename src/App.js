@@ -1,6 +1,6 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 // // import './App.css'
-import { Home, Blog, Projects, Play, Tools } from './components/views'
+import { Home, Blog, Projects, Play, Tools, About } from './components/views'
 import Navbar from './components/presentations/Navbar'
 import Footer from './components/presentations/Footer'
 // COOOOOOOOOOOOOOl
@@ -9,8 +9,8 @@ import Footer from './components/presentations/Footer'
 const App = () => {
   return (
     <BrowserRouter>
-      <Navbar />        
-
+      <Navbar />
+      
       <div className="content">
         <Switch>
           <Route exact path='/' component={Home} />
@@ -18,9 +18,10 @@ const App = () => {
           <Route path='/projects' component={Projects} />
           <Route path='/play' component={Play} />
           <Route path='/tools' component={Tools} />
+          <Route path='/about' component={About} />
         </Switch>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </BrowserRouter>
   )
 }
