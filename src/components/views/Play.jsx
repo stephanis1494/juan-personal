@@ -1,5 +1,9 @@
+import ContentHero from "../presentations/ContentHero";
+
 const Play = () => {
-    return ( <h1>This is play</h1> );
+    return (
+      <ContentHero title="Play" />
+    );
 }
  
 export default Play;

@@ -1,5 +1,9 @@
+import ContentHero from "../presentations/ContentHero";
+
 const Blog = () => {
-    return ( <h1>this is Blog</h1> );
+    return (
+        <ContentHero title="Blog"/>    
+    );
 }
  
 export default Blog;

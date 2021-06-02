@@ -1,5 +1,9 @@
+import ContentHero from "../presentations/ContentHero";
+
 const Projects = () => {
-    return ( <p>this is projects</p> );
+    return (
+        <ContentHero title="Projects" />    
+    );
 }
  
 export default Projects;

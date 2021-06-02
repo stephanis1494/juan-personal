@@ -1,5 +1,9 @@
+import ContentHero from "../presentations/ContentHero";
+
 const Tools = () => {
-    return ( <h1>this is Tools</h1> );
+    return ( 
+        <ContentHero title="Tools"/>
+     );
 }
  
 export default Tools;
