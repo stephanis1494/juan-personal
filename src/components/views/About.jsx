@@ -27,6 +27,8 @@ const Header = styled.h1`
   font-family: 'Kristi', cursive;
 `
 
+
+
 const About = () => (
   <Container>
     <BannerImage

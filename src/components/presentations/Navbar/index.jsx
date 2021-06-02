@@ -2,7 +2,7 @@ import React from 'react'
 import { memo, useState, useEffect, Fragment } from 'react'
 import './Navbar.css'
 import { Link, useLocation, useHistory } from 'react-router-dom'
-import { AboutIcon, BlogIcon, PlayIcon, ProjectsIcon } from '../Icons'
+import { AboutIcon, BlogIcon, PlayIcon, ProjectsIcon, ToolsIcon } from '../Icons'
 
 const NavItem = ({ icon = <BlogIcon />, text = 'Blog', showText = false, active = false, path = '/blog' }) => {
   const [hover, setHover] = useState(false)
@@ -87,7 +87,7 @@ const Navbar = () => {
                 path={'/about'}
               />
               <NavItem
-                icon={<AboutIcon />}
+                icon={<ToolsIcon />}
                 text='Tools'
                 showText={showText}
                 active={pathname === '/tools'}
