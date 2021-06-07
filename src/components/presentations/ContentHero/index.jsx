@@ -1,14 +1,13 @@
-import React from 'react'
+import React, { memo } from 'react'
 import styled from 'styled-components'
 
 const Container = styled.div`
-  // object-fit: cover;
+  /* object-fit: cover; */
 
   width: 100%;
   height: 25vh;
-  background-image: url("https://res.cloudinary.com/df0ll615k/image/upload/v1622512511/about_us_page_background.jpg");
+  background-image: url(${({ background }) => background});
   background-position: center;
-  
 
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
@@ -21,16 +20,15 @@ const Container = styled.div`
   }
 `
 
-const BannerImage = styled.div`
-`
-
 const Header = styled.h1`
+  /*
   // position: absolute;
   // flex-direction: row;
   // justify-content: center;
   // width: 100%;
   // line-height: 80px;
   // top: 10vh;
+  /*/
   
   /* color: rgba(255, 255, 255, 0.9); */
   color: #d6d318;
@@ -39,15 +37,14 @@ const Header = styled.h1`
   padding: 0px;
   font-weight:300;
   font-family: 'Kristi', cursive;
-
 `
 
-const ContentHero = ({title}) => {
+const ContentHero = ({ title, background = 'https://res.cloudinary.com/df0ll615k/image/upload/v1622512511/about_us_page_background.jpg' }) => {
     return ( 
-        <Container>
+        <Container background={background}>
             <Header>{title}</Header>
         </Container>
      );
 }
  
-export default ContentHero;
+export default memo(ContentHero);
