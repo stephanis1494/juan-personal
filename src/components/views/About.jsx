@@ -31,7 +31,7 @@ const Header = styled.h1`
   color: #192530;
   `
 const Paragraph = styled.p`
-  font-size: 12px;
+  font-size: 16px;
   color: #192530;
   max-width: 360px;
   text-align: center;
