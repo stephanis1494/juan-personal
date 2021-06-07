@@ -1,8 +1,9 @@
-import ContentHero from "../presentations/ContentHero";
+import ContentHero from "../presentations/ContentHero"
 
 const Projects = () => {
     return (
-        <ContentHero title="Projects" />    
+        <ContentHero title="Projects" />
+
     );
 }
  

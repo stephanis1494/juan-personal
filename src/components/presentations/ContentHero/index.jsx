@@ -32,7 +32,8 @@ const Header = styled.h1`
   // line-height: 80px;
   // top: 10vh;
   
-  color: rgba(255, 255, 255, 0.9);
+  /* color: rgba(255, 255, 255, 0.9); */
+  color: #d6d318;
   font-size: 6em;
   margin: -1.5% 0 0 0;
   padding: 0px;
