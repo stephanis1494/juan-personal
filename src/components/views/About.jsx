@@ -47,8 +47,8 @@ const About = () => (
       <HeaderSpacer />
 
     </HeaderContainer>
-    <Paragraph>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui minima, autem laboriosam tempora perspiciatis debitis incidunt ut deserunt voluptas officia minus provident corporis odio aspernatur distinctio, consequuntur maxime? Similique, a.</Paragraph>
-    <Paragraph>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui minima, autem laboriosam tempora perspiciatis debitis incidunt ut deserunt voluptas officia minus provident corporis odio aspernatur distinctio, consequuntur maxime? Similique, a.</Paragraph>
+    <Paragraph>I live and work in a small town in Venezuela. While hacking my way into computers, I discovered my passion for programming and making cool stuff happen with my old desktop computer. My objective now, is to be part of projects involving both, logic and creativity.</Paragraph>
+    <Paragraph>While my focus is on building mobile-first, heavily interactive sites and being a creative Front-End Developer (who also plays music quite often), I also enjoy game development.</Paragraph>
 
   </ContentContainer>
 
