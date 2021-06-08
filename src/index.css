@@ -39,8 +39,50 @@ button {
   cursor: pointer;
 }
 
+.cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card {
+  /* border: 1px solid rgba(0, 0, 0, 0.6); */
+  margin: 12px auto;
+  border-radius: 3px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.cards_item {
+  list-style-type: none;
+}
+
+.card_content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .card_image img {
   /* max-width: 10%; */
-  width: 500px;
+  width: 600px;
   /* vertical-align: middle; */
+}
+
+.card_heading {
+}
+
+.card_description {
+  margin-top: 0;
+}
+
+.card_button {
+  /* margin-bottom: 20px; */
+  background: #d6d318;
+  /* border-radius: 3px; */
+  height: 40px;
+  width: 100%;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'Open Sans';
 }
