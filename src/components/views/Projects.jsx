@@ -1,11 +1,27 @@
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import ContentHero from "../presentations/ContentHero"
 
 
-export const ListItem = ({link="https://res.cloudinary.com/df0ll615k/image/upload/v1622512511/about_us_page_background.jpg", header="This is a header", desc="This is a description"}) => {
+export const ListItem = ({
+  link="https://res.cloudinary.com/df0ll615k/image/upload/v1622512511/about_us_page_background.jpg",
+  header="This is a header",
+  desc="This is a description"
+}) => {
+  const [hover, setHover] = React.useState(false)
+
     return (
-        <motion.div 
-            className="card"
+        <motion.div
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => setHover(false)}
+          className="card"
+          animate={{ scale: (hover && 1.01) || 1.0}}
+          transition={{
+            type: 'tween',
+            stiffness: 200,
+            damping: 30,
+            duration: 0.25
+          }}
         >
 
             <motion.div 
@@ -21,15 +37,15 @@ export const ListItem = ({link="https://res.cloudinary.com/df0ll615k/image/uploa
                 <p className="card_description">{desc}</p>
                 <motion.button 
                     className="card_button"
-                    whileHover={{
-                        scale: 1.05,
-                        textShadow: "0px 0px 8px rgb(0,0,0)",
-                        boxShadow: "0px 0px 8px rgb(0,0,0)"
-                    }}
+                    animate={{ background: (hover && 'rgba(214, 211, 24, 1)') || 'rgba(214, 211, 24, 0.8)' }}
                     transition={{
-                        // delay: 0.5,
-                        duration: 0.5
-                    }}>
+                      type: 'tween',
+                      stiffness: 200,
+                      damping: 30,
+                      duration: 0.15
+                    }}
+                >
+
                     Go to project
                     </motion.button>
             </div>
