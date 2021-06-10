@@ -1,21 +1,40 @@
+import { motion } from 'framer-motion'
 import ContentHero from "../presentations/ContentHero"
 
 
 export const ListItem = ({link="https://res.cloudinary.com/df0ll615k/image/upload/v1622512511/about_us_page_background.jpg", header="This is a header", desc="This is a description"}) => {
     return (
-        <div className="card">
+        <motion.div 
+            className="card"
+        >
 
-            <div className="card_image">
-                <img src={link} />
-            </div>
+            <motion.div 
+                className="card_image"
+            >
+                <motion.img 
+                    src={link} 
+                />
+            </motion.div>
 
             <div className="card_content">
                 <h2 className="card_heading">{header}</h2>
                 <p className="card_description">{desc}</p>
-                <button className="card_button">Go to project</button>
+                <motion.button 
+                    className="card_button"
+                    whileHover={{
+                        scale: 1.05,
+                        textShadow: "0px 0px 8px rgb(0,0,0)",
+                        boxShadow: "0px 0px 8px rgb(0,0,0)"
+                    }}
+                    transition={{
+                        // delay: 0.5,
+                        duration: 0.5
+                    }}>
+                    Go to project
+                    </motion.button>
             </div>
 
-        </div>
+        </motion.div>
 
     );
 }
