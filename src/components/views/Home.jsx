@@ -1,13 +1,13 @@
 import React, { memo } from 'react'
 import styled from 'styled-components'
+import TiltContainer from "../presentations/TiltContainer";
 
 const Container = styled.div`
-  margin: 80px 32px 0px 32px;
-
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 `
 
 const Header = styled.h1`
@@ -29,16 +29,14 @@ const Image = styled.img`
   border-radius: 3px;
 `
 
+
+
 const Home = () => {
   return (
     <Container>
-      <div>
-        <Header>Hello there,</Header>
-        <SubHeader>I am <b>Jaun Luis</b> - engineer, educator and musician.</SubHeader>
-      </div>
-      <Image
-        src='https://res.cloudinary.com/df0ll615k/image/upload/v1622511900/juan.jpg'
-      />
+      <TiltContainer>
+        Hello
+      </TiltContainer>
     </Container>
   )
 }
