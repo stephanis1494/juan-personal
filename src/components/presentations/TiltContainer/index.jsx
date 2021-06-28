@@ -2,7 +2,7 @@ import React, { memo } from 'react'
 import styled from "styled-components";
 
 const Tilted = styled.div`
- height: 500px;
+ height: 400px;
  width: 100%;
  background: #000d1a;
   -webkit-transform: skewY(-2deg);
@@ -11,22 +11,22 @@ const Tilted = styled.div`
   -o-transform: skewY(-2deg);
   transform: skewY(-2deg);
  position: absolute;
- top: -332px;
+ top: -80px;
  left: 0;
  z-index: -2;
- margin-top: 300px;
 `
 
 const InnerContainer = styled.div`
   position: relative;
   margin-top: 100px;
-  color: white;
   width: 100%;
+  color: white;
+  margin-top: 256px;
 `
 
 const TiltContainer = ({ children }) => (
   <InnerContainer>
-    <Tilted />
+    <Tilted></Tilted>
     {children}
   </InnerContainer>
 )
