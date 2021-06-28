@@ -10,10 +10,31 @@ const Container = styled.div`
   justify-content: center;
 `
 
-const Image = styled.img`
+const Header = styled.div`
   width: 100%;
-  max-height: 480px;
-  object-fit: cover;
+  min-height: 480px;
+  background-size: cover;
+  background-image: url(https://res.cloudinary.com/df0ll615k/image/upload/v1624845820/Asset_3_2x.png);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
+
+const HeaderText = styled.h1`
+  font-size: 64px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 0px;
+`
+
+const HeaderSubText = styled.p`
+  font-size: 24px;
+  color: white;
+`
+
+const Highlight = styled.span`
+  color: #fff800;
 `
 
 
@@ -21,9 +42,14 @@ const Image = styled.img`
 const Home = () => {
   return (
     <Container>
-      <Image
-        src={'https://res.cloudinary.com/df0ll615k/image/upload/v1624845820/Asset_3_2x.png'}
-      />
+      <Header>
+        <HeaderText>
+          Not Your Average Web Dev.
+        </HeaderText>
+        <HeaderSubText>
+          Turning <Highlight>Ideas </Highlight> into <Highlight>reality</Highlight> is what I do.
+        </HeaderSubText>
+      </Header>
         <TiltContainer>
           Don't tilt me please
         </TiltContainer>
