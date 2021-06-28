@@ -19,9 +19,9 @@ const Tilted = styled.div`
 
 const InnerContainer = styled.div`
   position: relative;
-  width: 100%;
   margin-top: 100px;
   color: white;
+  width: 100%;
 `
 
 const TiltContainer = ({ children }) => (

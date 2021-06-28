@@ -10,6 +10,11 @@ const Container = styled.div`
   justify-content: center;
 `
 
+const InnerTrack = styled.div`
+  width: 1400px;
+  background: #F2F3F4;
+`
+
 const Header = styled.h1`
   font-size: 64px;
   margin-bottom: 16px;
@@ -34,9 +39,11 @@ const Image = styled.img`
 const Home = () => {
   return (
     <Container>
-      <TiltContainer>
-        Hello
-      </TiltContainer>
+      <InnerTrack>
+        <TiltContainer>
+          Hello
+        </TiltContainer>
+      </InnerTrack>
     </Container>
   )
 }
