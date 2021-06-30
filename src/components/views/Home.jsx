@@ -1,6 +1,9 @@
 import React, { memo } from 'react'
 import styled from 'styled-components'
 import TiltContainer from "../presentations/TiltContainer"
+import NormalContainer from "../presentations/NormalContainer"
+import Footer from '../presentations/Footer'
+
 
 const Container = styled.div`
   width: 100%;
@@ -50,9 +53,12 @@ const Home = () => {
           Turning <Highlight>Ideas </Highlight> into <Highlight>reality</Highlight> is what I do.
         </HeaderSubText>
       </Header>
+        <NormalContainer/>
         <TiltContainer>
           Don't tilt me please
         </TiltContainer>
+
+        <Footer></Footer>
     </Container>
   )
 }

@@ -7,6 +7,7 @@ import BlogIcon from './BlogIcon'
 import PlayIcon from './PlayIcon'
 import ProjectsIcon from './ProjectsIcon'
 import ToolsIcon from './ToolsIcon'
+import GoTopIcon from './GoTopIcon'
 export {
     YoutubeIcon,
     TwitterIcon,
@@ -16,5 +17,6 @@ export {
     BlogIcon,
     PlayIcon,
     ProjectsIcon,
-    ToolsIcon
+    ToolsIcon,
+    GoTopIcon
 }
