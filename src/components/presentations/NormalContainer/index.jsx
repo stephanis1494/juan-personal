@@ -56,4 +56,4 @@ const NormalContainer = ({ children }) => (
   </InnerContainer>
 )
   
-  export default NormalContainer
+  export default memo(NormalContainer)

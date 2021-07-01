@@ -3,21 +3,19 @@ import styled from 'styled-components'
 import TiltContainer from "../presentations/TiltContainer"
 import NormalContainer from "../presentations/NormalContainer"
 import Footer from '../presentations/Footer'
+import RegularNavbar from '../presentations/RegularNavbar';
 
 
 const Container = styled.div`
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+
 `
 
 const Header = styled.div`
   width: 100%;
   min-height: 480px;
   background-size: cover;
-  background-image: url(https://res.cloudinary.com/df0ll615k/image/upload/v1624845820/Asset_3_2x.png);
+  background-image: url('https://res.cloudinary.com/df0ll615k/image/upload/v1624845820/Asset_3_2x.png');
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -45,6 +43,7 @@ const Highlight = styled.span`
 const Home = () => {
   return (
     <Container>
+      <RegularNavbar></RegularNavbar>
       <Header>
         <HeaderText>
           Not Your Average Web Dev.

@@ -27,11 +27,8 @@ body::-webkit-scrollbar-thumb {
   background: darkblue;
 }
 
-.content {
-  /* font-weight: 400; */
-  /* max-width: 900px; */
-  /* width: 84%; */
-  /* margin: 0px auto; */
+/* .content {
+
 }
 
 button {
@@ -45,7 +42,6 @@ button {
 }
 
 .card {
-  /* border: 1px solid rgba(0, 0, 0, 0.6); */
   margin: 12px auto;
   border-radius: 6px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -62,10 +58,9 @@ button {
 }
 
 .card_image img {
-  /* max-width: 10%; */
-  width: 600px;
+    width: 600px;
     border-radius: 6px 6px 0px 0px;
-  /* vertical-align: middle; */
+
 }
 
 .card_heading {
@@ -76,8 +71,6 @@ button {
 }
 
 .card_button {
-  /* margin-bottom: 20px; */
-  /* border-radius: 3px; */
   height: 40px;
   width: 100%;
   border: none;
@@ -86,4 +79,4 @@ button {
   font-family: 'Open Sans';
   transition: background 250ms ease;
     border-radius: 0px 0px 6px 6px;
-}
+} */
