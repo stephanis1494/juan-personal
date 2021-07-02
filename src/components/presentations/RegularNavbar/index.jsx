@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
 import styled from "styled-components"
 
- const RegularNavbar = () => {
+
+const RegularNavbar = () => {
+    
     const [isOpen, setIsOpen] = useState(false) 
+    
     return (
         <Nav>
             <Logo href="">
@@ -22,13 +25,17 @@ import styled from "styled-components"
 }
 
 const Nav = styled.div`
-    padding: 1rem;
+    box-sizing: border-box;
+    width: 100%;
+    position: fixed;
+    padding: 0;
     display: flex;
     /* flex-direction: row; */
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    background: yellow;
+    background: transparent;
+    padding: 15px;
 `
 
 const Logo = styled.a`
@@ -37,6 +44,7 @@ const Logo = styled.a`
     text-decoration: none;
     font-weight: 800;
     font-size: 1.7rem;
+    color: #fff;
 `
 
 const Hamburger = styled.div`
@@ -47,7 +55,7 @@ const Hamburger = styled.div`
     span {
         height: 5px;
         width: 25px;
-        background-color: green;
+        background-color: #fff;
         margin-bottom: 5px;
         border-radius: 5px;
     }
@@ -76,12 +84,12 @@ const MenuLink = styled.a`
     text-align: center;
     cursor: pointer;
     text-decoration: none;
-    color: green;
+    color: #fff;
     transition: all 0.3s ease-in-out;
     font-size: 0.9rem;
 
     &:hover {
-        color: purple;
+        font-weight: 700;
     }
 `
 
