@@ -37,23 +37,27 @@ const TextTitle = styled.h1`
 const TextSubTitle = styled.h2`
     color: rgba(58, 58, 56, 1.0);
     margin-top: 0;
-    `
+`
 
 const TextParagraph = styled.p`
     color: rgba(58, 58, 56, 1.0);
 `
 
-const NormalContainer = ({ children }) => (
+
+const NormalContainer = ({ title, subtitle, paragraph }) => (
     <InnerContainer>
         <ContentContainer>
             <Image />
             <Text>
-                <TextTitle>QR Generator</TextTitle>
-                <TextSubTitle>a simple desktop app</TextSubTitle>
-                <TextParagraph>QR Generator that was built in order to solve a specific problem at a specific moment were an app like this was needed, but I could not find anything like this availableT, so I built it. Lorem Ipsum dolores amed. Lorem Ipsum dolores amed. Lorem Ipsum dolores amed</TextParagraph>
+                <TextTitle>{title}</TextTitle>
+                <TextSubTitle>{ subtitle }</TextSubTitle>
+                <TextParagraph>{ paragraph }</TextParagraph>
             </Text>
         </ContentContainer>
   </InnerContainer>
 )
   
   export default memo(NormalContainer)
+
+
+

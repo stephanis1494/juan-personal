@@ -38,7 +38,11 @@ const Highlight = styled.span`
   color: #fff800;
 `
 
-
+const qrCodeContainerInfo = {
+  title: "QR Generator",
+  subtitle: "a simple desktop app",
+  paragraph: "QR Generator that was built in order to solve a specific problem at a specific moment were an app like this was needed, but I could not find anything like this available, so I built it. Lorem Ipsum dolores amed. Lorem Ipsum dolores amed. Lorem Ipsum dolores amed"
+}
 
 const Home = () => {
   return (
@@ -52,10 +56,20 @@ const Home = () => {
           Turning <Highlight>Ideas </Highlight> into <Highlight>reality</Highlight> is what I do.
         </HeaderSubText>
       </Header>
-        <NormalContainer/>
+        <NormalContainer 
+          title={qrCodeContainerInfo.title}
+          subtitle={qrCodeContainerInfo.subtitle}
+          paragraph={qrCodeContainerInfo.paragraph}
+        />
         <TiltContainer>
           Don't tilt me please
         </TiltContainer>
+        
+        <NormalContainer 
+          title={qrCodeContainerInfo.title}
+          subtitle={qrCodeContainerInfo.subtitle}
+          paragraph={qrCodeContainerInfo.paragraph}
+        />
 
         <Footer></Footer>
     </Container>

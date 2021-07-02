@@ -16,7 +16,7 @@ const RegularNavbar = () => {
                 <span></span>
                 <span></span>
             </Hamburger>
-            <Menu>
+            <Menu isOpen={isOpen}>
                 <MenuLink href="">Projects</MenuLink>
                 <MenuLink href="">About</MenuLink>
             </Menu>
