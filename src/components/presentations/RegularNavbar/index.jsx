@@ -1,34 +1,78 @@
 import React, { useState } from 'react'
 import styled from "styled-components"
+import { CloseIcon } from '../Icons'
 
 
 const RegularNavbar = () => {
-    
-    const [isOpen, setIsOpen] = useState(false) 
-    
+
+    const [isOpen, setIsOpen] = useState(false)
+
     return (
         <Nav>
             <Logo href="">
                 Juan Luis
             </Logo>
-            <Hamburger onClick={() => setIsOpen(!isOpen)}>
-                <span></span>
-                <span></span>
-                <span></span>
-            </Hamburger>
-            <Menu isOpen={isOpen}>
-                <MenuLink href="">Projects</MenuLink>
-                <MenuLink href="">About</MenuLink>
-            </Menu>
+            <div>
+                <Hamburger onClick={() => setIsOpen(!isOpen)}>
+                    <span />
+                    <span />
+                    <span />
+                </Hamburger>
+                <MenuLink>Projects</MenuLink>
+                <MenuLink>About</MenuLink>
+            </div>
+            {
+                isOpen && <Menu onClose={() => setIsOpen(false)}/>
+            }
         </Nav>
     )
 }
+
+const MenuContainer = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`
+
+const MenuItem = styled.p`
+  font-size: 24px;
+  color: rgba(0, 0, 0, 0.75);
+  font-weight: 700;
+  transition: color 150ms ease;
+  cursor: pointer;
+  
+  :hover {
+    color: rgba(0, 0, 0, 1);
+  }
+`
+
+const Menu = ({ onClose = () => {} }) => (
+    <MenuContainer>
+        <MenuItem>Projects</MenuItem>
+        <MenuItem>About</MenuItem>
+      <CloseIcon
+        style={{
+          position: 'fixed',
+          top: '8px',
+          right: '8px',
+          cursor: 'pointer'
+        }}
+        onClick={onClose}
+      />
+    </MenuContainer>
+)
 
 const Nav = styled.div`
     box-sizing: border-box;
     width: 100%;
     position: fixed;
-    padding: 0;
     display: flex;
     /* flex-direction: row; */
     justify-content: space-between;
@@ -40,7 +84,6 @@ const Nav = styled.div`
 
 const Logo = styled.a`
     /* padding: .0rem 0; */
-    color: red;
     text-decoration: none;
     font-weight: 800;
     font-size: 1.7rem;
@@ -65,20 +108,6 @@ const Hamburger = styled.div`
     }
 `
 
-const Menu = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-    
-    @media (max-width: 768px) {
-        overflow: hidden;
-        flex-direction: column;
-        width: 100%;
-        max-height: ${({ isOpen }) => (isOpen ? "300px" : "0")};
-    }
-`
-
 const MenuLink = styled.a`
     padding: 0 1rem;
     text-align: center;
@@ -91,6 +120,10 @@ const MenuLink = styled.a`
     &:hover {
         font-weight: 700;
     }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `
 
 export default RegularNavbar
