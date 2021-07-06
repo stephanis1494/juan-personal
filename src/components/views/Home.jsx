@@ -27,11 +27,22 @@ const HeaderText = styled.h1`
   font-weight: 700;
   color: white;
   margin-bottom: 0px;
+  text-align: center;
+
+  @media (max-width: 1000px) {
+    font-size: 48px;
+  }
+
+  @media (max-width: 720px) {
+    font-size: 32px;
+  }
+
 `
 
 const HeaderSubText = styled.p`
   font-size: 24px;
   color: white;
+  text-align: center;
 `
 
 const Highlight = styled.span`
@@ -56,7 +67,7 @@ const Home = () => {
           Turning <Highlight>Ideas </Highlight> into <Highlight>reality</Highlight> is what I do.
         </HeaderSubText>
       </Header>
-        <NormalContainer 
+        <NormalContainer
           title={qrCodeContainerInfo.title}
           subtitle={qrCodeContainerInfo.subtitle}
           paragraph={qrCodeContainerInfo.paragraph}
@@ -64,8 +75,8 @@ const Home = () => {
         <TiltContainer>
           Don't tilt me please
         </TiltContainer>
-        
-        <NormalContainer 
+
+        <NormalContainer
           title={qrCodeContainerInfo.title}
           subtitle={qrCodeContainerInfo.subtitle}
           paragraph={qrCodeContainerInfo.paragraph}
@@ -75,5 +86,5 @@ const Home = () => {
     </Container>
   )
 }
- 
+
 export default memo(Home)
