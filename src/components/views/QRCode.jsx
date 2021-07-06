@@ -22,10 +22,6 @@ const QRCode = () => {
   const [data, setData] = useState({})
   const [columns, setColumns] = useState({})
 
-  React.useEffect(() => {
-    console.log({ data, columns })
-  }, [data, columns])
-
   const onChange = (e) => {
     const file = e.target?.files?.[0];
     const reader = new FileReader();
