@@ -1,6 +1,6 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 // // import './App.css'
-import { Home, Blog, Projects, Play, Tools, About } from './components/views'
+import { Home, Blog, Projects, Play, Tools, About, QRCode } from './components/views'
 import Navbar from './components/presentations/Navbar'
 import Footer from './components/presentations/Footer'
 // COOOOOOOOOOOOOOl
@@ -17,6 +17,7 @@ const App = () => {
           <Route path='/play' component={Play} />
           <Route path='/tools' component={Tools} />
           <Route path='/about' component={About} />
+          <Route path='/qr-code' component={QRCode} />
         </Switch>
       </div>
       {/* <Footer /> */}

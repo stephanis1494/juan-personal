@@ -4,6 +4,7 @@ import Play from './Play'
 import Projects from './Projects'
 import Tools from './Tools'
 import About from './About'
+import QRCode from './QRCode'
 
 export {
   Blog,
@@ -11,5 +12,6 @@ export {
   Play,
   Projects,
   Tools,
-  About
+  About,
+  QRCode
 }
