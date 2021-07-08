@@ -98,7 +98,7 @@ const Nav = styled.div`
     flex-wrap: wrap;
     background-color: ${({ fill = false }) => (fill && '#000F1B') || 'transparent'};
     padding: 15px;
-    transition: background-color 150ms ease;
+    transition: background-color 250ms ease;
 `
 
 const Logo = styled.a`
@@ -128,18 +128,13 @@ const Hamburger = styled.div`
 `
 
 const MenuLink = styled.a`
-    padding: 0 1rem;
+    padding: 0 16px;
     text-align: center;
     cursor: pointer;
     text-decoration: none;
     color: #fff;
-    transition: all 0.3s ease-in-out;
-    font-size: 0.9rem;
+    font-size: 16px;
     font-weight: 500;
-
-    &:hover {
-        font-weight: 700;
-    }
 
   @media (max-width: 768px) {
     display: none;
