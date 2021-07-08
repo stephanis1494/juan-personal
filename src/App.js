@@ -1,10 +1,5 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-// // import './App.css'
 import { Home, Blog, Projects, Play, Tools, About, QRCode } from './components/views'
-import Navbar from './components/presentations/Navbar'
-import Footer from './components/presentations/Footer'
-// COOOOOOOOOOOOOOl
-
 
 const App = () => {
   return (

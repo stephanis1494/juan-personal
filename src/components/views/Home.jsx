@@ -43,6 +43,10 @@ const HeaderSubText = styled.p`
   font-size: 24px;
   color: white;
   text-align: center;
+
+  @media (max-width: 600px) {
+    margin: 16px 32px 0px 32px;
+  }
 `
 
 const Highlight = styled.span`

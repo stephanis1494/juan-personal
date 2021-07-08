@@ -1,10 +1,10 @@
 const SearchIcon = ({ color = 'white', size = '16', style = {}, ...props}) => {
-    return ( 
-        <svg 
+    return (
+        <svg
         xmlns="http://www.w3.org/2000/svg"
         width={size}
         height={size}
-        class="bi bi-search" 
+        className="bi bi-search"
         viewBox="0 0 16 16"
         {...props}
         >
@@ -17,5 +17,5 @@ const SearchIcon = ({ color = 'white', size = '16', style = {}, ...props}) => {
         </svg>
      );
 }
- 
+
 export default SearchIcon;

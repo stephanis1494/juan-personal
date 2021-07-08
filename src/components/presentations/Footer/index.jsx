@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import './Footer.css'
-import { YoutubeIcon, TwitterIcon, ToggleOnIcon, SearchIcon, GoTopIcon } from '../Icons'
-import ToggleButton from '../ToggleButton'
+import { YoutubeIcon, TwitterIcon, GoTopIcon } from '../Icons'
 
 const Icon = ({ children, color, hoverColor, ...props }) => {
   const [hover, setHover] = useState(false)
@@ -16,9 +15,10 @@ const Icon = ({ children, color, hoverColor, ...props }) => {
 }
 
 const Footer = () => {
+
   return (
       <div className='footer-container'>
-        <div className="to-top">
+        <div className="to-top" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
           <Icon size='24' color='white' hoverColor='#00ACED'>
             <GoTopIcon />
           </Icon>
@@ -35,5 +35,5 @@ const Footer = () => {
       </div>
   )
 }
- 
+
 export default Footer;

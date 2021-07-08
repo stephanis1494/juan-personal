@@ -1,31 +1,49 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from "styled-components"
 import { CloseIcon } from '../Icons'
+import { debounce } from 'throttle-debounce'
 
 
 const RegularNavbar = () => {
+  const [isOpen, setIsOpen] = useState(false)
+  const [fillNavColor, setFillNavColor] = useState(false)
 
-    const [isOpen, setIsOpen] = useState(false)
 
-    return (
-        <Nav>
-            <Logo href="">
-                Juan Luis
-            </Logo>
-            <div>
-                <Hamburger onClick={() => setIsOpen(!isOpen)}>
-                    <span />
-                    <span />
-                    <span />
-                </Hamburger>
-                <MenuLink>Projects</MenuLink>
-                <MenuLink>About</MenuLink>
-            </div>
-            {
-                isOpen && <Menu onClose={() => setIsOpen(false)}/>
-            }
-        </Nav>
-    )
+  const handleScroll = debounce(10, true, () => {
+    const position = window.scrollY
+
+    if (position > 160 && !fillNavColor) {
+      setFillNavColor(true)
+    } else if (position < 160 && fillNavColor) {
+      setFillNavColor(false)
+    }
+  })
+
+  useEffect(() => {
+    document.addEventListener('scroll', handleScroll)
+
+    return () => document.removeEventListener('scroll', handleScroll)
+  }, [handleScroll])
+
+  return (
+    <Nav fill={fillNavColor}>
+      <Logo href="">
+        Juan Luis
+      </Logo>
+      <div>
+        <Hamburger onClick={() => setIsOpen(!isOpen)}>
+          <span />
+          <span />
+          <span />
+        </Hamburger>
+        <MenuLink>Projects</MenuLink>
+        <MenuLink>About</MenuLink>
+      </div>
+      {
+        isOpen && <Menu onClose={() => setIsOpen(false)}/>
+      }
+    </Nav>
+  )
 }
 
 const MenuContainer = styled.div`
@@ -78,8 +96,9 @@ const Nav = styled.div`
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    background: transparent;
+    background-color: ${({ fill = false }) => (fill && '#000F1B') || 'transparent'};
     padding: 15px;
+    transition: background-color 150ms ease;
 `
 
 const Logo = styled.a`
@@ -116,6 +135,7 @@ const MenuLink = styled.a`
     color: #fff;
     transition: all 0.3s ease-in-out;
     font-size: 0.9rem;
+    font-weight: 500;
 
     &:hover {
         font-weight: 700;

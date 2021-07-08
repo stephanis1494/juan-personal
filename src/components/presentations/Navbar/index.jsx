@@ -1,7 +1,6 @@
-import React from 'react'
-import { memo, useState, useEffect, Fragment } from 'react'
+import React, { memo, useState, useEffect } from 'react'
 import './Navbar.css'
-import { Link, useLocation, useHistory } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { AboutIcon, BlogIcon, PlayIcon, ProjectsIcon, ToolsIcon } from '../Icons'
 
 const NavItem = ({ icon = <BlogIcon />, text = 'Blog', showText = false, active = false, path = '/blog' }) => {

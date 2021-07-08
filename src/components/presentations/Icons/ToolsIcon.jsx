@@ -1,11 +1,11 @@
 const ToolsIcon = ({ hover = false }) => {
     return (
-        <svg 
+        <svg
         xmlns="http://www.w3.org/2000/svg"
         width={(hover && '18') || "16"}
         height={(hover && '18') || "16"}
         fill="currentColor"
-        class="bi bi-nut-fill"
+        className="bi bi-nut-fill"
         viewBox="0 0 16 16"
         style={{ transition: 'width 350ms ease, height 350ms ease'}}
         >
@@ -13,5 +13,5 @@ const ToolsIcon = ({ hover = false }) => {
         </svg>
     );
 }
- 
+
 export default ToolsIcon;
