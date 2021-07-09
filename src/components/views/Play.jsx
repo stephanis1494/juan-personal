@@ -1,8 +1,10 @@
-import ContentHero from "../presentations/ContentHero";
+import RegularNavbar from "../presentations/RegularNavbar";
 
 const Play = () => {
     return (
-      <ContentHero title="Play" />
+      <>
+        <RegularNavbar alwaysFilled></RegularNavbar>
+      </>
     );
 }
  

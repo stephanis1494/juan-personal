@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react'
 import styled from "styled-components"
 import { CloseIcon } from '../Icons'
 import { debounce } from 'throttle-debounce'
+import { Link } from 'react-router-dom'
 
 
-const RegularNavbar = () => {
+const RegularNavbar = ({ alwaysFilled = false }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [fillNavColor, setFillNavColor] = useState(false)
 
@@ -26,10 +27,12 @@ const RegularNavbar = () => {
   }, [handleScroll])
 
   return (
-    <Nav fill={fillNavColor}>
-      <Logo href="">
-        Juan Luis
-      </Logo>
+    <Nav fill={ fillNavColor || alwaysFilled }>
+      <Link to="/">
+        <Logo href="">
+          Juan Luis
+        </Logo>
+      </Link>
       <div>
         <Hamburger onClick={() => setIsOpen(!isOpen)}>
           <span />
