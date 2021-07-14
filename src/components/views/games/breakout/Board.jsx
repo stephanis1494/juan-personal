@@ -14,15 +14,15 @@ export default function Board() {
     const canvasRef = useRef(null)
 
     useEffect(() => {
-
+        
         const TheCanvas = canvasRef.current
         const TheContext = TheCanvas.getContext('2d')
         
+        // Assign bricks
+        let newBrickSet = Brick(2, bricks, brickObject, TheCanvas)
+        
         const render = () => {
 
-            // Assign bricks
-            let newBrickSet = Brick(2, bricks, brickObject, TheCanvas)
-            
             if(newBrickSet && newBrickSet.length > 0) {
                 bricks = newBrickSet
             }
@@ -30,8 +30,10 @@ export default function Board() {
             TheContext.clearRect(0, 0, TheCanvas.width, TheCanvas.height);
 
             bricks.map((brick) => {
+                // console.log(brick)
                 return brick.draw(TheContext)
             })
+            
             // Handle Ball Movement
             BallMovement(TheContext, ballObject)
             
@@ -46,7 +48,7 @@ export default function Board() {
         }
 
         render()
-        console.table(bricks)
+        
     })
 
     // function getMousePosition(canvas, event) {
@@ -68,6 +70,6 @@ export default function Board() {
 const Canvas = styled.canvas`
     /* width: 800;    
     height: 600; */
-    border: 3px solid red;
+    /* border: 3px solid red; */
     background-color: #134959;
 `

@@ -1,6 +1,7 @@
 export default function Brick(level, bricks, brick, theCanvas) {
     const BRICKS_PER_ROW = 5
-    brick.width = theCanvas.width / BRICKS_PER_ROW
+    const SPACE_BETWEEN_BRICKS = 0.5
+    brick.width = theCanvas.width / BRICKS_PER_ROW - SPACE_BETWEEN_BRICKS - 5
     
     let newBricks = []
 
@@ -13,9 +14,9 @@ export default function Brick(level, bricks, brick, theCanvas) {
         return
     }
 
-    for(let i = 0; i < BRICKS_PER_ROW * level; i++) {
+    for(let i = 0;  i < BRICKS_PER_ROW * level; i++) {
         let newBrick = new SingleBrick(
-            brick.x + brick.width,
+            brick.x += (brick.width + SPACE_BETWEEN_BRICKS),
             brick.y,
             brick.width,
             brick.height,
@@ -25,8 +26,8 @@ export default function Brick(level, bricks, brick, theCanvas) {
         newBricks.push(newBrick)
 
         if(brick.x + brick.width >= theCanvas.width) {
-            brick.x = 0.5
-            brick.y += brick.height + 1
+            brick.x = SPACE_BETWEEN_BRICKS
+            brick.y += brick.height + SPACE_BETWEEN_BRICKS
         }
     }
 
@@ -36,12 +37,12 @@ export default function Brick(level, bricks, brick, theCanvas) {
 
 class SingleBrick {
     constructor(x, y, w, h, c) {
-      this.x = x - w;
-      this.y = y;
-      this.width = w;
-      this.height = h;
-      this.colors = c;
-      this.broke = false;
+        this.x = x - w;
+        this.y = y;
+        this.width = w;
+        this.height = h;
+        this.colors = c;
+        this.broke = false;
     }
 
     draw(ctx) {
