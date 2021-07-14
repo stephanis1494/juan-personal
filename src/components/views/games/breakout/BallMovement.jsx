@@ -16,12 +16,14 @@ class Ball {
         TheContext.fill()
         TheContext.stroke()
 
-        this.x++
+        // this.x++
     }
 }
 
-let data = new Ball(0, 100, 10)
-
 export function BallMovement(TheContext, ballObject) {
+    let data = new Ball(ballObject.x, ballObject.y, ballObject.rad)
+
     data.draw(TheContext)
+    ballObject.x += ballObject.dx
+    ballObject.y += ballObject.dy
 }

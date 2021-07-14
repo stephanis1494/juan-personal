@@ -1,10 +1,10 @@
 export default {
     ballObject: {
       x: 20,
-      y: 200,
+      y: 20,
       dx: 5,
       dy: 5,
-      rad: 10,
+      rad: 8,
       speed: 10,
     },
     brickObject: {
@@ -21,8 +21,8 @@ export default {
       level: 1,
     },
     paddleProps: {
-      height: 20,
-      width: 100,
+      height: 40,
+      width: 80,
       x: 100,
       color: "orange",
     },
