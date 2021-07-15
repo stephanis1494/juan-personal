@@ -8,7 +8,7 @@ export default {
       speed: 10,
     },
     brickObject: {
-      x: 0.5,
+      x: 5,
       y: 50,
       height: 20,
       density: 2,

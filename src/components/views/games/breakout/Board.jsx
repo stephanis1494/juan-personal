@@ -19,7 +19,7 @@ export default function Board() {
         const TheContext = TheCanvas.getContext('2d')
         
         // Assign bricks
-        let newBrickSet = Brick(2, bricks, brickObject, TheCanvas)
+        let newBrickSet = Brick(4, bricks, brickObject, TheCanvas)
         
         const render = () => {
 

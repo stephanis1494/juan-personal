@@ -1,6 +1,6 @@
 export default function Brick(level, bricks, brick, theCanvas) {
     const BRICKS_PER_ROW = 5
-    const SPACE_BETWEEN_BRICKS = 0.5
+    const SPACE_BETWEEN_BRICKS = 5
     brick.width = theCanvas.width / BRICKS_PER_ROW - SPACE_BETWEEN_BRICKS - 5
     
     let newBricks = []
