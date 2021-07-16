@@ -38,7 +38,7 @@ export default function Board() {
             })
 
             TheContext.font = "30px Arial";
-TheContext.fillText(player.lives, 10, 50); 
+            TheContext.fillText(player.lives, 10, 50); 
             
             // Handle Ball Movement
             BallMovement(TheContext, ballObject)
@@ -79,8 +79,5 @@ TheContext.fillText(player.lives, 10, 50);
 }
 
 const Canvas = styled.canvas`
-    /* width: 800;    
-    height: 600; */
-    /* border: 3px solid red; */
     background-color: #134959;
 `

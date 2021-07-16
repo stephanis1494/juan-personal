@@ -8,7 +8,7 @@ export default {
       speed: 25,
     },
     brickObject: {
-      x: 5,
+      x: 0,
       y: 50,
       height: 20,
       density: 2,
@@ -21,9 +21,9 @@ export default {
       level: 1,
     },
     paddleProps: {
-      height: 40,
-      width: 80,
+      height: 20,
+      width: 100,
       x: 100,
-      color: "orange",
+      color: "blue",
     },
   };

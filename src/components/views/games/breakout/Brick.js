@@ -1,8 +1,9 @@
 export default function Brick(level, bricks, brick, theCanvas) {
-    
+
     const BRICKS_PER_ROW = 5
-    const SPACE_BETWEEN_BRICKS = 5
-    brick.width = theCanvas.width / BRICKS_PER_ROW - SPACE_BETWEEN_BRICKS - 5
+    const SPACE_BETWEEN_BRICKS = 0
+    const BRICK_LINE_SPACING = brick.height
+    brick.width = theCanvas.width / BRICKS_PER_ROW - SPACE_BETWEEN_BRICKS
     
     let newBricks = []
 
@@ -26,9 +27,10 @@ export default function Brick(level, bricks, brick, theCanvas) {
 
         newBricks.push(newBrick)
 
-        if(brick.x + brick.width >= theCanvas.width) {
-            brick.x = SPACE_BETWEEN_BRICKS
-            brick.y += brick.height + SPACE_BETWEEN_BRICKS
+        // If a brick goes off the right limit of CANVAS, jump to the next line
+        if(brick.x + brick.width > theCanvas.width) {
+            brick.x = 0 
+            brick.y += brick.height + BRICK_LINE_SPACING
         }
     }
 
@@ -53,9 +55,6 @@ class SingleBrick {
   
       ctx.lineWidth = 1;
       ctx.strokeStyle = this.broke ? "rgba(19, 73, 89, 0)" : "transparent";
-      // ctx.globalCompositeOperation = "destination-atop";
-      // ctx.shadowBlur = 0;
-      // ctx.shadowColor = "blue";
       ctx.fill();
       ctx.strokeRect(this.x, this.y, this.width, this.height);
     }
