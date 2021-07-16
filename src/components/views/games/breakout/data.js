@@ -1,11 +1,11 @@
 export default {
     ballObject: {
-      x: 20,
-      y: 20,
+      x: 300,
+      y: 400,
       dx: 5,
       dy: 5,
       rad: 8,
-      speed: 10,
+      speed: 25,
     },
     brickObject: {
       x: 5,

@@ -5,8 +5,9 @@ import { BallMovement } from './BallMovement'
 import WallCollision from './utils/WallCollision';
 import Paddle from './Paddle';
 import Brick from './Brick';
+import BrickCollision from './utils/BrickCollision';
 
-let { ballObject, paddleProps, brickObject } = data
+let { ballObject, paddleProps, brickObject, player } = data
 
 let bricks = []
 
@@ -31,17 +32,27 @@ export default function Board() {
 
             bricks.map((brick) => {
                 // console.log(brick)
-                return brick.draw(TheContext)
+                if(!brick.broke) {
+                    return brick.draw(TheContext)
+                }
             })
+
+            TheContext.font = "30px Arial";
+TheContext.fillText(player.lives, 10, 50); 
             
             // Handle Ball Movement
             BallMovement(TheContext, ballObject)
-            
-            WallCollision(TheCanvas, ballObject)
 
-            Paddle(TheContext, TheCanvas, paddleProps)
+                        // the ball, bricks per row, level, bricks
+            BrickCollision(ballObject, 5, 4, bricks)
 
-            requestAnimationFrame(render)
+            WallCollision(TheCanvas, ballObject, player)
+
+            Paddle(TheContext, TheCanvas, paddleProps, ballObject)
+
+            if(player.lives > 0){
+                requestAnimationFrame(render)
+            }
 
             // console.log(TheCanvas.clientX)
             

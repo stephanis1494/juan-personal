@@ -1,4 +1,4 @@
-export default (theContext, theCanvas, paddleProps) => {
+export default (theContext, theCanvas, paddleProps, ballObject) => {
     class Paddle {
       constructor(x) {
         this.x = x;
@@ -24,6 +24,12 @@ export default (theContext, theCanvas, paddleProps) => {
     let paddle = new Paddle(paddleProps.x);
 
     paddle.move();
+
+    if(ballObject.y + ballObject.rad > theCanvas.height) {
+      if(ballObject.x >= paddleProps.x && ballObject.x <= paddleProps.x + paddleProps.width) {
+        ballObject.dy *= -1;
+      }
+    }
 
     if (paddleProps.x <= 0) {
       paddleProps.x = 0;
