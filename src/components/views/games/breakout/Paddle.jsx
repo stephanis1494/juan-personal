@@ -1,34 +1,22 @@
-export default (theContext, theCanvas, paddleProps, ballObject) => {
-    class Paddle {
-      constructor(x) {
-        this.x = x;
-        this.y = theCanvas.height - paddleProps.height;
-        this.height = paddleProps.height;
-        this.width = paddleProps.width;
-        this.colors = [paddleProps.color,];
-      }
-      move() {
-        theContext.beginPath();
-        theContext.fillStyle = this.colors[0];
-        theContext.rect(this.x, this.y, this.width, this.height);
-        // theContext.strokeRect(this.x, this.y, this.width, this.height);
-        theContext.fill();
-      }
+export default (theContext, theCanvas, paddleObject, ballObject) => {
+  class Paddle {
+    constructor(x) {
+      this.x = x;
+      this.y = theCanvas.height - paddleObject.PADDLE_THICKNESS - paddleObject.paddleY;
+      this.height = paddleObject.PADDLE_THICKNESS;
+      this.width = paddleObject.PADDLE_WIDTH;
     }
-
-    let paddle = new Paddle(paddleProps.x);
-
-    paddle.move();
-
-    if(ballObject.y + ballObject.rad > theCanvas.height-paddleProps.height) {
-      if(ballObject.x >= paddleProps.x && ballObject.x <= paddleProps.x + paddleProps.width) {
-        ballObject.dy *= -1;
-      }
+    drawPaddle() {
+      theContext.fillStyle = 'white'; ////
+      theContext.beginPath();
+      theContext.fillRect(this.x, this.y, this.width, this.height); ////
+      theContext.fill();
     }
+    
+  }
 
-    if (paddleProps.x <= 0) {
-      paddleProps.x = 0;
-    } else if (paddleProps.x + paddleProps.width >= theCanvas.width) {
-      paddleProps.x = theCanvas.width - paddleProps.width;
-    }
-  };
+  let paddle = new Paddle(paddleObject.paddleX);
+
+  paddle.drawPaddle();
+
+};
