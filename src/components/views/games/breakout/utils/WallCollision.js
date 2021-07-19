@@ -12,22 +12,31 @@ export default function WallCollision(ballObject, theCanvas, paddleObject) {
         ballObject.ballSpeedY *= -1; // reverse ball's vertical direction
     }
 
-    if(ballObject.ballY > theCanvas.height - paddleObject.paddleY) { // if ball has moved beyond the bottom edge
-
-        if(ballObject.ballX > paddleObject.paddleX && ballObject.ballX < paddleObject.paddleX+paddleObject.PADDLE_WIDTH)
+    if(ballObject.ballSpeedY > 0.0) {
+        console.log(ballObject.ballSpeedY)
+        
+        if(ballObject.ballY >= theCanvas.height - (paddleObject.PADDLE_THICKNESS + paddleObject.DISTANCE_FROM_BOTTOM)
+           && ballObject.ballY <= theCanvas.height - paddleObject.PADDLE_THICKNESS) 
         {
-            ballObject.ballSpeedY *= -1; // reverse ball's vertical direction
+            if(ballObject.ballX > paddleObject.paddleX 
+              && ballObject.ballX < paddleObject.paddleX + paddleObject.PADDLE_WIDTH)
+            { // horizontally too?
 
-            var deltaX = ballObject.ballX-(paddleObject.paddleX+paddleObject.PADDLE_WIDTH/2); ////
-            ballObject.ballSpeedX = deltaX * 0.15; ////
-            console.log(ballObject.ballSpeedY)
-            console.log(deltaX)
-        } else {
-            ballObject.ballX = theCanvas.width/2; ////
-            ballObject.ballY = theCanvas.height/1.1; ////
-            ballObject.ballSpeedY *= -1;
-            ballObject.ballSpeedX = 5
+                ballObject.ballSpeedY *= -1; // reverse ball's vertical direction
+                
+                let deltaX = ballObject.ballX-(paddleObject.paddleX+paddleObject.PADDLE_WIDTH/2);
+                ballObject.ballSpeedX = deltaX * 0.35;
+
+            }         
+                
         }
+
+    }
+    if(ballObject.ballY > theCanvas.height) { // if ball has moved beyond the bottom edge
+        ballObject.ballX = theCanvas.width/2; ////
+        ballObject.ballY = theCanvas.height/1.2; ////
+        ballObject.ballSpeedY *= -1;
+        ballObject.ballSpeedX = 5
       
     }
 

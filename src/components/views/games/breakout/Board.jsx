@@ -4,8 +4,9 @@ import { BallMovement } from './Ball'
 import data from './data'
 import Paddle from './Paddle'
 import WallCollision from './utils/WallCollision'
+import Brickset from './Brick'
 
-let { ballObject, paddleObject } = data
+let { ballObject, paddleObject, bricksetObject } = data
 
 // const FRAMES_PER_SECOND = 30
 
@@ -18,10 +19,11 @@ export default function Board() {
         const theContext = theCanvas.getContext('2d')
         
         const render = () => {
-
+            
             // clear the game view
             theContext.clearRect(0, 0, theCanvas.width, theCanvas.height);
             
+            Brickset(theContext, theCanvas, bricksetObject)
             WallCollision(ballObject, theCanvas, paddleObject)
             BallMovement(theContext, ballObject)
             Paddle(theContext, theCanvas, paddleObject, ballObject)
