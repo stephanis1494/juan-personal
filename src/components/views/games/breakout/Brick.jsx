@@ -1,7 +1,6 @@
+/* eslint-disable import/no-anonymous-default-export */
 
-export default (theContext, theCanvas, bricksetObject) => {
-
-    let brickGrid = new Array(bricksetObject.BRICK_COLUMNS * bricksetObject.BRICK_ROWS).fill(0)
+export default (theContext, theCanvas, bricksetObject, brickGrid, ballObject) => {
 
     class Brickset {
         constructor() {
@@ -13,7 +12,6 @@ export default (theContext, theCanvas, bricksetObject) => {
         }
     
         drawBricks(theContext) { ////
-            // alert('hi')
 
             for(let eachCol=0; eachCol<this.BRICK_COLUMNS; eachCol++) { // in each column... ////
                                 
@@ -39,32 +37,44 @@ export default (theContext, theCanvas, bricksetObject) => {
         } // end of for eachCol ////
     
         } // end of drawBricks() ////
+
+        removeBrickAtPixelCoord(pixelX,pixelY) { ////
+            let tileCol = pixelX / bricksetObject.BRICK_WIDTH; ////
+            let tileRow = pixelY / bricksetObject.BRICK_HEIGHT; ////
+            
+            // we'll use Math.floor to round down to the nearest whole number ////
+            tileCol = Math.floor( tileCol ); ////
+            tileRow = Math.floor( tileRow ); ////
+        
+            // first check whether the ball is within any part of the brick wall
+            if(tileCol < 0 || tileCol >= bricksetObject.BRICK_COLUMNS || ////
+               tileRow < 0 || tileRow >= bricksetObject.BRICK_ROWS) { ////
+               return; // bail out of function to avoid illegal array position usage ////
+            } ////
+            
+            let brickIndex = brickTileToIndex(tileCol, tileRow); ////
+           
+            brickGrid[brickIndex] = 0; ////
+          } ////
     
     }
 
+    function brickTileToIndex(tileCol, tileRow) { ////
+        return (tileCol + bricksetObject.BRICK_COLUMNS*tileRow); ////
+      } ////
+
     function isBrickAtTileCoord(brickTileColumn, brickTileRow) { ////
 
-        let brickIndex = brickTileColumn + bricksetObject.BRICK_COLUMS*brickTileRow; ////
-        return (brickGrid[brickIndex] !== 1); ////
+        let brickIndex = brickTileToIndex(brickTileColumn, brickTileRow); ////
+        return (brickGrid[brickIndex] == 1); ////
 
     } ////
 
-    function resetTheBricks() { ////
 
-        for(let i=0; i<bricksetObject.BRICK_COLUMNS * bricksetObject.BRICK_ROWS; i++) { ////
-          if(Math.random() < 0.5) { // only fill in half the bricks, to test display ////
-            brickGrid[i] = 1; ////
-          } else { ////
-            brickGrid[i] = 0; ////
-          }
-        } ////
 
-      } ////
-
-      
-    
     let brickset = new Brickset()
 
+    brickset.removeBrickAtPixelCoord(ballObject.ballX, ballObject.ballY)
     brickset.drawBricks(theContext)
 
 }
