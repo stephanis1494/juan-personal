@@ -17,7 +17,7 @@ export default {
     BRICK_HEIGHT: 20,
     BRICK_GAP: 2,
     BRICK_COLUMNS: 10,
-    BRICK_ROWS: 14,
+    BRICK_ROWS: 4,
   }
 
 
