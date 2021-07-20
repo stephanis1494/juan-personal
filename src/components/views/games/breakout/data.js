@@ -1,14 +1,15 @@
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
   ballObject: {
-    ballX: 50,
-    ballY: 10,
+    ballX: 600,
+    ballY: 300,
     ballSpeedX: 5,
     ballSpeedY: 5,
-    ballRadius: 8,
+    ballRadius: 10,
   },
   paddleObject: {
-    PADDLE_WIDTH: 200,
-    PADDLE_THICKNESS: 20,
+    PADDLE_WIDTH: 150,
+    PADDLE_THICKNESS: 10,
     paddleX: 0,
     DISTANCE_FROM_BOTTOM: 10
   },
@@ -16,8 +17,13 @@ export default {
     BRICK_WIDTH: 80,
     BRICK_HEIGHT: 20,
     BRICK_GAP: 2,
+    BRICK_ROWS: 6,
     BRICK_COLUMNS: 10,
-    BRICK_ROWS: 4,
+    bricksDestroyed: 0,
+    bricksLeft: 0
+  },
+  playerObject: {
+    livesRemaining: 3
   }
 
 

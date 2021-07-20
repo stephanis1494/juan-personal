@@ -1,7 +1,17 @@
-export default function ResetTheBricks(bricksetObject, brickGrid) { ////
+import brickTileToIndex from "./brickTileToIndex";
 
-    for(let i=0; i<bricksetObject.BRICK_COLUMNS * bricksetObject.BRICK_ROWS; i++) { ////
-        brickGrid[i] = 1; ////
+export default function ResetTheBricks(bricksetObject, brickGrid) { ////
+    
+    // bricksetObject.bricksDestroyed = 0
+
+    for(let eachRow=0; eachRow<bricksetObject.BRICK_ROWS; eachRow++) { ////
+        for(let eachCol=0; eachCol<bricksetObject.BRICK_COLUMNS; eachCol++) {
+            let brickIndex = brickTileToIndex(eachCol, eachRow, bricksetObject)
+            if(eachRow >= 3) {
+                brickGrid[brickIndex] = 1; ////
+                bricksetObject.bricksLeft++
+            }
+        }
     } ////
 
 } ////

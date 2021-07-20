@@ -38,7 +38,7 @@ export default (theContext, theCanvas, bricksetObject, brickGrid, ballObject) =>
     
         } // end of drawBricks() ////
 
-        removeBrickAtPixelCoord(pixelX,pixelY) { ////
+        breakAndBounceOffBrickAtPixelCoord(pixelX,pixelY) { ////
             let tileCol = pixelX / bricksetObject.BRICK_WIDTH; ////
             let tileRow = pixelY / bricksetObject.BRICK_HEIGHT; ////
             
@@ -53,9 +53,38 @@ export default (theContext, theCanvas, bricksetObject, brickGrid, ballObject) =>
             } ////
             
             let brickIndex = brickTileToIndex(tileCol, tileRow); ////
-           
-            brickGrid[brickIndex] = 0; ////
-          } ////
+
+            if(brickGrid[brickIndex] == 1) { ////
+                // ok, so we know we overlap a brick now. ////
+                // let's backtrack to see whether we changed rows or cols on way in ////
+                let prevBallX = ballObject.ballX-ballObject.ballSpeedX; ////
+                let prevBallY = ballObject.ballY-ballObject.ballSpeedY; ////
+                let prevTileCol = Math.floor(prevBallX / bricksetObject.BRICK_WIDTH); ////
+                let prevTileRow = Math.floor(prevBallY / bricksetObject.BRICK_HEIGHT); ////
+
+                let bothTestsFailed = true; ////
+
+                if(prevTileCol != tileCol) { // must have come in horizontally ////
+                    ballObject.ballSpeedX *= -1; ////
+                    bothTestsFailed = false; ////
+                } ////
+
+                if(prevTileRow != tileRow) { // must have come in vertically ////
+                    ballObject.ballSpeedY *= -1; ////
+                    bothTestsFailed = false; ////
+                } ////
+
+                    // we hit an "armpit" on the inside corner, this blocks going into it ////
+                    if(bothTestsFailed) { ////
+                        ballObject.ballSpeedX *= -1; ////
+                        ballObject.ballSpeedY *= -1; ////
+                    } ////
+
+                    brickGrid[brickIndex] = 0;
+                    bricksetObject.bricksLeft--
+            } ////
+
+        } ////
     
     }
 
@@ -70,11 +99,9 @@ export default (theContext, theCanvas, bricksetObject, brickGrid, ballObject) =>
 
     } ////
 
-
-
     let brickset = new Brickset()
 
-    brickset.removeBrickAtPixelCoord(ballObject.ballX, ballObject.ballY)
+    brickset.breakAndBounceOffBrickAtPixelCoord(ballObject.ballX, ballObject.ballY)
     brickset.drawBricks(theContext)
 
 }

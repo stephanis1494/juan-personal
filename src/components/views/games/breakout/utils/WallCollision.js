@@ -1,10 +1,13 @@
-export default function WallCollision(ballObject, theCanvas, paddleObject) {
+import ResetTheBall from "./ResetTheBall";
+import ResetTheBricks from "./ResetTheBricks";
 
-    if(ballObject.ballX < 0) { // if ball has moved beyond the left edge
+export default function WallCollision(ballObject, theCanvas, theContext, paddleObject, bricksetObject, brickGrid, playerObject) {
+
+    if(ballObject.ballX < 0 + ballObject.ballRadius) { // if ball has moved beyond the left edge
         ballObject.ballSpeedX *= -1; // reverse ball's horizontal direction
     }
 
-    if(ballObject.ballX > theCanvas.width) { // if ball has moved beyond the right edge
+    if(ballObject.ballX > theCanvas.width - ballObject.ballRadius) { // if ball has moved beyond the right edge
         ballObject.ballSpeedX *= -1; // reverse ball's horizontal direction
     }
 
@@ -23,7 +26,11 @@ export default function WallCollision(ballObject, theCanvas, paddleObject) {
             { // horizontally too?
 
                 ballObject.ballSpeedY *= -1; // reverse ball's vertical direction
-                
+
+                if(bricksetObject.bricksLeft == 0) { ////
+                    ResetTheBricks(bricksetObject, brickGrid) ////
+                } ////
+
                 let deltaX = ballObject.ballX-(paddleObject.paddleX+paddleObject.PADDLE_WIDTH/2);
                 ballObject.ballSpeedX = deltaX * 0.35;
 
@@ -33,11 +40,8 @@ export default function WallCollision(ballObject, theCanvas, paddleObject) {
 
     }
     if(ballObject.ballY > theCanvas.height) { // if ball has moved beyond the bottom edge
-        ballObject.ballX = theCanvas.width/2; ////
-        ballObject.ballY = theCanvas.height/1.2; ////
-        ballObject.ballSpeedY *= -1;
-        ballObject.ballSpeedX = 5
-      
+        ResetTheBall(theCanvas, theContext, ballObject)
+        playerObject.livesRemaining--      
     }
 
 }

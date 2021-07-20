@@ -6,9 +6,12 @@ import Paddle from './Paddle'
 import WallCollision from './utils/WallCollision'
 import Brickset from './Brick'
 import ResetTheBricks from './utils/ResetTheBricks'
+import ResetTheBall from './utils/ResetTheBall'
+import DrawUiText from './utils/DrawUiText'
+import LivesManagement from './utils/LivesManagement'
 
 
-let { ballObject, paddleObject, bricksetObject } = data
+let { ballObject, paddleObject, bricksetObject, playerObject } = data
 
 // const FRAMES_PER_SECOND = 30
 
@@ -16,7 +19,7 @@ export default function Board() {
     const canvasRef = useRef(null)
 
     let brickGrid = new Array(bricksetObject.BRICK_COLUMNS * bricksetObject.BRICK_ROWS).fill(0)
-    ResetTheBricks(bricksetObject, brickGrid)
+    // let bricksLeft = bricksetObject.BRICK_COLUMNS * bricksetObject.BRICK_ROWS
     
     useEffect(() => {
         
@@ -28,15 +31,24 @@ export default function Board() {
             // clear the game view
             theContext.clearRect(0, 0, theCanvas.width, theCanvas.height);
             
+            DrawUiText(theCanvas, theContext, `Left to go: ${bricksetObject.bricksLeft}`, 50, 30)
+            LivesManagement(theCanvas, theContext, playerObject)
             Brickset(theContext, theCanvas, bricksetObject, brickGrid, ballObject)
-            WallCollision(ballObject, theCanvas, paddleObject)
+            WallCollision(ballObject, theCanvas, theContext, paddleObject, bricksetObject, brickGrid, playerObject)
             BallMovement(theContext, ballObject)
             Paddle(theContext, theCanvas, paddleObject, ballObject)
+            
+            if(playerObject.livesRemaining >= 0) {
+                requestAnimationFrame(render)
 
-            requestAnimationFrame(render)
-
+            } else {
+                return
+            }
+            
         }
-
+        
+        ResetTheBricks(bricksetObject, brickGrid)
+        ResetTheBall(theCanvas, theContext,ballObject)
         render()
         
     })
