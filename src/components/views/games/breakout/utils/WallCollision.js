@@ -31,6 +31,8 @@ export default function WallCollision(ballObject, theCanvas, theContext, paddleO
                     ResetTheBricks(bricksetObject, brickGrid) ////
                 } ////
 
+                playerObject.comboStatus = false
+
                 let deltaX = ballObject.ballX-(paddleObject.paddleX+paddleObject.PADDLE_WIDTH/2);
                 ballObject.ballSpeedX = deltaX * 0.35;
 

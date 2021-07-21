@@ -1,6 +1,8 @@
 /* eslint-disable import/no-anonymous-default-export */
 
-export default (theContext, theCanvas, bricksetObject, brickGrid, ballObject) => {
+import ComboManagement from "./utils/ComboManagement";
+
+export default (theContext, theCanvas, bricksetObject, brickGrid, ballObject, playerObject) => {
 
     class Brickset {
         constructor() {
@@ -18,13 +20,16 @@ export default (theContext, theCanvas, bricksetObject, brickGrid, ballObject) =>
                 for(let eachRow=0; eachRow<this.BRICK_ROWS; eachRow++) { // in each row within that col ////
                    
                     if( isBrickAtTileCoord(eachCol, eachRow) ) {
+                        
+                        let brickIndex = brickTileToIndex(eachCol, eachRow, bricksetObject)
+                        // console.log(brickGrid[brickIndex])
 
                         // compute the corner in pixel coordinates of the corresponding brick ////
                         // multiply the brick's tile coordinate by BRICK_W or BRICK_H for pixel distance ////
                         let brickLeftEdgeX = eachCol * this.BRICK_WIDTH; ////
                         let brickTopEdgeY = eachRow * this.BRICK_HEIGHT; ////
         
-                        theContext.fillStyle = 'white'; ////
+                        theContext.fillStyle = brickGrid[brickIndex] == 2 ? 'red' : 'white'; ////
                         theContext.beginPath();
                         
                         theContext.fillRect(brickLeftEdgeX, brickTopEdgeY, this.BRICK_WIDTH-this.BRICK_GAP, this.BRICK_HEIGHT-this.BRICK_GAP); ////
@@ -54,7 +59,7 @@ export default (theContext, theCanvas, bricksetObject, brickGrid, ballObject) =>
             
             let brickIndex = brickTileToIndex(tileCol, tileRow); ////
 
-            if(brickGrid[brickIndex] == 1) { ////
+            if(brickGrid[brickIndex] == 1 || brickGrid[brickIndex] == 2) { ////
                 // ok, so we know we overlap a brick now. ////
                 // let's backtrack to see whether we changed rows or cols on way in ////
                 let prevBallX = ballObject.ballX-ballObject.ballSpeedX; ////
@@ -63,7 +68,8 @@ export default (theContext, theCanvas, bricksetObject, brickGrid, ballObject) =>
                 let prevTileRow = Math.floor(prevBallY / bricksetObject.BRICK_HEIGHT); ////
 
                 let bothTestsFailed = true; ////
-
+                if(brickGrid[brickIndex] == 2) {alert('hi')}
+                
                 if(prevTileCol != tileCol) { // must have come in horizontally ////
                     ballObject.ballSpeedX *= -1; ////
                     bothTestsFailed = false; ////
@@ -82,6 +88,9 @@ export default (theContext, theCanvas, bricksetObject, brickGrid, ballObject) =>
 
                     brickGrid[brickIndex] = 0;
                     bricksetObject.bricksLeft--
+
+                    ComboManagement(playerObject)
+
             } ////
 
         } ////
@@ -95,7 +104,7 @@ export default (theContext, theCanvas, bricksetObject, brickGrid, ballObject) =>
     function isBrickAtTileCoord(brickTileColumn, brickTileRow) { ////
 
         let brickIndex = brickTileToIndex(brickTileColumn, brickTileRow); ////
-        return (brickGrid[brickIndex] == 1); ////
+        return (brickGrid[brickIndex] == 1 || brickGrid[brickIndex] == 2); ////
 
     } ////
 

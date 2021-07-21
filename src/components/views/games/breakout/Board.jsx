@@ -18,7 +18,7 @@ let { ballObject, paddleObject, bricksetObject, playerObject } = data
 export default function Board() {
     const canvasRef = useRef(null)
 
-    let brickGrid = new Array(bricksetObject.BRICK_COLUMNS * bricksetObject.BRICK_ROWS).fill(0)
+    let brickGrid = new Array(bricksetObject.BRICK_COLUMNS * bricksetObject.BRICK_ROWS)
     // let bricksLeft = bricksetObject.BRICK_COLUMNS * bricksetObject.BRICK_ROWS
     
     useEffect(() => {
@@ -32,8 +32,10 @@ export default function Board() {
             theContext.clearRect(0, 0, theCanvas.width, theCanvas.height);
             
             DrawUiText(theCanvas, theContext, `Left to go: ${bricksetObject.bricksLeft}`, 50, 30)
+            DrawUiText(theCanvas, theContext, `Score: ${playerObject.score}`, 250, 30)
+
             LivesManagement(theCanvas, theContext, playerObject)
-            Brickset(theContext, theCanvas, bricksetObject, brickGrid, ballObject)
+            Brickset(theContext, theCanvas, bricksetObject, brickGrid, ballObject, playerObject)
             WallCollision(ballObject, theCanvas, theContext, paddleObject, bricksetObject, brickGrid, playerObject)
             BallMovement(theContext, ballObject)
             Paddle(theContext, theCanvas, paddleObject, ballObject)

@@ -19,11 +19,13 @@ export default {
     BRICK_GAP: 2,
     BRICK_ROWS: 6,
     BRICK_COLUMNS: 10,
-    bricksDestroyed: 0,
+    emptyRows: 3,
     bricksLeft: 0
   },
   playerObject: {
-    livesRemaining: 3
+    livesRemaining: 3,
+    score: 0,
+    comboStatus: false
   }
 
 
