@@ -5,6 +5,7 @@ import Projects from './Projects'
 import Tools from './Tools'
 import About from './About'
 import QRCode from './QRCode'
+import Music from "./Music"
 
 export {
   Blog,
@@ -13,5 +14,6 @@ export {
   Projects,
   Tools,
   About,
-  QRCode
+  QRCode,
+    Music
 }

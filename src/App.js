@@ -1,5 +1,5 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import { Home, Blog, Projects, Play, Tools, About, QRCode } from './components/views'
+import { Home, Blog, Projects, Play, Tools, About, QRCode, Music } from './components/views'
 import Breakout from './components/views/games/breakout'
 
 const App = () => {
@@ -15,6 +15,7 @@ const App = () => {
           <Route path='/about' component={About} />
           <Route path='/qr-code' component={QRCode} />
           <Route path='/games/breakout' component={Breakout} />
+          <Route path='/music' component={Music} />
         </Switch>
       </div>
       {/* <Footer /> */}

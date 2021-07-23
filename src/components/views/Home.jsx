@@ -3,7 +3,8 @@ import styled from 'styled-components'
 import TiltContainer from "../presentations/TiltContainer"
 import NormalContainer from "../presentations/NormalContainer"
 import Footer from '../presentations/Footer'
-import RegularNavbar from '../presentations/RegularNavbar';
+import RegularNavbar from '../presentations/RegularNavbar'
+import { useHistory } from 'react-router-dom'
 
 
 const Container = styled.div`
@@ -59,7 +60,14 @@ const qrCodeContainerInfo = {
   paragraph: "QR Generator that was built in order to solve a specific problem at a specific moment were an app like this was needed, but I could not find anything like this available, so I built it. Lorem Ipsum dolores amed. Lorem Ipsum dolores amed. Lorem Ipsum dolores amed"
 }
 
+const musicContainerInfo = {
+  title: 'Musician',
+  subtitle: 'A collection of music performances',
+  paragraph: 'QR Generator that was built in order to solve a specific problem at a specific moment were an app like this was needed, but I could not find anything like this available, so I built it. Lorem Ipsum dolores amed. Lorem Ipsum dolores amed. Lorem Ipsum dolores amed'
+}
+
 const Home = () => {
+  const history = useHistory()
   return (
     <Container>
       <RegularNavbar></RegularNavbar>
@@ -81,9 +89,10 @@ const Home = () => {
         </TiltContainer>
 
         <NormalContainer
-          title={qrCodeContainerInfo.title}
-          subtitle={qrCodeContainerInfo.subtitle}
-          paragraph={qrCodeContainerInfo.paragraph}
+          title={musicContainerInfo.title}
+          subtitle={musicContainerInfo.subtitle}
+          paragraph={musicContainerInfo.paragraph}
+          onImageClick={() => history.push('/music')}
         />
 
         <Footer></Footer>
