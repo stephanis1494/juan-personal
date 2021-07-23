@@ -31,6 +31,7 @@ const Image = styled.img.attrs({
   width: 200px;
   height: 200px;
   margin-right: 4%;
+  cursor: pointer;
 
   @media (max-width: 960px) {
     margin-right: 0;
@@ -66,10 +67,10 @@ const TextParagraph = styled.p`
 `
 
 
-const NormalContainer = ({ title, subtitle, paragraph }) => (
+const NormalContainer = ({ title, subtitle, paragraph, onImageClick = () => {} }) => (
     <InnerContainer>
         <ContentContainer>
-            <Image />
+            <Image onClick={onImageClick} />
             <div>
                 <TextTitle>{title}</TextTitle>
                 <TextSubTitle>{ subtitle }</TextSubTitle>
