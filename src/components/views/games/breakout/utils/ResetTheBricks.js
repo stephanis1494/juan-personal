@@ -1,12 +1,15 @@
 import brickTileToIndex from "./brickTileToIndex";
 
-export default function ResetTheBricks(bricksetObject, brickGrid) { ////
+export default function ResetTheBricks(bricksetObject, brickGrid, powerUpObject) { ////
     
     // bricksetObject.bricksDestroyed = 0
     let brickRowsMinusEmpty = (bricksetObject.BRICK_ROWS-bricksetObject.emptyRows)*bricksetObject.BRICK_COLUMNS
 
     let totalBricks = (bricksetObject.BRICK_ROWS*bricksetObject.BRICK_COLUMNS)
     let specialBrickIndex = Math.floor(brickRowsMinusEmpty + Math.random() * totalBricks)
+    
+    bricksetObject.specialBrickDestroyed = false
+    powerUpObject.taken = false
     
     for(let eachRow=0; eachRow<bricksetObject.BRICK_ROWS; eachRow++) { ////
         for(let eachCol=0; eachCol<bricksetObject.BRICK_COLUMNS; eachCol++) {

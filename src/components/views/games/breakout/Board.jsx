@@ -9,9 +9,16 @@ import ResetTheBricks from './utils/ResetTheBricks'
 import ResetTheBall from './utils/ResetTheBall'
 import DrawUiText from './utils/DrawUiText'
 import LivesManagement from './utils/LivesManagement'
+import { PowerUpMovement } from './PowerUp'
 
 
-let { ballObject, paddleObject, bricksetObject, playerObject } = data
+let { 
+    ballObject, 
+    paddleObject, 
+    bricksetObject, 
+    playerObject, 
+    powerUpObject, 
+} = data
 
 // const FRAMES_PER_SECOND = 30
 
@@ -35,11 +42,16 @@ export default function Board() {
             DrawUiText(theCanvas, theContext, `Score: ${playerObject.score}`, 250, 30)
 
             LivesManagement(theCanvas, theContext, playerObject)
-            Brickset(theContext, theCanvas, bricksetObject, brickGrid, ballObject, playerObject)
-            WallCollision(ballObject, theCanvas, theContext, paddleObject, bricksetObject, brickGrid, playerObject)
+            Brickset(theContext, theCanvas, bricksetObject, brickGrid, ballObject, playerObject, powerUpObject)
+            WallCollision(ballObject, theCanvas, theContext, paddleObject, bricksetObject, brickGrid, playerObject, powerUpObject)
+            
             BallMovement(theContext, ballObject)
             Paddle(theContext, theCanvas, paddleObject, ballObject)
             
+            if(bricksetObject.specialBrickDestroyed) {
+                PowerUpMovement(theCanvas, theContext, powerUpObject, paddleObject, playerObject)
+            }
+
             if(playerObject.livesRemaining >= 0) {
                 requestAnimationFrame(render)
 
@@ -49,7 +61,7 @@ export default function Board() {
             
         }
         
-        ResetTheBricks(bricksetObject, brickGrid)
+        ResetTheBricks(bricksetObject, brickGrid, powerUpObject)
         ResetTheBall(theCanvas, theContext,ballObject)
         render()
         

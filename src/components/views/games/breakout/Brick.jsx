@@ -1,8 +1,9 @@
 /* eslint-disable import/no-anonymous-default-export */
 
+import { PowerUpMovement } from "./PowerUp";
 import ComboManagement from "./utils/ComboManagement";
 
-export default (theContext, theCanvas, bricksetObject, brickGrid, ballObject, playerObject) => {
+export default (theContext, theCanvas, bricksetObject, brickGrid, ballObject, playerObject, powerUpObject) => {
 
     class Brickset {
         constructor() {
@@ -22,12 +23,18 @@ export default (theContext, theCanvas, bricksetObject, brickGrid, ballObject, pl
                     if( isBrickAtTileCoord(eachCol, eachRow) ) {
                         
                         let brickIndex = brickTileToIndex(eachCol, eachRow, bricksetObject)
-                        // console.log(brickGrid[brickIndex])
-
+                        
                         // compute the corner in pixel coordinates of the corresponding brick ////
                         // multiply the brick's tile coordinate by BRICK_W or BRICK_H for pixel distance ////
                         let brickLeftEdgeX = eachCol * this.BRICK_WIDTH; ////
                         let brickTopEdgeY = eachRow * this.BRICK_HEIGHT; ////
+
+                        // console.log(brickGrid[brickIndex])
+                        if(brickGrid[brickIndex] == 2) {
+                            powerUpObject.x = brickLeftEdgeX
+                            powerUpObject.y = brickTopEdgeY
+                            // console.log(powerUpObject.powerUpX)
+                        }
         
                         theContext.fillStyle = brickGrid[brickIndex] == 2 ? 'red' : 'white'; ////
                         theContext.beginPath();
@@ -68,7 +75,9 @@ export default (theContext, theCanvas, bricksetObject, brickGrid, ballObject, pl
                 let prevTileRow = Math.floor(prevBallY / bricksetObject.BRICK_HEIGHT); ////
 
                 let bothTestsFailed = true; ////
-                if(brickGrid[brickIndex] == 2) {alert('hi')}
+                if(brickGrid[brickIndex] == 2) {
+                    bricksetObject.specialBrickDestroyed = true
+                }
                 
                 if(prevTileCol != tileCol) { // must have come in horizontally ////
                     ballObject.ballSpeedX *= -1; ////
@@ -89,7 +98,7 @@ export default (theContext, theCanvas, bricksetObject, brickGrid, ballObject, pl
                     brickGrid[brickIndex] = 0;
                     bricksetObject.bricksLeft--
 
-                    ComboManagement(playerObject)
+                    ComboManagement(playerObject)             
 
             } ////
 
@@ -99,7 +108,7 @@ export default (theContext, theCanvas, bricksetObject, brickGrid, ballObject, pl
 
     function brickTileToIndex(tileCol, tileRow) { ////
         return (tileCol + bricksetObject.BRICK_COLUMNS*tileRow); ////
-      } ////
+    } ////
 
     function isBrickAtTileCoord(brickTileColumn, brickTileRow) { ////
 

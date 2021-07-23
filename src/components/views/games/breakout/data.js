@@ -20,13 +20,19 @@ export default {
     BRICK_ROWS: 6,
     BRICK_COLUMNS: 10,
     emptyRows: 3,
-    bricksLeft: 0
+    bricksLeft: 0,
+    specialBrickDestroyed: false
   },
   playerObject: {
     livesRemaining: 3,
     score: 0,
     comboStatus: false
+  },
+  powerUpObject: {
+    x: 50,
+    y: 50,
+    speedY: 5,
+    rad: 10,
+    taken: false
   }
-
-
 };

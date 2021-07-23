@@ -1,7 +1,15 @@
 import ResetTheBall from "./ResetTheBall";
 import ResetTheBricks from "./ResetTheBricks";
 
-export default function WallCollision(ballObject, theCanvas, theContext, paddleObject, bricksetObject, brickGrid, playerObject) {
+export default function WallCollision(
+    ballObject, 
+    theCanvas, 
+    theContext, 
+    paddleObject, 
+    bricksetObject, 
+    brickGrid, 
+    playerObject, 
+    powerUpObject) {
 
     if(ballObject.ballX < 0 + ballObject.ballRadius) { // if ball has moved beyond the left edge
         ballObject.ballSpeedX *= -1; // reverse ball's horizontal direction
@@ -16,7 +24,7 @@ export default function WallCollision(ballObject, theCanvas, theContext, paddleO
     }
 
     if(ballObject.ballSpeedY > 0.0) {
-        console.log(ballObject.ballSpeedY)
+        // console.log(ballObject.ballSpeedY)
         
         if(ballObject.ballY >= theCanvas.height - (paddleObject.PADDLE_THICKNESS + paddleObject.DISTANCE_FROM_BOTTOM)
            && ballObject.ballY <= theCanvas.height - paddleObject.PADDLE_THICKNESS) 
@@ -28,7 +36,7 @@ export default function WallCollision(ballObject, theCanvas, theContext, paddleO
                 ballObject.ballSpeedY *= -1; // reverse ball's vertical direction
 
                 if(bricksetObject.bricksLeft == 0) { ////
-                    ResetTheBricks(bricksetObject, brickGrid) ////
+                    ResetTheBricks(bricksetObject, brickGrid, powerUpObject) ////
                 } ////
 
                 playerObject.comboStatus = false
