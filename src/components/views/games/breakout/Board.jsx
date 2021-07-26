@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react'
 import styled from "styled-components"
+import useKeypress from 'react-use-keypress';
 import { BallMovement } from './Ball'
 import data from './data'
 import Paddle from './Paddle'
@@ -20,6 +21,7 @@ let {
     powerUpObject, 
 } = data
 
+
 // const FRAMES_PER_SECOND = 30
 
 export default function Board() {
@@ -28,8 +30,10 @@ export default function Board() {
     let brickGrid = new Array(bricksetObject.BRICK_COLUMNS * bricksetObject.BRICK_ROWS)
     // let bricksLeft = bricksetObject.BRICK_COLUMNS * bricksetObject.BRICK_ROWS
     
+
+
     useEffect(() => {
-        
+                
         const theCanvas = canvasRef.current
         const theContext = theCanvas.getContext('2d')
         
@@ -63,13 +67,19 @@ export default function Board() {
         
         ResetTheBricks(bricksetObject, brickGrid, powerUpObject)
         ResetTheBall(theCanvas, theContext,ballObject)
-        render()
         
+        const StartGame = (props) => useKeypress([' ', 'ArrowRight'], (event) => {
+            if (event.key === ' ') {
+                render()
+            }
+        });
+
     })
 
     return <Canvas 
                 height='500px'
                 width='800px'
+                // onKeyPress = {}
                 onMouseMove = {(event) => paddleObject.paddleX = event.clientX - (paddleObject.PADDLE_WIDTH / 2) }
                 ref={ canvasRef }
             />
