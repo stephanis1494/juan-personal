@@ -24,13 +24,16 @@ const Footer = () => {
           </Icon>
         </div>
         <div className="buttons-container">
-          <Icon size='24' color='white' hoverColor='#f70002'>
-            <YoutubeIcon />
-          </Icon>
-          <Icon size='24' color='white' hoverColor='#00ACED'>
-            <TwitterIcon />
-          </Icon>
-
+          <a href='https://www.youtube.com/user/ululu93' target="_blank" rel="noreferrer">
+            <Icon size='24' color='white' hoverColor='#f70002'>
+              <YoutubeIcon />
+            </Icon>
+          </a>
+          <a href='https://twitter.com/juanluis_nt' target="_blank" rel="noreferrer">
+            <Icon size='24' color='white' hoverColor='#00ACED'>
+              <TwitterIcon />
+            </Icon>
+          </a>
         </div>
       </div>
   )
