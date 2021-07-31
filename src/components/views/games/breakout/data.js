@@ -11,6 +11,7 @@ export default {
     PADDLE_WIDTH: 150,
     PADDLE_THICKNESS: 10,
     paddleX: 0,
+    paddleXOffset: 0,
     DISTANCE_FROM_BOTTOM: 10
   },
   bricksetObject: {

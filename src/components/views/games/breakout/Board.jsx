@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState, Fragment } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import styled from "styled-components"
 import { BallMovement } from './Ball'
 import data from './data'
@@ -47,6 +47,9 @@ export default function Board() {
 
             // let canvasPosition = theCanvas.getBoundingClientRect()
             const render = () => {
+                let canvasPosition = theCanvas.getBoundingClientRect()
+
+                paddleObject.paddleXOffset = canvasPosition?.x || 0
 
                 // clear the game view
                 theContext.clearRect(0, 0, theCanvas.width, theCanvas.height);
@@ -89,7 +92,7 @@ export default function Board() {
                         height='500px'
                         width='800px'
                         // onKeyPress = {}
-                        onMouseMove = {(event) => paddleObject.paddleX = event.clientX - (paddleObject.PADDLE_WIDTH / 2) }
+                        onMouseMove = {(event) => paddleObject.paddleX = event.clientX - (paddleObject.PADDLE_WIDTH / 2) - paddleObject.paddleXOffset }
                         ref={ canvasRef }
                     /> :
                     <StartScreen>
