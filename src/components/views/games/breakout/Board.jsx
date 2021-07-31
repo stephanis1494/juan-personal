@@ -45,6 +45,7 @@ export default function Board() {
             const theCanvas = canvasRef.current
             const theContext = theCanvas.getContext('2d')
 
+            // let canvasPosition = theCanvas.getBoundingClientRect()
             const render = () => {
 
                 // clear the game view
@@ -81,7 +82,7 @@ export default function Board() {
     }, [gameStarted])
 
     return (
-        <Fragment>
+        <GameContainer>
             {
                 gameStarted ?
                     <Canvas
@@ -92,26 +93,36 @@ export default function Board() {
                         ref={ canvasRef }
                     /> :
                     <StartScreen>
-                        Press Space to Start
+                        <h1>BREAK THE HECK OUT!</h1>
+                        <p>press spacebar to start</p>
                     </StartScreen>
             }
-        </Fragment>
+        </GameContainer>
     )
 }
+
+const GameContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+`
 
 const Canvas = styled.canvas`
     background-color: #134959;
 `
 
 const StartScreen = styled.div`
-  height: 500px;
-  width: 800px;
-  background: #134959;
+    font-weight: 600;
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+    
+    height: 500px;
+    width: 800px;
+    background: #134959;
+   
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: 32px;
-    color: white;
-    font-weight: 600;
 `
