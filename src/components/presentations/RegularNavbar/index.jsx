@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { CloseIcon } from '../Icons'
 import { debounce } from 'throttle-debounce'
 import { Link } from 'react-router-dom'
+import { scrollIntoView } from "../../utils/scrollIntoView"
 
 
 const RegularNavbar = ({ alwaysFilled = false }) => {
@@ -28,19 +29,17 @@ const RegularNavbar = ({ alwaysFilled = false }) => {
 
   return (
     <Nav fill={ fillNavColor || alwaysFilled }>
-      <Link to="/">
-        <Logo href="">
+        <Logo onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
           Juan Luis
         </Logo>
-      </Link>
       <div>
         <Hamburger onClick={() => setIsOpen(!isOpen)}>
           <span />
           <span />
           <span />
         </Hamburger>
-        <MenuLink>Projects</MenuLink>
-        <MenuLink>About</MenuLink>
+        <MenuLink onClick={() => scrollIntoView('game-container')}>Game</MenuLink>
+        <MenuLink onClick={() => scrollIntoView('music-container')}>Music</MenuLink>
       </div>
       {
         isOpen && <Menu onClose={() => setIsOpen(false)}/>
@@ -104,12 +103,13 @@ const Nav = styled.div`
     transition: background-color 250ms ease;
 `
 
-const Logo = styled.a`
+const Logo = styled.div`
     /* padding: .0rem 0; */
     text-decoration: none;
     font-weight: 800;
     font-size: 1.7rem;
     color: #fff;
+    cursor: pointer;
 `
 
 const Hamburger = styled.div`

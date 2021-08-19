@@ -5,8 +5,7 @@ import styled from "styled-components";
 const InnerContainer = styled.div`
   width: 100%;
   min-height: 300px;
-  margin-top: 64px;
-
+  margin: ${({ verticalMargin = '64px' }) => `${verticalMargin} 0`};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,9 +13,9 @@ const InnerContainer = styled.div`
 
 const ContentContainer = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   max-width: 75%;
 
   @media (max-width: 960px) {
@@ -30,8 +29,9 @@ const Image = styled.img.attrs({
 })`
   width: 200px;
   height: 200px;
-  margin-right: 4%;
+  border-radius: 50%;
   cursor: pointer;
+  margin: 24px 0;
 
   @media (max-width: 960px) {
     margin-right: 0;
@@ -50,7 +50,7 @@ const TextTitle = styled.h1`
 
 const TextSubTitle = styled.h2`
   color: rgba(58, 58, 56, 1.0);
-  margin-top: 0;
+  margin: 0;
 
   @media (max-width: 960px) {
     text-align: center;
@@ -60,22 +60,18 @@ const TextSubTitle = styled.h2`
 const TextParagraph = styled.p`
   color: rgba(58, 58, 56, 1.0);
   margin-bottom: 0;
-
-  @media (max-width: 960px) {
-    text-align: center;
-  }
+  max-width: 50%;
+  text-align: center;
 `
 
 
-const NormalContainer = ({ title, subtitle, paragraph, onImageClick = () => {} }) => (
-    <InnerContainer>
+const NormalContainer = ({ title, subtitle, paragraph, onImageClick = () => {}, verticalMargin = '64px', id = '' }) => (
+    <InnerContainer verticalMargin={verticalMargin} id={id}>
         <ContentContainer>
+          <TextTitle>{title}</TextTitle>
             <Image onClick={onImageClick} />
-            <div>
-                <TextTitle>{title}</TextTitle>
                 <TextSubTitle>{ subtitle }</TextSubTitle>
                 <TextParagraph>{ paragraph }</TextParagraph>
-            </div>
         </ContentContainer>
   </InnerContainer>
 )

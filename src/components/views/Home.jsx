@@ -5,6 +5,7 @@ import NormalContainer from "../presentations/NormalContainer"
 import Footer from '../presentations/Footer'
 import RegularNavbar from '../presentations/RegularNavbar'
 import { useHistory } from 'react-router-dom'
+import Music from '../views/Music'
 
 
 const Container = styled.div`
@@ -83,6 +84,7 @@ const Home = () => {
           title={qrCodeContainerInfo.title}
           subtitle={qrCodeContainerInfo.subtitle}
           paragraph={qrCodeContainerInfo.paragraph}
+          verticalMargin='128px'
         />
         <TiltContainer>
           Don't tilt me please
@@ -93,8 +95,9 @@ const Home = () => {
           subtitle={musicContainerInfo.subtitle}
           paragraph={musicContainerInfo.paragraph}
           onImageClick={() => history.push('/music')}
+          id='music-container'
         />
-
+        <Music />
         <Footer></Footer>
     </Container>
   )

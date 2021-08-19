@@ -4,11 +4,14 @@ import styled from 'styled-components'
 import data from './data'
 
 const GameContainer = styled.div`
-  width: 100%;
+  width: min-content;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-top: 32px;
+  border-radius: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 `
 
 export default function Breakout() {
@@ -16,6 +19,8 @@ export default function Breakout() {
   const [gameEnded, setGameEnded] = useState(false)
 
   const handleKeyDown = (e) => {
+    e.stopPropagation()
+    e.preventDefault()
     if (e.code === 'Space' && !gameStarted) {
       setGameEnded(false)
       setGameStarted(true)
@@ -59,7 +64,7 @@ const StartScreen = styled.div`
 
   height: 500px;
   width: 800px;
-  background: #134959;
+  background: #000d1a;
 
   display: flex;
   flex-direction: column;

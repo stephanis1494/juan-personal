@@ -7,12 +7,13 @@ import { motion } from 'framer-motion'
 const VIDEO_IDS = [ 'AC2lUyJr1Qc','BiCQBRrJT4E', 'duN3tlNueYs', 'YSZHKuAq9dQ', 'BGIs5y03GKU', 'ho5XD6hbj4c', 'oE-ERhh2lnA', 'iFre-xeR2-U', 'YRrzgmSIx7c' ]
 
 const VIDEO_OPTS = {
-  height: '390',
-  width: '640',
+  height: '292.5',
+  width: '480',
 }
 
 const Container = styled.div`
   width: 100%;
+  margin-top: -64px;
 `
 
 const VideosContainer = styled.div`
