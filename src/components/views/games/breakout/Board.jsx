@@ -17,7 +17,8 @@ let { ballObject, paddleObject, bricksetObject, playerObject, powerUpObject } =
 
 export default function Board({
   setGameEnded = () => {},
-  setGameStarted = () => {}
+  setGameStarted = () => {},
+  paused = false
 }) {
   const canvasRef = useRef(null)
 
@@ -32,61 +33,64 @@ export default function Board({
 
     // let canvasPosition = theCanvas.getBoundingClientRect()
     const render = () => {
-      let canvasPosition = theCanvas.getBoundingClientRect()
+      if (!paused) {
+        let canvasPosition = theCanvas.getBoundingClientRect()
 
-      paddleObject.paddleXOffset = canvasPosition?.x || 0
+        paddleObject.paddleXOffset = canvasPosition?.x || 0
 
-      // clear the game view
-      theContext.clearRect(0, 0, theCanvas.width, theCanvas.height)
+        console.log({ ballX: ballObject.ballX, ballY: ballObject.ballY })
 
-      DrawUiText(
-        theCanvas,
-        theContext,
-        `Left to go: ${bricksetObject.bricksLeft}`,
-        50,
-        30
-      )
-      DrawUiText(theCanvas, theContext, `Score: ${playerObject.score}`, 250, 30)
+        // clear the game view
+        theContext.clearRect(0, 0, theCanvas.width, theCanvas.height)
 
-      LivesManagement(theCanvas, theContext, playerObject)
-      Brickset(
-        theContext,
-        theCanvas,
-        bricksetObject,
-        brickGrid,
-        ballObject,
-        playerObject,
-        powerUpObject
-      )
-      WallCollision(
-        ballObject,
-        theCanvas,
-        theContext,
-        paddleObject,
-        bricksetObject,
-        brickGrid,
-        playerObject,
-        powerUpObject
-      )
-
-      BallMovement(theContext, ballObject)
-      Paddle(theContext, theCanvas, paddleObject, ballObject)
-
-      if (bricksetObject.specialBrickDestroyed) {
-        PowerUpMovement(
-          theCanvas,
-          theContext,
-          powerUpObject,
-          paddleObject,
-          playerObject
+        DrawUiText(
+            theCanvas,
+            theContext,
+            `Left to go: ${bricksetObject.bricksLeft}`,
+            50,
+            30
         )
-      }
+        DrawUiText(theCanvas, theContext, `Score: ${playerObject.score}`, 250, 30)
 
-      if (playerObject.livesRemaining >= 0) {
-        console.log('new frame')
-        requestAnimationFrame(render)
-      } else {
-        setGameEnded()
+        LivesManagement(theCanvas, theContext, playerObject)
+        Brickset(
+            theContext,
+            theCanvas,
+            bricksetObject,
+            brickGrid,
+            ballObject,
+            playerObject,
+            powerUpObject
+        )
+        WallCollision(
+            ballObject,
+            theCanvas,
+            theContext,
+            paddleObject,
+            bricksetObject,
+            brickGrid,
+            playerObject,
+            powerUpObject
+        )
+
+        BallMovement(theContext, ballObject)
+        Paddle(theContext, theCanvas, paddleObject, ballObject)
+
+        if (bricksetObject.specialBrickDestroyed) {
+          PowerUpMovement(
+              theCanvas,
+              theContext,
+              powerUpObject,
+              paddleObject,
+              playerObject
+          )
+        }
+
+        if (playerObject.livesRemaining >= 0) {
+          requestAnimationFrame(render)
+        } else {
+          setGameEnded()
+        }
       }
     }
 
@@ -94,7 +98,7 @@ export default function Board({
     ResetTheBall(theCanvas, theContext, ballObject)
 
     render()
-  }, [])
+  }, [paused])
 
   return (
     <Canvas

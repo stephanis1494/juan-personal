@@ -17,6 +17,7 @@ const GameContainer = styled.div`
 export default function Breakout() {
   const [gameStarted, setGameStarted] = useState(false)
   const [gameEnded, setGameEnded] = useState(false)
+  const [paused, setPaused] = useState(false)
 
   const handleKeyDown = (e) => {
     e.stopPropagation()
@@ -24,6 +25,8 @@ export default function Breakout() {
     if (e.code === 'Space' && !gameStarted) {
       setGameEnded(false)
       setGameStarted(true)
+    } else if (e.code === 'KeyP') {
+      setPaused(!paused)
     }
   }
 
@@ -37,10 +40,15 @@ export default function Breakout() {
     document.addEventListener('keydown', handleKeyDown)
 
     return () => document.removeEventListener('keydown', handleKeyDown)
-  }, [])
+  }, [handleKeyDown, paused])
   return (
     <GameContainer>
-      {gameEnded ? (
+      {paused ?
+          <StartScreen>
+            <h1>Game Paused</h1>
+            <p>Press P to Continue</p>
+          </StartScreen>
+        : gameEnded ? (
         <StartScreen>
           <h1>Game ended Amigo</h1>
           <p>Press Spacebar to Start</p>
