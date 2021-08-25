@@ -27,7 +27,9 @@ export default {
   playerObject: {
     livesRemaining: 3,
     score: 0,
-    comboStatus: false
+    comboStatus: false,
+    gameStatus: 'run'
+
   },
   powerUpObject: {
     x: 50,

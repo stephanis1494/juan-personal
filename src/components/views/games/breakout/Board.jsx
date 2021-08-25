@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { BallMovement } from './Ball'
 import data from './data'
@@ -17,7 +17,8 @@ let { ballObject, paddleObject, bricksetObject, playerObject, powerUpObject } =
 
 export default function Board({
   setGameEnded = () => {},
-  setGameStarted = () => {}
+  setGameStarted = () => {},
+  gamePaused = () => {}
 }) {
   const canvasRef = useRef(null)
 
@@ -83,8 +84,9 @@ export default function Board({
       }
 
       if (playerObject.livesRemaining >= 0) {
-        console.log('new frame')
-        requestAnimationFrame(render)
+        if(data.playerObject.gameStatus == 'run') {
+          requestAnimationFrame(render)
+        }
       } else {
         setGameEnded()
       }
@@ -94,6 +96,24 @@ export default function Board({
     ResetTheBall(theCanvas, theContext, ballObject)
 
     render()
+
+    const handleKeyDown = (e) => {
+      e.stopPropagation()
+      e.preventDefault()
+
+      if (e.code === 'KeyP') {
+        if(data.playerObject.gameStatus == 'paused') {
+          data.playerObject.gameStatus = 'run'
+          render()
+        } else if (data.playerObject.gameStatus == 'run') {
+          data.playerObject.gameStatus = 'paused'
+        }
+        console.log(data.playerObject.gameStatus)
+      }
+    }
+    
+    document.addEventListener('keydown', handleKeyDown)
+  
   }, [])
 
   return (

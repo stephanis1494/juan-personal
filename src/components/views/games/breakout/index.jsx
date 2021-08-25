@@ -17,6 +17,7 @@ const GameContainer = styled.div`
 export default function Breakout() {
   const [gameStarted, setGameStarted] = useState(false)
   const [gameEnded, setGameEnded] = useState(false)
+  const [gamePaused, setGamePaused] = useState(false)
 
   const handleKeyDown = (e) => {
     e.stopPropagation()
@@ -25,6 +26,14 @@ export default function Breakout() {
       setGameEnded(false)
       setGameStarted(true)
     }
+    // if (e.code === 'KeyP') {
+    //   if(data.playerObject.gameStatus == 'run') {
+    //     data.playerObject.gameStatus = 'paused'
+    //   } else if (data.playerObject.gameStatus == 'paused') {
+    //     data.playerObject.gameStatus = 'run'
+    //   }
+    //   console.log(data.playerObject.gameStatus)
+    // }
   }
 
   const handleGameEnd = () => {
@@ -46,7 +55,7 @@ export default function Breakout() {
           <p>Press Spacebar to Start</p>
         </StartScreen>
       ) : gameStarted ? (
-        <Board setGameEnded={handleGameEnd} />
+        <Board setGameEnded={handleGameEnd} gamePaused={gamePaused}/>
       ) : (
         <StartScreen>
           <h1>Break the Heck Out </h1>
