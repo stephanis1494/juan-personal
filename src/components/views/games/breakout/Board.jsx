@@ -18,11 +18,8 @@ let { ballObject, paddleObject, bricksetObject, playerObject, powerUpObject } =
 export default function Board({
   setGameEnded = () => {},
   setGameStarted = () => {},
-<<<<<<< HEAD
   gamePaused = () => {}
-=======
-  paused = false
->>>>>>> d00697fd66a3399d8856d4d20f7faf4176c2510c
+
 }) {
   const canvasRef = useRef(null)
 
@@ -37,7 +34,7 @@ export default function Board({
 
     // let canvasPosition = theCanvas.getBoundingClientRect()
     const render = () => {
-      if (!paused) {
+  
         let canvasPosition = theCanvas.getBoundingClientRect()
 
         paddleObject.paddleXOffset = canvasPosition?.x || 0
@@ -77,14 +74,6 @@ export default function Board({
             powerUpObject
         )
 
-<<<<<<< HEAD
-      if (playerObject.livesRemaining >= 0) {
-        if(data.playerObject.gameStatus == 'run') {
-          requestAnimationFrame(render)
-        }
-      } else {
-        setGameEnded()
-=======
         BallMovement(theContext, ballObject)
         Paddle(theContext, theCanvas, paddleObject, ballObject)
 
@@ -99,19 +88,21 @@ export default function Board({
         }
 
         if (playerObject.livesRemaining >= 0) {
-          requestAnimationFrame(render)
+          if(data.playerObject.gameStatus === 'run') {
+            requestAnimationFrame(render)
+          } else if(data.playerObject.gameStatus === 'paused') {
+            DrawUiText(theCanvas, theContext, 'Paused', 250, 250)
+          }
         } else {
           setGameEnded()
         }
->>>>>>> d00697fd66a3399d8856d4d20f7faf4176c2510c
-      }
+      
     }
 
     ResetTheBricks(bricksetObject, brickGrid, powerUpObject)
     ResetTheBall(theCanvas, theContext, ballObject)
 
     render()
-<<<<<<< HEAD
 
     const handleKeyDown = (e) => {
       e.stopPropagation()
@@ -122,18 +113,18 @@ export default function Board({
           data.playerObject.gameStatus = 'run'
           render()
         } else if (data.playerObject.gameStatus == 'run') {
+          
           data.playerObject.gameStatus = 'paused'
+          // (theCanvas, theContext, theFillText, x, y)
         }
         console.log(data.playerObject.gameStatus)
       }
     }
     
+    
     document.addEventListener('keydown', handleKeyDown)
-  
+    return () => document.removeEventListener('keydown', handleKeyDown)
   }, [])
-=======
-  }, [paused])
->>>>>>> d00697fd66a3399d8856d4d20f7faf4176c2510c
 
   return (
     <Canvas
