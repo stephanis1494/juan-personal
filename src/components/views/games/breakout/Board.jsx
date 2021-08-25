@@ -18,7 +18,11 @@ let { ballObject, paddleObject, bricksetObject, playerObject, powerUpObject } =
 export default function Board({
   setGameEnded = () => {},
   setGameStarted = () => {},
+<<<<<<< HEAD
   gamePaused = () => {}
+=======
+  paused = false
+>>>>>>> d00697fd66a3399d8856d4d20f7faf4176c2510c
 }) {
   const canvasRef = useRef(null)
 
@@ -33,62 +37,73 @@ export default function Board({
 
     // let canvasPosition = theCanvas.getBoundingClientRect()
     const render = () => {
-      let canvasPosition = theCanvas.getBoundingClientRect()
+      if (!paused) {
+        let canvasPosition = theCanvas.getBoundingClientRect()
 
-      paddleObject.paddleXOffset = canvasPosition?.x || 0
+        paddleObject.paddleXOffset = canvasPosition?.x || 0
 
-      // clear the game view
-      theContext.clearRect(0, 0, theCanvas.width, theCanvas.height)
+        console.log({ ballX: ballObject.ballX, ballY: ballObject.ballY })
 
-      DrawUiText(
-        theCanvas,
-        theContext,
-        `Left to go: ${bricksetObject.bricksLeft}`,
-        50,
-        30
-      )
-      DrawUiText(theCanvas, theContext, `Score: ${playerObject.score}`, 250, 30)
+        // clear the game view
+        theContext.clearRect(0, 0, theCanvas.width, theCanvas.height)
 
-      LivesManagement(theCanvas, theContext, playerObject)
-      Brickset(
-        theContext,
-        theCanvas,
-        bricksetObject,
-        brickGrid,
-        ballObject,
-        playerObject,
-        powerUpObject
-      )
-      WallCollision(
-        ballObject,
-        theCanvas,
-        theContext,
-        paddleObject,
-        bricksetObject,
-        brickGrid,
-        playerObject,
-        powerUpObject
-      )
-
-      BallMovement(theContext, ballObject)
-      Paddle(theContext, theCanvas, paddleObject, ballObject)
-
-      if (bricksetObject.specialBrickDestroyed) {
-        PowerUpMovement(
-          theCanvas,
-          theContext,
-          powerUpObject,
-          paddleObject,
-          playerObject
+        DrawUiText(
+            theCanvas,
+            theContext,
+            `Left to go: ${bricksetObject.bricksLeft}`,
+            50,
+            30
         )
-      }
+        DrawUiText(theCanvas, theContext, `Score: ${playerObject.score}`, 250, 30)
 
+        LivesManagement(theCanvas, theContext, playerObject)
+        Brickset(
+            theContext,
+            theCanvas,
+            bricksetObject,
+            brickGrid,
+            ballObject,
+            playerObject,
+            powerUpObject
+        )
+        WallCollision(
+            ballObject,
+            theCanvas,
+            theContext,
+            paddleObject,
+            bricksetObject,
+            brickGrid,
+            playerObject,
+            powerUpObject
+        )
+
+<<<<<<< HEAD
       if (playerObject.livesRemaining >= 0) {
         if(data.playerObject.gameStatus == 'run') {
           requestAnimationFrame(render)
         }
       } else {
         setGameEnded()
+=======
+        BallMovement(theContext, ballObject)
+        Paddle(theContext, theCanvas, paddleObject, ballObject)
+
+        if (bricksetObject.specialBrickDestroyed) {
+          PowerUpMovement(
+              theCanvas,
+              theContext,
+              powerUpObject,
+              paddleObject,
+              playerObject
+          )
+        }
+
+        if (playerObject.livesRemaining >= 0) {
+          requestAnimationFrame(render)
+        } else {
+          setGameEnded()
+        }
+>>>>>>> d00697fd66a3399d8856d4d20f7faf4176c2510c
       }
     }
 
@@ -96,6 +111,7 @@ export default function Board({
     ResetTheBall(theCanvas, theContext, ballObject)
 
     render()
+<<<<<<< HEAD
 
     const handleKeyDown = (e) => {
       e.stopPropagation()
@@ -115,6 +131,9 @@ export default function Board({
     document.addEventListener('keydown', handleKeyDown)
   
   }, [])
+=======
+  }, [paused])
+>>>>>>> d00697fd66a3399d8856d4d20f7faf4176c2510c
 
   return (
     <Canvas

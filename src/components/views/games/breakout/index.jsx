@@ -17,7 +17,11 @@ const GameContainer = styled.div`
 export default function Breakout() {
   const [gameStarted, setGameStarted] = useState(false)
   const [gameEnded, setGameEnded] = useState(false)
+<<<<<<< HEAD
   const [gamePaused, setGamePaused] = useState(false)
+=======
+  const [paused, setPaused] = useState(false)
+>>>>>>> d00697fd66a3399d8856d4d20f7faf4176c2510c
 
   const handleKeyDown = (e) => {
     e.stopPropagation()
@@ -25,6 +29,8 @@ export default function Breakout() {
     if (e.code === 'Space' && !gameStarted) {
       setGameEnded(false)
       setGameStarted(true)
+    } else if (e.code === 'KeyP') {
+      setPaused(!paused)
     }
     // if (e.code === 'KeyP') {
     //   if(data.playerObject.gameStatus == 'run') {
@@ -46,10 +52,15 @@ export default function Breakout() {
     document.addEventListener('keydown', handleKeyDown)
 
     return () => document.removeEventListener('keydown', handleKeyDown)
-  }, [])
+  }, [handleKeyDown, paused])
   return (
     <GameContainer>
-      {gameEnded ? (
+      {paused ?
+          <StartScreen>
+            <h1>Game Paused</h1>
+            <p>Press P to Continue</p>
+          </StartScreen>
+        : gameEnded ? (
         <StartScreen>
           <h1>Game ended Amigo</h1>
           <p>Press Spacebar to Start</p>
