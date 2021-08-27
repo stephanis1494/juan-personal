@@ -52,8 +52,9 @@ export default function WallCollision(
 
     }
     if(ballObject.ballY > theCanvas.height) { // if ball has moved beyond the bottom edge
-        ResetTheBall(theCanvas, theContext, ballObject)
         playerObject.livesRemaining--      
+        playerObject.ballLaunched = false
+        ResetTheBall(theCanvas, theContext, ballObject, playerObject)
     }
 
 }

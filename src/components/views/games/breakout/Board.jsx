@@ -76,7 +76,7 @@ export default function Board({
             powerUpObject
         )
 
-        BallMovement(theContext, ballObject)
+
         Paddle(theContext, theCanvas, paddleObject, ballObject)
 
         if (bricksetObject.specialBrickDestroyed && powerUpObject.y <= theCanvas.height) {
@@ -90,9 +90,14 @@ export default function Board({
         }
 
         if (playerObject.livesRemaining >= 0) {
-          if(data.playerObject.gameStatus === 'run') {
+
+          if(playerObject.ballLaunched){
+            BallMovement(theContext, ballObject)
+          }
+
+          if(playerObject.gameStatus === 'run') {
             requestAnimationFrame(render)
-          } else if(data.playerObject.gameStatus === 'paused') {
+          } else if(playerObject.gameStatus === 'paused') {
             DrawUiText(theCanvas, theContext, 'Paused', theCanvas.width/2-30, theCanvas.height/2)
           }
         } else {
@@ -102,11 +107,14 @@ export default function Board({
     }
 
     ResetTheBricks(playerObject, bricksetObject, brickGrid, powerUpObject)
-    ResetTheBall(theCanvas, theContext, ballObject)
-
-    render()
-
+    
+    
     const handleKeyDown = (e) => {
+      if(e.code === 'KeyS' && playerObject.ballLaunched === false) {
+        ResetTheBall(theCanvas, theContext, ballObject, playerObject)
+        playerObject.ballLaunched = true
+      }
+      
       if (e.code === 'KeyP') {
         if(data.playerObject.gameStatus == 'paused') {
           data.playerObject.gameStatus = 'run'
@@ -116,10 +124,11 @@ export default function Board({
           data.playerObject.gameStatus = 'paused'
           // (theCanvas, theContext, theFillText, x, y)
         }
-        console.log(data.playerObject.gameStatus)
+        // console.log(data.playerObject.gameStatus)
       }
     }
     
+    render()
     
     document.addEventListener('keydown', handleKeyDown)
     return () => document.removeEventListener('keydown', handleKeyDown)

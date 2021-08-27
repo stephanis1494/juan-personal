@@ -5,7 +5,9 @@ export default {
     ballY: 300,
     ballSpeedX: 5,
     ballSpeedY: 5,
-    ballRadius: 10,
+    initialBallSpeedX: 5, 
+    initialBallSpeedY: 5,
+    ballRadius: 8,
   },
   paddleObject: {
     PADDLE_WIDTH: 150,
@@ -16,7 +18,7 @@ export default {
   },
   bricksetObject: {
     BRICK_WIDTH: 80,
-    BRICK_HEIGHT: 20,
+    BRICK_HEIGHT: 15,
     BRICK_GAP: 2, // space between bricks
     BRICK_ROWS: 8, // brick rows, counting the empty rows, not counting the one that is added with "playerObject.level"
     BRICK_COLUMNS: 10, // how many brick columns
@@ -29,7 +31,8 @@ export default {
     livesRemaining: 8,
     score: 0,
     comboStatus: false, // it's true when the ball hits two or more bricks in a row
-    gameStatus: 'run', // alternates between run and paused
+    gameStatus: 'run', // alternates between run and paused,
+    ballLaunched: false, // true when the ball has been launched
     level: 1
 
   },
