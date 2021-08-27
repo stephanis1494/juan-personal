@@ -24,7 +24,7 @@ export default function Board({
   const canvasRef = useRef(null)
 
   let brickGrid = new Array(
-    bricksetObject.BRICK_COLUMNS * bricksetObject.BRICK_ROWS
+    bricksetObject.BRICK_COLUMNS * (bricksetObject.BRICK_ROWS + playerObject.level)
   )
   // let bricksLeft = bricksetObject.BRICK_COLUMNS * bricksetObject.BRICK_ROWS
 
@@ -39,7 +39,7 @@ export default function Board({
 
         paddleObject.paddleXOffset = canvasPosition?.x || 0
 
-        console.log({ ballX: ballObject.ballX, ballY: ballObject.ballY })
+        // console.log({ ballX: ballObject.ballX, ballY: ballObject.ballY })
 
         // clear the game view
         theContext.clearRect(0, 0, theCanvas.width, theCanvas.height)
@@ -52,8 +52,10 @@ export default function Board({
             30
         )
         DrawUiText(theCanvas, theContext, `Score: ${playerObject.score}`, 250, 30)
+        DrawUiText(theCanvas, theContext, `Level: ${playerObject.level}`, 380, 30)
 
         LivesManagement(theCanvas, theContext, playerObject)
+
         Brickset(
             theContext,
             theCanvas,
@@ -91,7 +93,7 @@ export default function Board({
           if(data.playerObject.gameStatus === 'run') {
             requestAnimationFrame(render)
           } else if(data.playerObject.gameStatus === 'paused') {
-            DrawUiText(theCanvas, theContext, 'Paused', 250, 250)
+            DrawUiText(theCanvas, theContext, 'Paused', theCanvas.width/2-30, theCanvas.height/2)
           }
         } else {
           setGameEnded()
@@ -99,15 +101,12 @@ export default function Board({
       
     }
 
-    ResetTheBricks(bricksetObject, brickGrid, powerUpObject)
+    ResetTheBricks(playerObject, bricksetObject, brickGrid, powerUpObject)
     ResetTheBall(theCanvas, theContext, ballObject)
 
     render()
 
     const handleKeyDown = (e) => {
-      e.stopPropagation()
-      e.preventDefault()
-
       if (e.code === 'KeyP') {
         if(data.playerObject.gameStatus == 'paused') {
           data.playerObject.gameStatus = 'run'

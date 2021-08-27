@@ -7,7 +7,7 @@ export default (theContext, theCanvas, bricksetObject, brickGrid, ballObject, pl
 
     class Brickset {
         constructor() {
-            this.BRICK_WIDTH = theCanvas.width/10;
+            this.BRICK_WIDTH = theCanvas.width/bricksetObject.BRICK_COLUMNS;
             this.BRICK_HEIGHT = bricksetObject.BRICK_HEIGHT;
             this.BRICK_GAP = bricksetObject.BRICK_GAP;
             this.BRICK_COLUMNS = bricksetObject.BRICK_COLUMNS;
@@ -18,7 +18,7 @@ export default (theContext, theCanvas, bricksetObject, brickGrid, ballObject, pl
 
             for(let eachCol=0; eachCol<this.BRICK_COLUMNS; eachCol++) { // in each column... ////
 
-                for(let eachRow=0; eachRow<this.BRICK_ROWS; eachRow++) { // in each row within that col ////
+                for(let eachRow=0; eachRow<this.BRICK_ROWS+playerObject.level; eachRow++) { // in each row within that col ////
 
                     if( isBrickAtTileCoord(eachCol, eachRow) ) {
 
@@ -60,7 +60,7 @@ export default (theContext, theCanvas, bricksetObject, brickGrid, ballObject, pl
 
             // first check whether the ball is within any part of the brick wall
             if(tileCol < 0 || tileCol >= bricksetObject.BRICK_COLUMNS || ////
-               tileRow < 0 || tileRow >= bricksetObject.BRICK_ROWS) { ////
+               tileRow < 0 || tileRow >= bricksetObject.BRICK_ROWS+playerObject.level) { ////
                return; // bail out of function to avoid illegal array position usage ////
             } ////
 

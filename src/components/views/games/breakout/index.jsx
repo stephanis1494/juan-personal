@@ -19,9 +19,9 @@ export default function Breakout() {
   const [gameEnded, setGameEnded] = useState(false)
 
   const handleKeyDown = (e) => {
-    e.stopPropagation()
-    e.preventDefault()
     if (e.code === 'Space' && !gameStarted) {
+      e.stopPropagation()
+      e.preventDefault()
       setGameEnded(false)
       setGameStarted(true)
     } 

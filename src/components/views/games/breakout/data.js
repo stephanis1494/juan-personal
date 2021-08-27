@@ -17,18 +17,19 @@ export default {
   bricksetObject: {
     BRICK_WIDTH: 80,
     BRICK_HEIGHT: 20,
-    BRICK_GAP: 2,
-    BRICK_ROWS: 6,
-    BRICK_COLUMNS: 10,
-    emptyRows: 3,
+    BRICK_GAP: 2, // space between bricks
+    BRICK_ROWS: 7, // total brick rows, counting the empty rows
+    BRICK_COLUMNS: 10, // how many brick columns
+    emptyRows: 3, // empty rows before the bricks
     bricksLeft: 0,
     specialBrickDestroyed: false
   },
   playerObject: {
-    livesRemaining: 3,
+    livesRemaining: 8,
     score: 0,
-    comboStatus: false,
-    gameStatus: 'run'
+    comboStatus: false, // it's true when the ball hits two or more bricks in a row
+    gameStatus: 'run', // alternates between run and paused
+    level: 1
 
   },
   powerUpObject: {

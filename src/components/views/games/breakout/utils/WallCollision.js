@@ -1,3 +1,4 @@
+import data from "../data";
 import ResetTheBall from "./ResetTheBall";
 import ResetTheBricks from "./ResetTheBricks";
 
@@ -36,7 +37,8 @@ export default function WallCollision(
                 ballObject.ballSpeedY *= -1; // reverse ball's vertical direction
 
                 if(bricksetObject.bricksLeft == 0) { ////
-                    ResetTheBricks(bricksetObject, brickGrid, powerUpObject) ////
+                    data.playerObject.level++
+                    ResetTheBricks(playerObject, bricksetObject, brickGrid, powerUpObject) ////
                 } ////
 
                 playerObject.comboStatus = false
