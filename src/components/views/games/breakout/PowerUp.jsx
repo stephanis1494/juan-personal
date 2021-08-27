@@ -17,7 +17,7 @@ class PowerUp {
 export function PowerUpMovement(theCanvas, theContext, powerUpObject, paddleObject, playerObject) {
     let data = new PowerUp(powerUpObject.x, powerUpObject.y, powerUpObject.rad)
     
-    if(powerUpObject.taken == false){
+    if(powerUpObject.taken == false) {
         powerUpObject.y += powerUpObject.speedY; // move the ball based on its current horizontal speed 
         data.drawPowerUp(theContext)
 

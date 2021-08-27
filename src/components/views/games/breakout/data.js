@@ -18,8 +18,9 @@ export default {
     BRICK_WIDTH: 80,
     BRICK_HEIGHT: 20,
     BRICK_GAP: 2, // space between bricks
-    BRICK_ROWS: 7, // total brick rows, counting the empty rows
+    BRICK_ROWS: 8, // brick rows, counting the empty rows, not counting the one that is added with "playerObject.level"
     BRICK_COLUMNS: 10, // how many brick columns
+    //// emptyRows are subtracted to BRICK_ROWS
     emptyRows: 3, // empty rows before the bricks
     bricksLeft: 0,
     specialBrickDestroyed: false

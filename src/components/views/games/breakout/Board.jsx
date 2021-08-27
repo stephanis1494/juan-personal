@@ -79,7 +79,7 @@ export default function Board({
         BallMovement(theContext, ballObject)
         Paddle(theContext, theCanvas, paddleObject, ballObject)
 
-        if (bricksetObject.specialBrickDestroyed) {
+        if (bricksetObject.specialBrickDestroyed && powerUpObject.y <= theCanvas.height) {
           PowerUpMovement(
               theCanvas,
               theContext,

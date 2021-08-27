@@ -18,12 +18,16 @@ export default function ResetTheBricks(
   // total of bricks, counting the invisible ones in the empty row
   // let totalBricks = bricksetObject.BRICK_ROWS * bricksetObject.BRICK_COLUMNS
 
-  // reconsider these lines of code
-  let totalBricks = brickRowsMinusEmpty * bricksetObject.BRICK_COLUMNS
+  // 
+  let totalBricks = bricksetObject.BRICK_ROWS * bricksetObject.BRICK_COLUMNS
   
+  let totalInvisibleBricks = bricksetObject.emptyRows * bricksetObject.BRICK_COLUMNS
+
   let specialBrickIndex = Math.floor(
-    brickRowsMinusEmpty + Math.random() * totalBricks
+    totalInvisibleBricks + Math.random() * totalBricks
   )
+
+  // specialBrickIndex = 79
   /////////////////
 
   bricksetObject.specialBrickDestroyed = false
