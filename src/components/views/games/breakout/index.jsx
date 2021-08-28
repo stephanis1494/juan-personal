@@ -30,7 +30,6 @@ export default function Breakout() {
   const handleGameEnd = () => {
     setGameEnded(true)
     setGameStarted(false)
-    data.playerObject.livesRemaining = 3
   }
 
   useEffect(() => {

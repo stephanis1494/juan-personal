@@ -10,6 +10,7 @@ import ResetTheBall from './utils/ResetTheBall'
 import DrawUiText from './utils/DrawUiText'
 import LivesManagement from './utils/LivesManagement'
 import { PowerUpMovement } from './PowerUp'
+import ResetGame from './utils/ResetGame'
 let { ballObject, paddleObject, bricksetObject, playerObject, powerUpObject } =
   data
 
@@ -17,9 +18,6 @@ let { ballObject, paddleObject, bricksetObject, playerObject, powerUpObject } =
 
 export default function Board({
   setGameEnded = () => {},
-  setGameStarted = () => {},
-  gamePaused = () => {}
-
 }) {
   const canvasRef = useRef(null)
 
@@ -37,9 +35,8 @@ export default function Board({
   
         let canvasPosition = theCanvas.getBoundingClientRect()
 
+        // the offset to compensate for the X position where the CANVAS begins
         paddleObject.paddleXOffset = canvasPosition?.x || 0
-
-        // console.log({ ballX: ballObject.ballX, ballY: ballObject.ballY })
 
         // clear the game view
         theContext.clearRect(0, 0, theCanvas.width, theCanvas.height)
@@ -94,13 +91,15 @@ export default function Board({
           if(playerObject.ballLaunched){
             BallMovement(theContext, ballObject)
           }
-
+          
           if(playerObject.gameStatus === 'run') {
             requestAnimationFrame(render)
           } else if(playerObject.gameStatus === 'paused') {
             DrawUiText(theCanvas, theContext, 'Paused', theCanvas.width/2-30, theCanvas.height/2)
           }
+
         } else {
+          ResetGame()
           setGameEnded()
         }
       

@@ -3,9 +3,9 @@ export default {
   ballObject: {
     ballX: 600,
     ballY: 300,
-    ballSpeedX: 5,
+    ballSpeedX: 4,
     ballSpeedY: 5,
-    initialBallSpeedX: 5, 
+    initialBallSpeedX: 4, 
     initialBallSpeedY: 5,
     ballRadius: 8,
   },
@@ -28,7 +28,7 @@ export default {
     specialBrickDestroyed: false
   },
   playerObject: {
-    livesRemaining: 8,
+    livesRemaining: 3,
     score: 0,
     comboStatus: false, // it's true when the ball hits two or more bricks in a row
     gameStatus: 'run', // alternates between run and paused,
