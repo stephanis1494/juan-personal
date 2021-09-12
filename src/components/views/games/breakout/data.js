@@ -28,6 +28,7 @@ export default {
     specialBrickDestroyed: false
   },
   playerObject: {
+    name: 'the_wxrst',
     livesRemaining: 3,
     score: 0,
     comboStatus: false, // it's true when the ball hits two or more bricks in a row

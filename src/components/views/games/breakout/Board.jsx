@@ -16,6 +16,23 @@ let { ballObject, paddleObject, bricksetObject, playerObject, powerUpObject } =
 
 // const FRAMES_PER_SECOND = 30
 
+const RegisterScore = async e => {
+  // pass to a function later
+  try {
+    const body = {"score": playerObject.score, "player_name": playerObject.name }
+    const response = await fetch('http://localhost:5000/new_score', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(body)
+      })
+
+    //  console.log(response)
+    // window.location = '/'
+  } catch (error) {
+      console.error(error.message)
+  }
+}
+
 export default function Board({
   setGameEnded = () => {},
 }) {
@@ -48,7 +65,8 @@ export default function Board({
             50,
             30
         )
-        DrawUiText(theCanvas, theContext, `Score: ${playerObject.score}`, 250, 30)
+        DrawUiText(theCanvas, theContext, playerObject.name, 50, theCanvas.height-10)
+        DrawUiText(theCanvas, theContext, `Score: ${playerObject.score}`, 280, 30)
         DrawUiText(theCanvas, theContext, `Level: ${playerObject.level}`, 380, 30)
 
         LivesManagement(theCanvas, theContext, playerObject)
@@ -99,8 +117,10 @@ export default function Board({
           }
 
         } else {
+          RegisterScore()
           ResetGame()
           setGameEnded()
+
         }
       
     }
