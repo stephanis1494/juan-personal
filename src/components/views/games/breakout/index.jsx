@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import Board from './Board'
 import styled, { keyframes } from 'styled-components'
 import data from './data'
+import {IconContext} from 'react-icons'
+import { AiOutlineSend } from 'react-icons/ai'
 
 const GameContainer = styled.div`
   width: min-content;
@@ -17,21 +19,39 @@ const GameContainer = styled.div`
 export default function Breakout() {
   const [gameStarted, setGameStarted] = useState(false)
   const [gameEnded, setGameEnded] = useState(false)
-
+  
   const [playerName, setPlayerName] = useState('')
   const [nameSubmit, setNameSubmit] = useState(false)
+
+  const [highScores, setHighScores] = useState([])
+  
+  const getScores = async() => {
+    try {
+        const response = await fetch('http://localhost:5000/get_top_five')
+  
+        const jsonData = await response.json()
+  
+        // console.log(jsonData)
+        setHighScores(jsonData)
+    } catch (error) {
+        console.error(error.message)
+    }
+  } 
 
 
   const handlePlayerName = (e) => {
     e.preventDefault()
-    data.playerObject.name = playerName
-    setNameSubmit(true)
-    // alert(data.playerObject.name)
-    console.log(nameSubmit)
+
+    if(playerName.length > 2) {
+      data.playerObject.name = playerName
+      setNameSubmit(true)
+      // alert(data.playerObject.name)
+      // console.log(nameSubmit)
+    }
   }
 
   const handleKeyDown = (e) => {
-    if (e.code === 'Space' && !gameStarted) {
+    if (e.code === 'Space' && !gameStarted && nameSubmit) {
       e.stopPropagation()
       e.preventDefault()
       setGameEnded(false)
@@ -48,8 +68,13 @@ export default function Breakout() {
   useEffect(() => {
     document.addEventListener('keydown', handleKeyDown)
 
+    // is it okay to do the call here?
+    getScores()
+
     return () => document.removeEventListener('keydown', handleKeyDown)
   }, [handleKeyDown])
+
+
   return (
     <GameContainer>
       {gameEnded ? (
@@ -62,17 +87,45 @@ export default function Breakout() {
         <Board setGameEnded={handleGameEnd} />
       ) : (
         <StartScreen>
-          <h1>Break the Heck Out </h1>
+          <Title>Break the Heck Out </Title>
+
           <NameDisplay>
             <Form action="#" onSubmit={handlePlayerName} nameSubmit={nameSubmit}>
-              <input type="text" value={playerName} onChange={event => setPlayerName(event.target.value)}/>
-              <button>set name</button>
+              <Input type="text" 
+                value={playerName} 
+                onChange={event => setPlayerName(event.target.value)}
+                maxLength="5"
+                placeholder='Type a name, e.g. Juan'
+              />
+              <Button>
+                  <SendButton />
+              </Button>
             </Form>
           </NameDisplay>
           <WelcomePlayer nameSubmit={nameSubmit}>
-            <p>Welcome, {playerName}. You ready to rock?</p>
+            <p>Welcome, <RedGlitch>{playerName}.</RedGlitch> You ready to rock?</p>
           </WelcomePlayer>
-          <p>Press Spacebar to Start</p>
+
+          <PressSpace>
+            {nameSubmit ? 'Press Spacebar to Start' : 'Give me your best name'}
+          </PressSpace>
+          <Top3Table>
+            <tr>
+              <th>Player</th>
+              <th>Score</th>
+              <th>Level</th>
+            </tr>
+
+          {
+            highScores.map(highScore => (
+              <tr>
+                <td>{highScore.player_name}</td>
+                <td>{highScore.score}</td>
+                <td>not defined yet!</td>
+              </tr>
+            ))
+          }
+          </Top3Table>
         </StartScreen>
       )}
     </GameContainer>
@@ -104,16 +157,95 @@ const blinkIt = keyframes`
   50%  {
     opacity: 0;
   }
- 
+`
+
+const Title = styled.h1`
+  font-size: 2em;
+  color: #fff;
+  text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 42px #0fa,
+    0 0 82px #0fa;
+`
+
+const Input = styled.input.attrs(props => ({
+  type: 'text',
+  size: props.small ? 5 : undefined,
+}))`
+  color: #ffffff;
+  background-color: transparent;
+  /* border-radius: 3px; */
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: 1.5px solid #ffffff;
+  
+  /* display: block; */
+  size: 5;
+  
+  margin: 0 0;
+  padding: ${props => props.padding};
+  
+  font-size: 1.2em;
+  text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 42px #ff0000;
+/* 
+  ::focus {
+    outline: none;
+  } */
+  ::placeholder {
+    color: #ffffff;
+  }
+`
+
+const Button = styled.button`
+  margin-left: 10px;
+  /* color: #fff; */
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  
+`
+const SendButton = styled(AiOutlineSend)`
+  color: #ffffff;
+  transform: scale(2);
+  /* margin: 5%; */
+  text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 42px #0fa,
+    0 0 82px #0fa;
 `
 
 const WelcomePlayer = styled.div`
-display: ${ p => p.nameSubmit ? 'flex' : 'none' };
+  display: ${ p => p.nameSubmit ? 'flex' : 'none' };
+  font-size: 1.2em;
+`
 
-animation: ${blinkIt} 1.5s linear infinite;
+const PressSpace = styled.p`
+  /* display: ${ p => p.nameSubmit ? 'flex' : 'none' }; */
+  animation: ${blinkIt} 1.5s linear infinite;
+  font-size: .8em;
 
 `
 
+const RedGlitch = styled.span`
+    color: #fff;
+  text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 42px #ff0000,
+    0 0 82px #0fa;
+`
+
 const Form = styled.form`
-  display: ${ p => p.nameSubmit ? 'none' : 'flex' }
+  display: ${ p => p.nameSubmit ? 'none' : 'flex' };
+`
+
+const Top3Table = styled.table`
+  margin-top: 25px;
+  font-size: 10px;
 `
