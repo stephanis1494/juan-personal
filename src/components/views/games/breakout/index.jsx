@@ -27,7 +27,7 @@ export default function Breakout() {
   
   const getScores = async() => {
     try {
-        const response = await fetch('http://localhost:5000/get_top_five')
+        const response = await fetch('http://localhost:5000/get_top_three')
   
         const jsonData = await response.json()
   
@@ -98,7 +98,7 @@ export default function Breakout() {
                 placeholder='Type a name, e.g. Juan'
               />
               <Button>
-                  <SendButton />
+                  <SendButton playerName={playerName}/>
               </Button>
             </Form>
           </NameDisplay>
@@ -121,7 +121,7 @@ export default function Breakout() {
               <tr>
                 <td>{highScore.player_name}</td>
                 <td>{highScore.score}</td>
-                <td>not defined yet!</td>
+                <td>{highScore.level ? highScore.level : 'unknown'}</td>
               </tr>
             ))
           }
@@ -173,6 +173,10 @@ const Input = styled.input.attrs(props => ({
   type: 'text',
   size: props.small ? 5 : undefined,
 }))`
+  &:focus {
+    outline: none;
+  }
+  
   color: #ffffff;
   background-color: transparent;
   /* border-radius: 3px; */
@@ -210,14 +214,9 @@ const Button = styled.button`
   
 `
 const SendButton = styled(AiOutlineSend)`
-  color: #ffffff;
+  color: ${ p => p.playerName.length > 2 ? '#ffffff' : '#fefefe60'};
   transform: scale(2);
   /* margin: 5%; */
-  text-shadow:
-    0 0 7px #fff,
-    0 0 10px #fff,
-    0 0 42px #0fa,
-    0 0 82px #0fa;
 `
 
 const WelcomePlayer = styled.div`

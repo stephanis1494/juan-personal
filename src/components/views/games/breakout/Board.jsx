@@ -19,7 +19,11 @@ let { ballObject, paddleObject, bricksetObject, playerObject, powerUpObject } =
 const RegisterScore = async e => {
   // pass to a function later
   try {
-    const body = {"score": playerObject.score, "player_name": playerObject.name }
+    const body = {
+      "score": playerObject.score,
+      "player_name": playerObject.name,
+      "level": playerObject.level
+    }
     const response = await fetch('http://localhost:5000/new_score', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
