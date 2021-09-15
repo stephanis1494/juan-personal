@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Board from './Board'
-import styled, { keyframes } from 'styled-components'
+import styled, { keyframes, createGlobalStyle } from 'styled-components'
 import data from './data'
-import {IconContext} from 'react-icons'
 import { AiOutlineSend } from 'react-icons/ai'
 
 const GameContainer = styled.div`
@@ -80,8 +79,9 @@ export default function Breakout() {
       {gameEnded ? (
         <StartScreen>
           <h1>Game ended Amigo</h1>
-          <p>Press Spacebar to Start</p>
-
+          <WelcomePlayer nameSubmit={nameSubmit}>Your score is: {data.playerObject.score}</WelcomePlayer>
+          <PressSpace>Press Spacebar to Restart</PressSpace>
+        
         </StartScreen>
       ) : gameStarted ? (
         <Board setGameEnded={handleGameEnd} />
@@ -109,6 +109,8 @@ export default function Breakout() {
           <PressSpace>
             {nameSubmit ? 'Press Spacebar to Start' : 'Give me your best name'}
           </PressSpace>
+
+          <GlobalStyle/>
           <Top3Table>
             <tr>
               <th>Player</th>
@@ -135,7 +137,7 @@ export default function Breakout() {
 const StartScreen = styled.div`
   font-weight: 600;
   font-family: 'Press Start 2P', cursive;
-  color: white;
+  color: #fff;
 
   height: 500px;
   width: 800px;
@@ -177,7 +179,6 @@ const Input = styled.input.attrs(props => ({
     outline: none;
   }
   
-  color: #ffffff;
   background-color: transparent;
   /* border-radius: 3px; */
   border-top: none;
@@ -189,6 +190,8 @@ const Input = styled.input.attrs(props => ({
   size: 5;
   
   margin: 0 0;
+  
+  color: #ffffff;
   padding: ${props => props.padding};
   
   font-size: 1.2em;
@@ -248,3 +251,25 @@ const Top3Table = styled.table`
   margin-top: 25px;
   font-size: 10px;
 `
+
+const GlobalStyle = createGlobalStyle`
+  table {
+    width: 24%;
+    border: none;
+    
+    th,
+    td {
+      border: none;
+    }
+  
+    th,
+    td,
+    tr {
+      padding: 5px;
+    }
+  
+    th {
+      text-align: left;
+    }
+  }
+`;
