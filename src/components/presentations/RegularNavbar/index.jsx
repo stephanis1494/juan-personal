@@ -1,24 +1,28 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Fragment } from 'react'
 import styled from "styled-components"
 import { CloseIcon } from '../Icons'
 import { debounce } from 'throttle-debounce'
 import { Link } from 'react-router-dom'
 import { scrollIntoView } from "../../utils/scrollIntoView"
+import { motion, AnimatePresence } from 'framer-motion'
 
 
 const RegularNavbar = ({ alwaysFilled = false }) => {
   const [isOpen, setIsOpen] = useState(false)
-  const [fillNavColor, setFillNavColor] = useState(false)
+  const [showBar, setShowBar] = useState(true)
+  const [lastScrollPositionY, setLastScrollPositionY] = useState(window.scrollY)
 
 
   const handleScroll = debounce(10, true, () => {
     const position = window.scrollY
 
-    if (position > 160 && !fillNavColor) {
-      setFillNavColor(true)
-    } else if (position < 160 && fillNavColor) {
-      setFillNavColor(false)
+    if (position < lastScrollPositionY && !showBar) {
+      setShowBar(true)
+    } else if (position > lastScrollPositionY && showBar) {
+      setShowBar(false)
     }
+
+    setLastScrollPositionY(window.scrollY)
   })
 
   useEffect(() => {
@@ -28,23 +32,39 @@ const RegularNavbar = ({ alwaysFilled = false }) => {
   }, [handleScroll])
 
   return (
-    <Nav fill={ fillNavColor || alwaysFilled }>
-        <Logo onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-          Juan Luis
-        </Logo>
-      <div>
-        <Hamburger onClick={() => setIsOpen(!isOpen)}>
-          <span />
-          <span />
-          <span />
-        </Hamburger>
-        <MenuLink onClick={() => scrollIntoView('game-container')}>Game</MenuLink>
-        <MenuLink onClick={() => scrollIntoView('music-container')}>Music</MenuLink>
-      </div>
-      {
-        isOpen && <Menu onClose={() => setIsOpen(false)}/>
-      }
-    </Nav>
+      <AnimatePresence>
+        {
+          showBar &&
+          <Nav
+              fill={true}
+              initial={{ y: -67 }}
+              animate={{ y: 0 }}
+              transition={{
+                type: 'tween',
+                stiffness: 200,
+                damping: 30,
+                duration: 0.4
+              }}
+              exit={{ y: -67 }}
+          >
+            <Logo onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+              Juan Luis
+            </Logo>
+            <div>
+              <Hamburger onClick={() => setIsOpen(!isOpen)}>
+                <span />
+                <span />
+                <span />
+              </Hamburger>
+              <MenuLink onClick={() => scrollIntoView('game-container')}>Game</MenuLink>
+              <MenuLink onClick={() => scrollIntoView('music-container')}>Music</MenuLink>
+            </div>
+            {
+              isOpen && <Menu onClose={() => setIsOpen(false)}/>
+            }
+          </Nav>
+        }
+      </AnimatePresence>
   )
 }
 
@@ -67,7 +87,7 @@ const MenuItem = styled.p`
   font-weight: 700;
   transition: color 150ms ease;
   cursor: pointer;
-  
+
   :hover {
     color: rgba(0, 0, 0, 1);
   }
@@ -89,18 +109,18 @@ const Menu = ({ onClose = () => {} }) => (
     </MenuContainer>
 )
 
-const Nav = styled.div`
+const Nav = styled(motion.div)`
     box-sizing: border-box;
     width: 100%;
     position: fixed;
     display: flex;
-    /* flex-direction: row; */
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    background-color: ${({ fill = false }) => (fill && '#000F1B') || 'transparent'};
+    background-color: ${({ fill = false }) => (fill && 'rgba(0, 15, 27, 0.8)') || 'transparent'};
     padding: 15px;
     transition: background-color 250ms ease;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 `
 
 const Logo = styled.div`
