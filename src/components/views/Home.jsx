@@ -6,6 +6,7 @@ import Footer from '../presentations/Footer'
 import RegularNavbar from '../presentations/RegularNavbar'
 import { useHistory } from 'react-router-dom'
 import Music from '../views/Music'
+import RegularContainer from '../presentations/RegularContainer'
 
 
 const Container = styled.div`
@@ -16,6 +17,7 @@ const Container = styled.div`
 const Header = styled.div`
   width: 100%;
   min-height: 480px;
+  height: 100vh;
   background-size: cover;
   background-image: url('https://res.cloudinary.com/df0ll615k/image/upload/v1624845820/Asset_3_2x.png');
   display: flex;
@@ -80,6 +82,9 @@ const Home = () => {
           Turning <Highlight>Ideas </Highlight> into <Highlight>reality</Highlight> is what I do.
         </HeaderSubText>
       </Header>
+      
+      <RegularContainer />
+
         <NormalContainer
           title={qrCodeContainerInfo.title}
           subtitle={qrCodeContainerInfo.subtitle}
