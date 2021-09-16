@@ -1,13 +1,12 @@
-import React, { useState, useEffect, Fragment } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from "styled-components"
 import { CloseIcon } from '../Icons'
 import { debounce } from 'throttle-debounce'
-import { Link } from 'react-router-dom'
 import { scrollIntoView } from "../../utils/scrollIntoView"
 import { motion, AnimatePresence } from 'framer-motion'
 
 
-const RegularNavbar = ({ alwaysFilled = false }) => {
+const RegularNavbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [showBar, setShowBar] = useState(true)
   const [lastScrollPositionY, setLastScrollPositionY] = useState(window.scrollY)
@@ -36,16 +35,16 @@ const RegularNavbar = ({ alwaysFilled = false }) => {
         {
           showBar &&
           <Nav
-              fill={true}
-              initial={{ y: -67 }}
-              animate={{ y: 0 }}
-              transition={{
-                type: 'tween',
-                stiffness: 200,
-                damping: 30,
-                duration: 0.4
-              }}
-              exit={{ y: -67 }}
+            fill={true}
+            initial={{ y: -67 }}
+            animate={{ y: 0 }}
+            transition={{
+              type: 'tween',
+              stiffness: 200,
+              damping: 30,
+              duration: 0.4
+            }}
+            exit={{ y: -67 }}
           >
             <Logo onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
               Juan Luis
@@ -117,10 +116,11 @@ const Nav = styled(motion.div)`
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    background-color: ${({ fill = false }) => (fill && 'rgba(0, 15, 27, 0.8)') || 'transparent'};
+    background-color: ${({ fill = false }) => (fill && 'rgba(0, 15, 27, 0.95)') || 'transparent'};
     padding: 15px;
     transition: background-color 250ms ease;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    backdrop-filter: blur(2px);
 `
 
 const Logo = styled.div`
