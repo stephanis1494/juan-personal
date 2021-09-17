@@ -6,7 +6,8 @@ import Footer from '../presentations/Footer'
 import RegularNavbar from '../presentations/RegularNavbar'
 import { useHistory } from 'react-router-dom'
 import Music from '../views/Music'
-import RegularContainer from '../presentations/RegularContainer'
+import WidgetSecondaryProjects from '../presentations/WidgetSecondaryProjects'
+import SectionMainProject from '../presentations/SectionMainProject'
 
 
 const Container = styled.div`
@@ -83,7 +84,8 @@ const Home = () => {
         </HeaderSubText>
       </Header>
       
-      <RegularContainer />
+      <SectionMainProject />
+      <WidgetSecondaryProjects />
 
         <NormalContainer
           title={qrCodeContainerInfo.title}
