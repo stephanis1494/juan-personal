@@ -1,5 +1,6 @@
 import React, { memo } from 'react'
 import styled from 'styled-components'
+import {BsChevronDoubleDown} from 'react-icons/bs'
 import TiltContainer from "../presentations/TiltContainer"
 import NormalContainer from "../presentations/NormalContainer"
 import Footer from '../presentations/Footer'
@@ -8,31 +9,43 @@ import { useHistory } from 'react-router-dom'
 import Music from '../views/Music'
 import WidgetSecondaryProjects from '../presentations/WidgetSecondaryProjects'
 import SectionMainProject from '../presentations/SectionMainProject'
-
+import WidgetLeftBar from '../presentations/WidgetLeftBar'
 
 const Container = styled.div`
   width: 100%;
-
 `
 
 const Header = styled.div`
   width: 100%;
-  min-height: 480px;
+  /* min-height: 480px; */
   height: 100vh;
-  background-size: cover;
-  background-image: url('https://res.cloudinary.com/df0ll615k/image/upload/v1624845820/Asset_3_2x.png');
+  max-height: 100vh;
+  /* background-size: cover; */
+  /* background-image: url('https://res.cloudinary.com/df0ll615k/image/upload/v1624845820/Asset_3_2x.png'); */
+  /* filter: blur(8px); */
+  background: #011627;
+  display: flex;
+  justify-content: center;
+  /* margin: 0 auto; */
+  /* flex-wrap: wrap; */
+`
+
+const HeaderInnerContainer = styled.div`
+  width: 850px;
+    
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  /* align-items: flex-start; */
 `
 
 const HeaderText = styled.h1`
   font-size: 64px;
-  font-weight: 700;
-  color: white;
-  margin-bottom: 0px;
-  text-align: center;
+  font-weight: 800;
+  color: #ccd8f4;
+  margin: 0px 0px 0px 0px;
+  padding: 0px;
+  /* text-align: center; */
 
   @media (max-width: 1000px) {
     font-size: 48px;
@@ -44,18 +57,45 @@ const HeaderText = styled.h1`
 
 `
 
-const HeaderSubText = styled.p`
-  font-size: 24px;
-  color: white;
-  text-align: center;
+const HeaderSubtitle = styled.p`
+  font-size: ${({fontSize}) => fontSize};
+  color: ${({color}) => color};
+  font-weight: ${({fontWeight}) => fontWeight ? fontWeight : '400'};
+  /* text-align: center; */
+  margin: 0px;
+  padding: 0px;
+  /* max-width: 350px; */
 
   @media (max-width: 600px) {
-    margin: 16px 32px 0px 32px;
+    /* margin: 16px 32px 0px 32px; */
+  }
+`
+const HeaderSubText = styled.p`
+  font-size: ${({fontSize}) => fontSize};
+  color: ${({color}) => color};
+  font-weight: ${({fontWeight}) => fontWeight ? fontWeight : '400'};
+  /* text-align: center; */
+  margin: ${({margin}) => margin ? margin : 0}; 
+  max-width: 450px;
+
+  @media (max-width: 600px) {
+    /* margin: 16px 32px 0px 32px; */
   }
 `
 
 const Highlight = styled.span`
-  color: #fff800;
+  color: rgb(229,202,64);
+`
+
+const HeaderDownArrow = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  font-size: 48px;
+  color: #ccd8f4;
+  cursor: pointer;
 `
 
 const qrCodeContainerInfo = {
@@ -74,17 +114,54 @@ const Home = () => {
   const history = useHistory()
   return (
     <Container>
+
       <RegularNavbar></RegularNavbar>
+      
       <Header>
-        <HeaderText>
-          Not Your Average Web Dev.
-        </HeaderText>
-        <HeaderSubText>
-          Turning <Highlight>Ideas </Highlight> into <Highlight>reality</Highlight> is what I do.
-        </HeaderSubText>
+
+        <HeaderInnerContainer>
+          <HeaderSubText 
+            fontSize='16px'
+            color='rgb(229,202,64)'
+            fontWeight='700'
+            margin='0 0 12px 0'
+          >
+            Hello there, I am
+          </HeaderSubText>
+
+          <HeaderText>
+            Juan Luis Chaurant.
+          </HeaderText>
+
+          <HeaderSubtitle
+            fontSize='64px'
+            color='rgb(132,159,182)'
+            fontWeight='800'
+            margin={'0 0 0 0'}
+          >
+            Making the web.
+          </HeaderSubtitle>
+
+          <HeaderSubText
+            fontSize='24px'
+            color='#ccd8f4'
+            margin={'16px 0 0 0'}
+          >
+            I enjoy solving <Highlight>real world problems</Highlight><br /> making use of <Highlight>new technologies</Highlight>.
+          </HeaderSubText>
+          
+          <HeaderDownArrow>
+            <BsChevronDoubleDown/>
+          </HeaderDownArrow>
+
+        </HeaderInnerContainer>
+
+      <WidgetLeftBar />
       </Header>
       
+      
       <SectionMainProject />
+
       <WidgetSecondaryProjects />
 
         <NormalContainer

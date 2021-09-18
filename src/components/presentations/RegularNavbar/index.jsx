@@ -116,7 +116,7 @@ const Nav = styled(motion.div)`
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    background-color: ${({ fill = false }) => (fill && 'rgba(0, 15, 27, 0.95)') || 'transparent'};
+    background-color: rgba(2, 22, 38, 0.95);
     padding: 15px;
     transition: background-color 250ms ease;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);

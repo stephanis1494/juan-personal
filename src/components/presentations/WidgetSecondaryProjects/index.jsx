@@ -50,14 +50,13 @@ const GeneralStyle = createGlobalStyle`
 `
 
 const Container = styled.div`
-    height: 100vh;
+    /* height: 100vh; */
     width: 100vw;
     
     background:rgb(1,22,39);
     box-sizing: border-box;
     
-/*     
-    padding: 2em 0; */
+    padding: 4em 0;
 
     display: flex;
     justify-content: center;
@@ -135,7 +134,7 @@ const WidgetSecondaryProjects = () => {
             
             <InnerContainer>
 
-                <SectionTitle>Some projects I've made</SectionTitle>
+                <SectionTitle>Also have made these</SectionTitle>
 
                 <TabsContainer>
 

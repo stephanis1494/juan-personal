@@ -10,7 +10,7 @@ const Container = styled.div`
     background:rgb(1,22,39);
     box-sizing: border-box;
     
-    padding: 2em 0;
+    padding: 4em 0;
 
     display: flex;
     justify-content: center;
@@ -135,7 +135,7 @@ const SectionMainProject = () => {
     return (
         <Container>
             <InnerContainer>
-
+            <SectionTitle>Projects I've built</SectionTitle>
 
                 <SectionContent>
                     <SectionContentTitle>A Super Project</SectionContentTitle>
