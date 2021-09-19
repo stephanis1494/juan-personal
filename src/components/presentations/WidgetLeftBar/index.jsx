@@ -4,7 +4,7 @@ import { FaLinkedin, FaTwitterSquare, FaGithubSquare, FaEnvelopeSquare } from 'r
 
 const LeftSidebar = styled.div`
   /* width: 50px; */
-  height: 340px; 
+  height: 360px; 
   position: fixed;
   top: 42%;
   left: 94vw;

@@ -2,6 +2,8 @@ import React, { memo } from 'react'
 import styled from "styled-components";
 import Breakout from "../../views/games/breakout";
 
+// discard this one
+
 const InnerContainer = styled.div`
   background: url('https://res.cloudinary.com/dm7mqsupu/image/upload/v1624995720/tilted-small.svg') no-repeat;
   background-size: cover;
@@ -28,7 +30,7 @@ const ProfileImage = styled.img.attrs({
 })`
   width: 200px;
   height: 200px;
-  border-radius: 50%;
+  /* border-radius: 50%; */
 `
 
 const ProfileTextTitle = styled.h1`

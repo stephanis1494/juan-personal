@@ -1,6 +1,8 @@
 import ContentHero from "../presentations/ContentHero";
 import styled from 'styled-components'
 
+// discard this one too
+
 const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;

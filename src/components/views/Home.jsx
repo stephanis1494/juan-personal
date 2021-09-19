@@ -1,13 +1,14 @@
 import React, { memo } from 'react'
 import styled from 'styled-components'
 import {BsChevronDoubleDown} from 'react-icons/bs'
-import TiltContainer from "../presentations/TiltContainer"
+import PlayAGame from "../views/PlayAGame"
 import NormalContainer from "../presentations/NormalContainer"
 import Footer from '../presentations/Footer'
 import RegularNavbar from '../presentations/RegularNavbar'
 import { useHistory } from 'react-router-dom'
 import Music from '../views/Music'
 import WidgetSecondaryProjects from '../presentations/WidgetSecondaryProjects'
+import AboutMe from './AbouMe'
 import SectionMainProject from '../presentations/SectionMainProject'
 import WidgetLeftBar from '../presentations/WidgetLeftBar'
 
@@ -19,7 +20,7 @@ const Header = styled.div`
   width: 100%;
   /* min-height: 480px; */
   height: 100vh;
-  max-height: 100vh;
+  /* max-height: 100vh; */
   /* background-size: cover; */
   /* background-image: url('https://res.cloudinary.com/df0ll615k/image/upload/v1624845820/Asset_3_2x.png'); */
   /* filter: blur(8px); */
@@ -156,31 +157,33 @@ const Home = () => {
 
         </HeaderInnerContainer>
 
-      <WidgetLeftBar />
+        <WidgetLeftBar />
       </Header>
-      
+
+      <AboutMe />
       
       <SectionMainProject />
 
+      <PlayAGame />
       <WidgetSecondaryProjects />
 
-        <NormalContainer
+        {/* <NormalContainer
           title={qrCodeContainerInfo.title}
           subtitle={qrCodeContainerInfo.subtitle}
           paragraph={qrCodeContainerInfo.paragraph}
           verticalMargin='128px'
         />
-        <TiltContainer>
+        {/* <TiltContainer>
           Don't tilt me please
-        </TiltContainer>
-
+        </TiltContainer> */}
+        {/*
         <NormalContainer
           title={musicContainerInfo.title}
           subtitle={musicContainerInfo.subtitle}
           paragraph={musicContainerInfo.paragraph}
           onImageClick={() => history.push('/music')}
           id='music-container'
-        />
+        /> */}
         <Music />
         <Footer></Footer>
     </Container>
