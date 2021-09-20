@@ -16,7 +16,7 @@ body {
   /* color: var(--text-primary); */
 }
 
-body::-webkit-scrollbar {
+/* body::-webkit-scrollbar {
   width: 0.25rem;
 }
 body::-webkit-scrollbar-track {
@@ -24,7 +24,7 @@ body::-webkit-scrollbar-track {
 }
 body::-webkit-scrollbar-thumb {
   background: darkblue;
-}
+} */
 
 /* .content {
 
