@@ -11,6 +11,7 @@ import WidgetSecondaryProjects from '../presentations/WidgetSecondaryProjects'
 import AboutMe from './AbouMe'
 import SectionMainProject from '../presentations/SectionMainProject'
 import WidgetLeftBar from '../presentations/WidgetLeftBar'
+import {scrollIntoView} from "../utils/scrollIntoView";
 
 const Container = styled.div`
   width: 100%;
@@ -38,6 +39,10 @@ const HeaderInnerContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   /* align-items: flex-start; */
+
+  @media (max-width: 800px) {
+    align-items: center;
+  }
 `
 
 const HeaderText = styled.h1`
@@ -113,15 +118,16 @@ const musicContainerInfo = {
 
 const Home = () => {
   const history = useHistory()
+
   return (
     <Container>
 
       <RegularNavbar></RegularNavbar>
-      
+
       <Header>
 
         <HeaderInnerContainer>
-          <HeaderSubText 
+          <HeaderSubText
             fontSize='16px'
             color='rgb(229,202,64)'
             fontWeight='700'
@@ -150,8 +156,8 @@ const Home = () => {
           >
             I enjoy solving <Highlight>real world problems</Highlight><br /> making use of <Highlight>new technologies</Highlight>.
           </HeaderSubText>
-          
-          <HeaderDownArrow>
+
+          <HeaderDownArrow onClick={() => scrollIntoView('about-me', 'start')}>
             <BsChevronDoubleDown/>
           </HeaderDownArrow>
 
@@ -161,7 +167,7 @@ const Home = () => {
       </Header>
 
       <AboutMe />
-      
+
       <SectionMainProject />
 
       <PlayAGame />

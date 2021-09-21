@@ -27,6 +27,10 @@ const LeftSidebar = styled.div`
       height: 180px;
       background: #304a5f;
   }
+
+  @media (max-width: 800px) {
+    display: none;
+  }
 `
 
 const WidgetLeftBar = () => {

@@ -115,7 +115,7 @@ const Button = styled.button`
     width: 100%;
     
 `
-    
+
 const TabsContent = styled.div`
     display: none;
     margin-left: 12px;
@@ -131,7 +131,7 @@ const WidgetSecondaryProjects = () => {
     return (
         <Container>
             <GeneralStyle />
-            
+
             <InnerContainer>
 
                 <SectionTitle>Also have made these</SectionTitle>
@@ -142,23 +142,23 @@ const WidgetSecondaryProjects = () => {
                         <TabsSidebarContainer>
                             <Button
                                 onClick={() => {handleToggleTab(1)}}
-                                className={parseInt(toggleTab) === 1 ? 'tabs__button--active' : ''}
+                                className={toggleTab === 1 ? 'tabs__button--active' : ''}
                                 >QR Generator</Button>
 
                             <Button
                                 onClick={() => {handleToggleTab(2)}}
-                                className={parseInt(toggleTab) === 2 ? 'tabs__button--active' : ''}
+                                className={toggleTab === 2 ? 'tabs__button--active' : ''}
                                 >Auto-mail</Button>
 
                             <Button
                                 onClick={() => {handleToggleTab(3)}}
-                                className={parseInt(toggleTab) === 3 ? 'tabs__button--active' : ''}
+                                className={toggleTab === 3 ? 'tabs__button--active' : ''}
                                 >Clients App</Button>
                         </TabsSidebarContainer>
                     </TabsSidebar>
 
-                    <TabsContent 
-                        className={parseInt(toggleTab) === 1 ? 'tabs__content--active' : ''}
+                    <TabsContent
+                        className={toggleTab === 1 ? 'tabs__content--active' : ''}
                         >
                         <div className='tabs__title'><span>QR Generator</span><span><FiGithub/><IoMdOpen/></span></div>
                         <p className="tabs__date">March 12 - April 01 2021</p>
@@ -166,7 +166,7 @@ const WidgetSecondaryProjects = () => {
                         <p className="tabs_content">A QR Code generartor, made to automate the process of batch generating QR Codes with the information contanied into a .XLSX Workbook (EXCEL Workbook).</p>
 
                         <p className='tabs_content'>
-                        It is built with Vainilla JavaScript, using the capabilities of node js to write on the clients computer.</p>   
+                        It is built with Vainilla JavaScript, using the capabilities of node js to write on the clients computer.</p>
                     </TabsContent>
 
                     <TabsContent
@@ -174,7 +174,7 @@ const WidgetSecondaryProjects = () => {
                         >
                         <div className='tabs__title'>Hola 2</div>
                         <p className="tabs__date"></p>
-                        <p className="tabs_content"></p>   
+                        <p className="tabs_content"></p>
                     </TabsContent>
 
                     <TabsContent

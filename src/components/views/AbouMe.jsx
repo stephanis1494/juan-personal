@@ -34,7 +34,24 @@ const SectionTitle = styled.h2`
         transform: translateY(22px);
         background: rgb(95,126,151);
         flex: 1 1 auto;
-        margin-left: 12px
+        margin-left: 12px;
+
+        @media (max-width: 800px) {
+            transform: translateY(11px);
+            flex: auto;
+        }
+    }
+    
+    &:before {
+        @media (max-width: 800px) {
+            display: block;
+            content: '';
+            /* width: 32%; */
+            height: 1px;
+            transform: translateY(11px);
+            background: rgb(95,126,151);
+            flex: auto;
+        }
     }
 `
 
@@ -65,6 +82,10 @@ const ContentContainer = styled.div`
       grid-template-rows: repeat(2, 1fr);
       grid-row-gap: 5px;
       grid-column-gap: 5px;
+      
+      @media (max-width: 800px) {
+          justify-content: center;
+      }
   }
 
   & > div > .technologies > .tech {
@@ -73,6 +94,7 @@ const ContentContainer = styled.div`
       border-radius: 4px;
       border: 1px solid #e5ca40;
       color: #e5ca40;
+      transition: background 250ms ease, color 250ms ease;
   }
 
   & > div > .technologies > .tech:hover {
@@ -80,6 +102,13 @@ const ContentContainer = styled.div`
       border-radius: 4px;
       color: #011627;
   }
+
+    @media (max-width: 800px) {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
 `
 
 const ProfileImage = styled.img.attrs({
@@ -88,23 +117,35 @@ const ProfileImage = styled.img.attrs({
     max-width: 100%;
     width: 35%;
     margin: 0;
+    border-radius: 3px;
 
     /* width: 200px;
     height: 200px; */
     /* border-radius: 50%; */
+    @media (max-width: 800px) {
+      margin-bottom: 16px;
+    }
   `
+
+const InfoContainer = styled.div`
+    @media (max-width: 800px) {
+      p {
+          text-align: center;
+      }
+    }
+`
 
 
 const AbouMe = () => {
     return (
-        <Container>
+        <Container id='about-me'>
             <InnerContainer>
                 <SectionTitle>About Me</SectionTitle>
                 <ContentContainer>
                     <ProfileImage />
-                    <div>
+                    <InfoContainer>
                         <p>I live and work in a small town in Venezuela. While hacking my way into computers, I discovered my passion for programming and making cool stuff happen with my old desktop computer. My current objective, is to be part of projects involving both, logic and creativity.</p>
-                        
+
                         <p>So far I've had the opportunity to participate in projects ranging from education to music, recently I was in charge of developing a set of pedagogic booklets that go from Microsoft Office Apps (Word, Excel and PowerPoint) to translating open source material and developing small scripts to automate processes.</p>
 
                         <p>Here some of the technologies I am comfortable with:</p>
@@ -117,7 +158,7 @@ const AbouMe = () => {
                             <div className="tech">Grid</div>
                         </div>
 
-                    </div>
+                    </InfoContainer>
                 </ContentContainer>
 
             </InnerContainer>

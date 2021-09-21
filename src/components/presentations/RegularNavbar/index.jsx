@@ -30,6 +30,11 @@ const RegularNavbar = () => {
     return () => document.removeEventListener('scroll', handleScroll)
   }, [handleScroll])
 
+  const handleMobileMenuSelect = (id) => {
+    setIsOpen(false)
+    scrollIntoView(id)
+  }
+
   return (
       <AnimatePresence>
         {
@@ -59,7 +64,7 @@ const RegularNavbar = () => {
               <MenuLink onClick={() => scrollIntoView('music-container')}>Music</MenuLink>
             </div>
             {
-              isOpen && <Menu onClose={() => setIsOpen(false)}/>
+              isOpen && <Menu onClose={() => setIsOpen(false)} handleMobileMenuSelect={handleMobileMenuSelect} />
             }
           </Nav>
         }
@@ -71,8 +76,8 @@ const MenuContainer = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
   background: white;
   display: flex;
   flex-direction: column;
@@ -92,10 +97,10 @@ const MenuItem = styled.p`
   }
 `
 
-const Menu = ({ onClose = () => {} }) => (
+const Menu = ({ onClose = () => {}, handleMobileMenuSelect = () => {} }) => (
     <MenuContainer>
-        <MenuItem>Projects</MenuItem>
-        <MenuItem>About</MenuItem>
+        <MenuItem onClick={() => handleMobileMenuSelect('game-container')}>Game</MenuItem>
+        <MenuItem onClick={() => handleMobileMenuSelect('music-container')}>Music</MenuItem>
       <CloseIcon
         style={{
           position: 'fixed',
