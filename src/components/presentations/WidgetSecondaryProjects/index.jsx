@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styled, { createGlobalStyle } from 'styled-components'
 import {IoMdOpen} from 'react-icons/io'
 import {FiGithub} from 'react-icons/fi'
+import CONSTANTS from '../../global_styles/constants'
 
 // should not this coponent be at views folder?
 
@@ -18,6 +19,10 @@ const GeneralStyle = createGlobalStyle`
         box-sizing: border-box;
         border-left: 4px solid rgb(230,203,46);
 
+        @media (max-width: ${CONSTANTS.breakpoints.tabletX1}) {
+            border-left: 0px;
+            border-bottom: 4px solid rgb(230,203,46);
+        }
     }
     /* .tabs__button--active::before {
         content: '';
@@ -57,14 +62,23 @@ const Container = styled.div`
     box-sizing: border-box;
     
     padding: 4em 0;
-
+    
     display: flex;
     justify-content: center;
     align-items: center;
+    
+    @media (max-width: ${`${CONSTANTS.breakpoints.tabletX1}`}) {
+      
+    }
 `
 
 const InnerContainer = styled.div`
-    max-width: 650px;
+    width: 80%;
+    max-width: 850px;
+
+    @media (max-width: ${CONSTANTS.breakpoints.phoneX1}) {
+        /* width: 300px; */
+    }
 `
 
 const SectionTitle = styled.h2`
@@ -85,11 +99,20 @@ const SectionTitle = styled.h2`
 `
 
 const TabsContainer = styled.div`
-    width: 650px;
+    max-width: 850px;
     margin: 0 auto;
     display: flex;
     flex-direction: row;
     color: rgb(204,215,245);
+    @media (max-width: ${`${CONSTANTS.breakpoints.tabletX1}`}) {
+        min-width: 400px;
+        /* background-color: red; */
+        flex-direction: column;
+        /* overflow: hidden; */
+    }
+    @media (max-width: ${CONSTANTS.breakpoints.phoneX1}) {
+        min-width: 300px;
+    }
 `
 
 const TabsSidebar = styled.div`
@@ -97,12 +120,26 @@ const TabsSidebar = styled.div`
     flex-direction: column;
     width: 135px;
     flex-shrink: 0;
-`
+    @media (max-width: ${`${CONSTANTS.breakpoints.tabletX1}`}) {
+        width: 100%;
+        margin-bottom: 16px;
+        flex-direction: row;
+        overflow-x: scroll;
+    }
+    `
 
 const TabsSidebarContainer = styled.div`
-    border-left:2px solid rgb(95,126,151);
+    display: flex;
+    flex-direction: column;
+    border-left: 2px solid rgb(95,126,151);
     width: 100%;
-`
+    @media (max-width: ${`${CONSTANTS.breakpoints.tabletX1}`}) {
+        width: fit-content;
+        border-left: 0px;
+        border-bottom: 2px solid rgb(95,126,151);
+        flex-direction: row;
+    }
+    `
 
 const Button = styled.button`
     background: transparent;
@@ -113,6 +150,13 @@ const Button = styled.button`
     font-size: 12px;
     cursor: pointer;
     width: 100%;
+    
+    @media (max-width: ${`${CONSTANTS.breakpoints.tabletX1}`}) {
+        width: fit-content;
+        min-width: 125px;
+        transform: translateY(4px);
+    }
+
     
 `
 

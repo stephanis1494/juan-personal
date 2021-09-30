@@ -224,6 +224,19 @@ const ListItem = styled.div`
     margin-right: 8px;
     color: rgb(95, 126, 151);
 `
+const IconContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  /* align-items: flex-end; */
+  /* color: ${CONSTANTS.colors.secondaryColor}; */
+  color: ${CONSTANTS.colors.fontMainColor};
+  margin-top: 8px;
+  /* font-size: 45px; */
+
+  & ${IoMdOpen} ${FiGithub} {
+    font-size: 80px;
+  }
+`
 
 const SectionMainProject = () => {
   return (
@@ -246,6 +259,10 @@ const SectionMainProject = () => {
                             <ListItem>NPM</ListItem>
                             <ListItem>React</ListItem>
                     </LinkContainer>
+                    <IconContainer>
+                      <IoMdOpen size={CONSTANTS.fontScale.regular}></IoMdOpen>
+                      <FiGithub size={CONSTANTS.fontScale.regular}></FiGithub>
+                    </IconContainer>
                 </InfoContainer>
             </BodyContainer>
         </InnerContainer>

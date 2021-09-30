@@ -4,6 +4,7 @@ import styled from 'styled-components'
 // import RegularNavbar from '../presentations/RegularNavbar'
 import { motion } from 'framer-motion'
 import { BiLeftArrowAlt, BiRightArrowAlt } from 'react-icons/bi'
+import CONSTANTS from '../global_styles/constants'
 
 const VIDEO_IDS = [
   'AC2lUyJr1Qc',
@@ -32,13 +33,29 @@ const Container = styled.div`
   align-items: center;
 `
 const InnerContainer = styled.div`
-  max-width: 900px;
-  width: 900px;
+  max-width: 800px;
+  width: 80%;
+
+  @media (max-width: ${CONSTANTS.breakpoints.phoneX1}) {
+    width: 90%;
+  }
+
 `
 
 const VideosContainer = styled.div`
   display: flex;
   flex-direction: row;
+
+  @media (max-width: ${`${CONSTANTS.breakpoints.tabletX1}`}) {
+    flex-direction: column;
+    flex-direction: column-reverse;
+    /* justify-content: center; */
+    align-items: center;
+  }
+
+  @media (max-width: ${CONSTANTS.breakpoints.phoneX1}) {
+    
+  }
 `
 
 const ButtonsContainer = styled.div`
@@ -95,14 +112,17 @@ const VideoContainer = styled(motion.div)`
   width: fit-content;
   background-color: rgb(11, 41, 66);
   /* height: fit-content; */
-  /* & > .the_video {
+
+  & > .the_video {
 
   }
-  & > .the_video > iframe {
+  @media (max-width: ${CONSTANTS.breakpoints.phoneX1}) {
+    & > .the_video > iframe {
 
-    width: 480px;
-    height: 292.5px;
-  } */
+      width: 280px;
+      height: 292.5px;
+    }
+  }
 `
 
 const SectionTitle = styled.h2`
@@ -120,10 +140,18 @@ const SectionTitle = styled.h2`
     flex: 1 1 auto;
     margin-left: 12px;
   }
+
+  @media (max-width: ${CONSTANTS.breakpoints.tabletX1}) {
+    font-size: ${CONSTANTS.fontScale.regular}
+  }
 `
 
 const DescriptionContainer = styled.div`
   margin-left: 28px;
+  width: 100%;
+  @media (max-width: ${CONSTANTS.breakpoints.phoneX1}) {
+    text-align: center;
+  }
 `
 
 const SectionSubtitle = styled.h3`

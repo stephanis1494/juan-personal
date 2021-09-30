@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from "styled-components";
 import Breakout from "./games/breakout";
-
+import CONSTANTS from '../global_styles/constants';
 const Container = styled.div`
     /* height: 100vh; */
     width: 100vw;
@@ -14,6 +14,7 @@ const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    
 `
 
 const InnerContainer = styled.div`
@@ -80,6 +81,10 @@ const ContentContainer = styled.div`
       background: #e5ca40;
       border-radius: 4px;
       color: #011627;
+  }
+
+  @media (max-width: ${CONSTANTS.breakpoints.tabletX1}) {
+      display: none;
   }
 `
 

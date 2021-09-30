@@ -8,7 +8,8 @@ const CONSTANTS = {
     colors: {
         primaryColor: '#011627',
         secondaryColor: 'rgb(229,202,64)',
-        accentColor: '#e5ca40'
+        accentColor: '#e5ca40',
+        fontMainColor: '#ccd7f5'
     },
     fontScale: {
         small: '1rem',
