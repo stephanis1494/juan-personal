@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from "styled-components";
+import CONSTANTS from "../global_styles/constants";
 
 const Container = styled.div`
     /* height: 100vh; */
@@ -22,36 +23,12 @@ const InnerContainer = styled.div`
 
 
 const SectionTitle = styled.h2`
-    font-size: 32px;
-    color: rgb(204,215,245);
+    font-size: ${CONSTANTS.fontScale.medium};
+    color: rgb(204, 215, 245);
     display: flex;
 
-    &:after {
-        display: block;
-        content: '';
-        /* width: 32%; */
-        height: 1px;
-        transform: translateY(22px);
-        background: rgb(95,126,151);
-        flex: 1 1 auto;
-        margin-left: 12px;
-
-        @media (max-width: 800px) {
-            transform: translateY(11px);
-            flex: auto;
-        }
-    }
-    
-    &:before {
-        @media (max-width: 800px) {
-            display: block;
-            content: '';
-            /* width: 32%; */
-            height: 1px;
-            transform: translateY(11px);
-            background: rgb(95,126,151);
-            flex: auto;
-        }
+    @media (max-width: ${`${CONSTANTS.breakpoints.tabletX1}`}) {
+        font-size: 24px;
     }
 `
 
@@ -135,12 +112,48 @@ const InfoContainer = styled.div`
     }
 `
 
+const Line = styled.div`
+  flex-grow: 1;
+  height: 1px;
+  background: rgb(95, 126, 151);
+  margin-left: 16px;
+
+  @media (max-width: ${`${CONSTANTS.breakpoints.extraLargeX1}`}) {
+    margin-right: 16px;
+  }
+`
+
+const LeftLine = styled.div`
+  display: none;
+  flex-grow: 1;
+  height: 1px;
+  background: rgb(95, 126, 151);
+  margin-left: 16px;
+
+  @media (max-width: ${`${CONSTANTS.breakpoints.extraLargeX1}`}) {
+    display: inline-block;
+    margin-right: 16px;
+  }
+`
+
+const HeaderContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+    margin: 26px 0;
+`
+
 
 const AbouMe = () => {
     return (
         <Container id='about-me'>
             <InnerContainer>
-                <SectionTitle>About Me</SectionTitle>
+                <HeaderContainer>
+                    <LeftLine />
+                    <SectionTitle>About Me</SectionTitle>
+                    <Line />
+                </HeaderContainer>
                 <ContentContainer>
                     <ProfileImage />
                     <InfoContainer>
