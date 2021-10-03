@@ -1,7 +1,7 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { Home, Blog, Projects, Play, Tools, About, QRCode, Music } from './components/views'
 import Breakout from './components/views/games/breakout'
-
+import FlappySquare from './components/views/games/flappysquare'
 const App = () => {
   return (
     <BrowserRouter>
@@ -15,6 +15,7 @@ const App = () => {
           <Route path='/about' component={About} />
           <Route path='/qr-code' component={QRCode} />
           <Route path='/games/breakout' component={Breakout} />
+          <Route path='/games/flappysquare' component={FlappySquare} />
           <Route path='/music' component={Music} />
         </Switch>
       </div>

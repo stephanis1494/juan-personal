@@ -37,9 +37,8 @@ const RegisterScore = async e => {
   }
 }
 
-export default function Board({
-  setGameEnded = () => {},
-}) {
+export default function Board({ setGameEnded = () => {}, }) {
+
   const canvasRef = useRef(null)
 
   let brickGrid = new Array(

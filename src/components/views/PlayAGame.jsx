@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from "styled-components";
 import Breakout from "./games/breakout";
+import FlappySquare from './games/flappysquare'
 import CONSTANTS from '../global_styles/constants';
 const Container = styled.div`
     /* height: 100vh; */
@@ -96,7 +97,7 @@ const PlayAGame = () => {
     
                 <ContentContainer>
                     <div id='game-container'>
-                        <Breakout />
+                        <FlappySquare></FlappySquare>
                     </div>
                 </ContentContainer>
 
