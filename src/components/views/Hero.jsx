@@ -147,10 +147,10 @@ const Hero = () => {
                     I enjoy solving <Highlight>real world problems</Highlight><br /> making use of <Highlight>new technologies</Highlight>.
                 </HeaderSubText>
 
-                <HeaderDownArrow 
+                <HeaderDownArrow
                     onClick={() => scrollIntoView('about-me', 'start')}
                 >
-                    <BsChevronDoubleDown/>
+                    <BsChevronDoubleDown style={{ width: '32px', height: '32px' }}/>
                 </HeaderDownArrow>
 
             </HeaderInnerContainer>

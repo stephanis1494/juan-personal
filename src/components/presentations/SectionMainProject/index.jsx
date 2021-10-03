@@ -14,21 +14,11 @@ const SectionTitle = styled.h2`
   color: rgb(204, 215, 245);
   display: flex;
 
-  &:after {
-    display: block;
-    content: '';
-    /* width: 32%; */
-    height: 1px;
-    transform: translateY(22px);
-    background: rgb(95, 126, 151);
-    flex: 1 1 auto;
-    margin-left: 12px;
-  }
-
   @media (max-width: ${`${CONSTANTS.breakpoints.tabletX1}`}) {
     font-size: 24px;
   }
 `
+
 const SectionContent = styled.div`
   display: grid;
   grid-template-columns: repeat(24, 1fr);
@@ -147,7 +137,7 @@ const Line = styled.div`
   flex-grow: 1;
   height: 1px;
   background: rgb(95, 126, 151);
-  margin-left: 8px;
+  margin-left: 16px;
 
   @media (max-width: ${`${CONSTANTS.breakpoints.extraLargeX1}`}) {
     margin-right: 16px;
