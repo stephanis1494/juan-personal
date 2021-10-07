@@ -2,6 +2,7 @@ import React from 'react'
 import styled from "styled-components";
 import Breakout from "./games/breakout";
 import FlappySquare from './games/flappysquare'
+import Dinosaur from './games/dinosaur';
 import CONSTANTS from '../global_styles/constants';
 const Container = styled.div`
     /* height: 100vh; */
@@ -36,25 +37,53 @@ const SectionTitle = styled.h2`
 
 const ContentContainer = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: start;
   justify-content: flex-start;
   width: 850px;
 
-  & > div {
-      max-width: 75%;
-      width: 75%;
-      margin-left: 36px;
-      line-height: 1.6;
-      font-size: 16px;
+  & > #breakout-container {
+    max-width: 75%;
+    width: 75%;
+    margin-left: 36px;
+    line-height: 1.6;
+    font-size: 16px;
+    display: inline-block;
+    @media (max-width: ${CONSTANTS.breakpoints.tabletX1}) {
+      display: none;
+    }
   }
 
-  & > div > p {
+  & > #flappy-container {
+    max-width: 75%;
+    width: 75%;
+    margin-left: 36px;
+    line-height: 1.6;
+    font-size: 16px;
+    display: none;
+    @media (max-width: ${CONSTANTS.breakpoints.phoneX1}) {
+      display: inline-block;
+    }
+  }
+
+  & > #dinosaur-container {
+    max-width: 75%;
+    width: 75%;
+    margin-left: 36px;
+    line-height: 1.6;
+    font-size: 16px;
+    display: none;
+    @media (max-width: ${CONSTANTS.breakpoints.phoneX1}) {
+      display: inline-block;
+      
+    }
+  }
+
+  /* & > div > p {
       margin-top: 0;
       color: #ccd7f5;
-      /* background: red; */
-  }
-
+  } */
+/* 
   & > div > .technologies {
       display: grid;
       grid-template-columns: repeat(3, 90px);
@@ -75,11 +104,8 @@ const ContentContainer = styled.div`
       background: #e5ca40;
       border-radius: 4px;
       color: #011627;
-  }
+  } */
 
-  @media (max-width: ${CONSTANTS.breakpoints.tabletX1}) {
-      display: none;
-  }
 `
 
 const HeaderContainer = styled.div`
@@ -125,8 +151,14 @@ const PlayAGame = () => {
                 </HeaderContainer>
 
                 <ContentContainer>
-                    <div id='game-container'>
-                        <FlappySquare></FlappySquare>
+                    <div id='breakout-container'>
+                        <Breakout/>
+                    </div>
+                    {/* <div id="flappy-container">
+                        <FlappySquare/>
+                    </div> */}
+                    <div id="dinosaur-container">
+                      <Dinosaur />
                     </div>
                 </ContentContainer>
 

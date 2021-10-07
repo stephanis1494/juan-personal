@@ -1,26 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components';
-
-const Canvas = styled.canvas`
-  background-color: #134959;
-  touch-action: manipulation;
-  `
-
-const ButtonContainer = styled.div`
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-`
-const TapButton = styled.button`
-    touch-action: manipulation;
-    width: 100px;
-    height: 300px;
-    margin: 25px;
-`
+import CONSTANTS from '../../../global_styles/constants';
 
 const FlappySquare = () => {  
 
     let theCanvas, theContext
+
+   
 
     useEffect(() => {        
         theCanvas = canvasRef.current
@@ -36,13 +22,16 @@ const FlappySquare = () => {
     let myGamePiece
     let playerBullets =[]
     let myObstacles = []
-    // let myObst
-    // let gameStatus = ['paused', 'started', 'ended']
+    let gameStatus = 'loaded'
+    // let gameStatus = ['paused', 'started', 'ended', ]
 
     function startGame() {
-        // myObst = new component(60, 60, "yellow", 50, 50)
-        myGamePiece = new component(60, 60, "red", 80, theCanvas.height /2, 3);
-        myGameArea.start();
+        if(gameStatus === 'loaded') {
+            // myObst = new component(60, 60, "yellow", 50, 50)
+            myGamePiece = new component(60, 60, "red", 80, (theCanvas.height / 2) - (60/2), 'player', 3);
+            myGameArea.start();
+            gameStatus = 'started'
+        }
     }
         
     let myGameArea = {
@@ -75,18 +64,17 @@ const FlappySquare = () => {
         this.speedX = 0
         this.speedY = 0
         this.crash = false
-        this.lives = 0
+        this.lives = type === 'player' ? lives : ''
         // this.gravity = 0.1;
         // this.gravitySpeed = 0;
         
         this.update = function() {
-            // ctx = myGameArea.context;
-            // theContext.clearRect(0, 0, theCanvas.width, theCanvas.height)
-            DrawUiText(theContext, this.lives, 50, 50)
-            theContext.beginPath()
+            if(this.type === 'player') {
+                DrawUiText(theContext, this.lives, 50, 50)
+            }
+
             theContext.fillStyle = color
             theContext.fillRect(this.x, this.y, this.width, this.height)
-            theContext.closePath()
         }
         this.newPos = function() {
             // this.gravitySpeed += this.gravity;
@@ -136,18 +124,37 @@ const FlappySquare = () => {
     }
         
     function updateGameArea() {
-
-        
-        myObstacles = myObstacles.filter(obstacle => obstacle.x > 10)
-
+        // could not this be a method or something? 
+        myObstacles = myObstacles.filter(obstacle => obstacle.x > theCanvas.width/16)
+        playerBullets = playerBullets.filter(bullet => bullet.x < theCanvas.width)
         myObstacles.map((obstacle, i) => {
             
             if(obstacle.crashWith(myGamePiece)) { 
-                console.log('bom ' + obstacle.crash) 
-                myGameArea.stop()
-                // return
-                myGameArea.restart()
-            }
+                if(myGamePiece.lives > 0) {
+                    // remove the enemy from the game
+                    myObstacles = myObstacles.filter(obstacle => obstacle.crash === false)
+
+                    // subtract -1
+                    myGamePiece.lives -= 1
+                    // console.log('bom ' + obstacle.crash) 
+                    // myGameArea.stop()
+                    // myGameArea.restart()
+                } else if(myGamePiece.lives === 0) {
+                    myGameArea.stop()
+                    gameStatus = 'ended'
+                }
+            }     
+            
+            
+            playerBullets.map((bullet, i) => {
+                if(obstacle.crashWith(bullet)) {
+                    myObstacles = myObstacles.filter(obstacle => obstacle.crash === false) 
+                }
+
+                if(bullet.crashWith(obstacle)) {
+                    playerBullets = playerBullets.filter(bullet => bullet.crash === false)
+                }
+            })
         })
 
         // code for destroying enemies
@@ -164,6 +171,11 @@ const FlappySquare = () => {
             let randomHeight = Math.floor(Math.random()*(maxHeight-minHeight+1)+minHeight)
             myObstacles.push(new component(60, 60, "yellow", theCanvas.width, randomHeight))
         }
+
+        playerBullets.map((bullet, i) => {
+            bullet.x +=20
+            bullet.update()
+        })
 
         myObstacles.map((obstacle, i) => {
             obstacle.x -=10
@@ -184,6 +196,10 @@ const FlappySquare = () => {
         return false;
     }
     
+    const handleShooting = () => {
+        playerBullets.push(new component(10, 10, 'green', myGamePiece.x, myGamePiece.y + myGamePiece.height/2 ))
+    }
+
     const handleTouchStart = (e, n) => {
         e.preventDefault()
         accelerate(n)
@@ -205,10 +221,9 @@ const FlappySquare = () => {
     }
     
     return (
-        <>
+        <GameContainer>
             <Canvas
-            height="500px"
-            width="800px"
+  
             // onKeyPress = {}
             // onTouchStart = {handleTouchStart(-0.2)}
             // onTouchEnd = {handleTouchEnd(0.1)}
@@ -218,7 +233,7 @@ const FlappySquare = () => {
             />
 
             <ButtonContainer>
-                <div>
+                <DirectionalButtons>
 
                     <TapButton 
                         onClick={(e)=>{handleTouchStart(e, -8)}} 
@@ -229,17 +244,76 @@ const FlappySquare = () => {
                         onClick={(e)=>{handleTouchStart(e, 8)}} 
                         // onTouchEnd={(e)=>{handleTouchEnd(e, 0.9)}} 
                     >down</TapButton>
-                </div>
-            
-                <TapButton 
-                    onClick={(e)=>{handleTouchStart(e, 0)}} 
-                    // onTouchEnd={(e)=>{handleTouchEnd(e, 0.9)}} 
-                >stop</TapButton>
+                </DirectionalButtons>
+                
+                <ActionsButtons>
+                    <FireButton onClick={(e) => {handleShooting()}}>fire</FireButton>
+                
+                    <TapButton 
+                        onClick={(e)=>{handleTouchStart(e, 0)}} 
+                        // onTouchEnd={(e)=>{handleTouchEnd(e, 0.9)}} 
+                        >stop</TapButton>
 
-                <TapButton onClick={(e)=>{startGame()}}>Start</TapButton>
+                    <TapButton onClick={(e)=>{startGame()}}>Start</TapButton>
+                </ActionsButtons>
+
             </ButtonContainer>
-        </>
+        </ GameContainer>
     )
 }
 
 export default FlappySquare
+
+// ====================
+// styled components
+// ====================
+
+const GameContainer = styled.div`
+width: fit-content;
+`
+const Canvas = styled.canvas`
+  background-color: #134959;
+  touch-action: manipulation;
+  height: 500px;
+  width: 800px;
+
+  @media (max-width: ${CONSTANTS.breakpoints.phoneX1}) {
+    height: 180px;
+    width: 290px;
+  }
+`
+
+const DirectionalButtons = styled.div`
+display: flex;
+flex-direction: column;
+`
+
+const ButtonContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    touch-action: manipulation;
+    max-height: 250px;
+`
+
+const ActionsButtons = styled.div`
+    display: flex;
+    flex-direction: column;
+`
+
+const TapButton = styled.button`
+    touch-action: manipulation;
+    width: 100px;
+    height: 100px;
+    /* margin: 15px; */
+    border-radius: 50%;
+    border: none;
+    @media (max-width: ${CONSTANTS.breakpoints.phoneX1}) {
+        width: 25px;
+        height : 25px;
+    }
+`
+
+const FireButton = styled.button`
+    width: 100px;
+`

@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import CONSTANTS from "./constants";
 
 const GeneralPageStyling = createGlobalStyle`
     * {
@@ -10,6 +11,7 @@ const GeneralPageStyling = createGlobalStyle`
     body {
         margin: 0;
         padding: 0;
+        background: ${CONSTANTS.colors.primaryColor};
     }
 `
 
