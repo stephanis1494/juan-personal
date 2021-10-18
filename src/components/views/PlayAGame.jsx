@@ -40,7 +40,7 @@ const ContentContainer = styled.div`
   flex-direction: column;
   align-items: start;
   justify-content: flex-start;
-  width: 850px;
+  width: 100%;
 
   & > #breakout-container {
     max-width: 75%;

@@ -9,7 +9,7 @@ const Container = styled.div`
     background:rgb(1,22,39);
     box-sizing: border-box;
     
-    padding: 4em 0;
+    padding: 0 0;
 
     display: flex;
     justify-content: center;
@@ -19,16 +19,20 @@ const Container = styled.div`
 const InnerContainer = styled.div`
     width: 100%;
     max-width: 900px;
-`
+
+    @media (max-width: ${`${CONSTANTS.breakpoints.tabletX1}`}) {
+        font-size: ${CONSTANTS.fontScale.regular};
+        width: 90%;
+    }
+    `
 
 
 const SectionTitle = styled.h2`
     font-size: ${CONSTANTS.fontScale.medium};
-    color: rgb(204, 215, 245);
-    display: flex;
+    color: rgb(204, 215, 245);   
 
     @media (max-width: ${`${CONSTANTS.breakpoints.tabletX1}`}) {
-        font-size: 24px;
+        font-size: ${CONSTANTS.fontScale.regular}
     }
 `
 
@@ -39,12 +43,24 @@ const ContentContainer = styled.div`
   justify-content: flex-start;
   width: 850px;
 
+  @media (max-width: ${`${CONSTANTS.breakpoints.tabletX1}`}) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
   & > div {
-      max-width: 75%;
-      width: 75%;
-      margin-left: 36px;
-      line-height: 1.6;
-      font-size: 16px;
+    max-width: 800px;
+    width: 75%;
+    margin-left: 36px;
+    line-height: 1.6;
+    font-size: 16px;
+
+    @media (max-width: ${`${CONSTANTS.breakpoints.tabletX1}`}) {
+        margin-left: 0;
+        width: 100%;
+    }
   }
 
   & > div > p {
@@ -80,12 +96,7 @@ const ContentContainer = styled.div`
       color: #011627;
   }
 
-    @media (max-width: 800px) {
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-    }
+  
 `
 
 const ProfileImage = styled.img.attrs({

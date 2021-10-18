@@ -204,7 +204,7 @@ const WidgetSecondaryProjects = () => {
             <InnerContainer>
                 <HeaderContainer>
                     <LeftLine />
-                    <SectionTitle>Also have made these</SectionTitle>
+                    <SectionTitle>Other projects</SectionTitle>
                     <Line />
                 </HeaderContainer>
 

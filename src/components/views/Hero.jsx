@@ -9,21 +9,24 @@ let {breakpoints, colors, fontScale, fontWeight, fontSpacing} = CONSTANTS
 
 const Header = styled.div`
   width: 100%;
-  /* min-height: 480px; */
   height: 100vh;
+  background: #011627;
+  display: flex;
+  justify-content: center;
+  /* min-height: 480px; */
   /* max-height: 100vh; */
   /* background-size: cover; */
   /* background-image: url('https://res.cloudinary.com/df0ll615k/image/upload/v1624845820/Asset_3_2x.png'); */
   /* filter: blur(8px); */
-  background: #011627;
-  display: flex;
-  justify-content: center;
   /* margin: 0 auto; */
   /* flex-wrap: wrap; */
+  @media (max-width: ${breakpoints.phoneX1}) {
+    height: 100vh;
+  }
 `
 
 const HeaderInnerContainer = styled.div`
-  width: 850px;
+  max-width: 850px;
     
   display: flex;
   flex-direction: column;
@@ -101,7 +104,7 @@ const HeaderDownArrow = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 10px;
+  margin-top: 24px;
   font-size: 48px;
   color: #ccd8f4;
   cursor: pointer;
@@ -110,50 +113,50 @@ const HeaderDownArrow = styled.div`
 const Hero = () => {
     return (
         <Header>
-            <HeaderInnerContainer>
-                <HeaderSubText
-                    fontSize={fontScale.small}
-                    color={colors.accentColor}
-                    fontWeight={fontWeight.extraBold800}
-                    margin='0 0 12px 0'
-                    letterSpacing={fontSpacing.regularSpacing}
-                >
-                    Hello there, I am
-                </HeaderSubText>
+          <HeaderInnerContainer>
+            <HeaderSubText
+                fontSize={fontScale.small}
+                color={colors.accentColor}
+                fontWeight={fontWeight.extraBold800}
+                margin='0 0 12px 0'
+                letterSpacing={fontSpacing.regularSpacing}
+            >
+                Hello there, I am
+            </HeaderSubText>
 
-                <HeaderSubtitle
-                    fontSize={fontScale.bigX2}
-                    color='#ccd8f4'
-                    fontWeight={fontWeight.extraBold800}
-                    margin={'0 0 0 0'}
-                >
-                    Juan Luis Chaurant.
-                </HeaderSubtitle>
-                <HeaderSubtitle
-                    fontSize={fontScale.bigX2}
-                    color='rgb(132,159,182)'
-                    fontWeight='800'
-                    margin={'0 0 0 0'}
-                >
-                    Making the web.
-                </HeaderSubtitle>
+            <HeaderSubtitle
+                fontSize={fontScale.bigX2}
+                color='#ccd8f4'
+                fontWeight={fontWeight.extraBold800}
+                margin={'0 0 0 0'}
+            >
+                Juan Luis Chaurant.
+            </HeaderSubtitle>
+            <HeaderSubtitle
+                fontSize={fontScale.bigX2}
+                color='rgb(132,159,182)'
+                fontWeight='800'
+                margin={'0 0 0 0'}
+            >
+                Making the web.
+            </HeaderSubtitle>
 
-                <HeaderSubText
-                    fontSize={fontScale.regular}
-                    color='#ccd8f4'
-                    margin={'16px 0 0 0'}
-                    fontSpacing={fontSpacing.smallSpacing}
-                >
-                    I enjoy solving <Highlight>real world problems</Highlight><br /> making use of <Highlight>new technologies</Highlight>.
-                </HeaderSubText>
+            <HeaderSubText
+                fontSize={fontScale.regular}
+                color='#ccd8f4'
+                margin={'16px 0 0 0'}
+                fontSpacing={fontSpacing.smallSpacing}
+            >
+                I enjoy solving <Highlight>real world problems</Highlight><br /> making use of <Highlight>new technologies</Highlight>.
+            </HeaderSubText>
 
-                <HeaderDownArrow
-                    onClick={() => scrollIntoView('about-me', 'start')}
-                >
-                    <BsChevronDoubleDown style={{ width: '32px', height: '32px' }}/>
-                </HeaderDownArrow>
+            <HeaderDownArrow
+                onClick={() => scrollIntoView('about-me', 'start')}
+            >
+                <BsChevronDoubleDown style={{ width: '32px', height: '32px' }}/>
+            </HeaderDownArrow>
 
-            </HeaderInnerContainer>
+          </HeaderInnerContainer>
 
             <WidgetLeftBar />
         </Header>

@@ -22,7 +22,6 @@ const Character = styled.div`
     position: relative;
     top: 140px;
     animation: ${CharacterJump} 500ms  infinite;
-       // animation: ${props => props.characterJump ? ${CharacterJump} 500ms  infinite}
 `
 
 const AnimateBlock = keyframes`
@@ -42,6 +41,11 @@ const Block = styled.div`
 function jumpNow() {
 
 }
+
+const checkDeath = setTimeout(() => {
+    // if(blockLeft>0 &&  blockLeft<20)
+    console.log('hi hi c:')
+}, 10)
 
 const Dinosaur = () => {
     const [characterJump, setCharacterJump] = useState(false)
