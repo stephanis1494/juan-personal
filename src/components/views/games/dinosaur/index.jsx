@@ -1,12 +1,14 @@
-import React, {useState} from 'react'
-import styled, { keyframes } from 'styled-components'
+import React, { useState, useEffect } from 'react'
+import styled, { keyframes, css } from 'styled-components'
+import { motion } from 'framer-motion'
 
 const GameBoard = styled.div`
-    width: 280px;
-    height: 190px;
-    border: 1px solid black;
-    background: white;
-    overflow: hidden;
+  width: 280px;
+  height: 190px;
+  border: 1px solid black;
+  background: white;
+  overflow: hidden;
+  position: relative;
 `
 
 const CharacterJump = keyframes`
@@ -24,23 +26,36 @@ const Character = styled.div`
     animation: ${CharacterJump} 500ms  infinite;
 `
 
-const AnimateBlock = keyframes`
-    0%{left: 240px;}
-    100%{left: -20px;}
+const BlueSquare = styled(motion.div)`
+  height: 16px;
+  width: 16px;
+  background: blue;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border: 2px solid rgba(0, 0, 0, 0.1);
 `
-const Block = styled.div`
-    width: 20px;
-    height: 20px;
-    background: blue;
-    position: relative;
-    top: 120px;
-    left: 260px;
-    animation: ${AnimateBlock} 1.2s infinite;
-    `
 
-function jumpNow() {
+const OtherBlueSquare = styled(motion.div)`
+  height: 16px;
+  width: 16px;
+  background: blue;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+`
 
-}
+const YellowSquare = styled(motion.div)`
+  height: 32px;
+  width: 32px;
+  background: yellow;
+  position: absolute;
+  bottom: 0;
+  left: 8px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+`
 
 const checkDeath = setTimeout(() => {
     // if(blockLeft>0 &&  blockLeft<20)
@@ -48,13 +63,62 @@ const checkDeath = setTimeout(() => {
 }, 10)
 
 const Dinosaur = () => {
-    const [characterJump, setCharacterJump] = useState(false)
-    return (
-        <GameBoard onTouchStart={(e)=>{setCharacterJump(true)}}>
-            <Character characterJump={characterJump}></Character>
-            <Block />
-        </GameBoard>
-    )
+  const [characterJump, setCharacterJump] = useState(false)
+  const [reset, setReset] = useState(false)
+  const [jump, setJump] = useState(false)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setReset(!reset)
+    }, 1750)
+
+    return () => clearInterval(interval)
+  }, [reset])
+
+  const handleKeyDown = (e) => {
+    console.log({ e })
+    if (e.code === 'KeyZ') {
+      setJump(true)
+    }
+  }
+
+  useEffect(() => {
+    if (jump) {
+      setTimeout(() => setJump(false), 300)
+    }
+  }, [jump])
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyDown)
+
+    return () => document.addEventListener('keydown', handleKeyDown)
+  }, [jump])
+
+  return (
+    <GameBoard
+      onTouchStart={(e) => {
+        setCharacterJump(true)
+      }}
+    >
+      <YellowSquare
+        animate={{ y: jump ? -100 : 0 }}
+        transition={{ duration: 0.3 }}
+      />
+      {reset ? (
+        <BlueSquare
+          initial={{ x: 32 }}
+          animate={{ x: -302 }}
+          transition={{ duration: 2 }}
+        />
+      ) : (
+        <OtherBlueSquare
+          initial={{ x: 32 }}
+          animate={{ x: -302 }}
+          transition={{ duration: 2 }}
+        />
+      )}
+    </GameBoard>
+  )
 }
 
 export default Dinosaur

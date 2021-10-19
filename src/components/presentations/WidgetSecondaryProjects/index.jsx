@@ -113,6 +113,7 @@ const TabsSidebar = styled.div`
     flex-direction: column;
     width: 135px;
     flex-shrink: 0;
+    z-index: 6;
     @media (max-width: ${`${CONSTANTS.breakpoints.tabletX1}`}) {
         width: 100%;
         margin-bottom: 16px;
@@ -216,12 +217,10 @@ const WidgetSecondaryProjects = () => {
                                 onClick={() => {handleToggleTab(1)}}
                                 className={toggleTab === 1 ? 'tabs__button--active' : ''}
                                 >QR Generator</Button>
-
                             <Button
                                 onClick={() => {handleToggleTab(2)}}
                                 className={toggleTab === 2 ? 'tabs__button--active' : ''}
                                 >Auto-mail</Button>
-
                             <Button
                                 onClick={() => {handleToggleTab(3)}}
                                 className={toggleTab === 3 ? 'tabs__button--active' : ''}

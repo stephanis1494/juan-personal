@@ -114,6 +114,7 @@ const Menu = ({ onClose = () => {}, handleMobileMenuSelect = () => {} }) => (
 )
 
 const Nav = styled(motion.div)`
+    z-index:5;
     box-sizing: border-box;
     width: 100%;
     position: fixed;
