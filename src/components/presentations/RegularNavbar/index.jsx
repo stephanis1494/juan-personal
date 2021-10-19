@@ -5,12 +5,18 @@ import { debounce } from 'throttle-debounce'
 import { scrollIntoView } from "../../utils/scrollIntoView"
 import { motion, AnimatePresence } from 'framer-motion'
 
-
 const RegularNavbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [showBar, setShowBar] = useState(true)
   const [lastScrollPositionY, setLastScrollPositionY] = useState(window.scrollY)
 
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, [isOpen])
 
   const handleScroll = debounce(10, true, () => {
     const position = window.scrollY
