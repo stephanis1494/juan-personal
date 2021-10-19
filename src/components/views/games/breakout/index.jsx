@@ -18,24 +18,24 @@ const GameContainer = styled.div`
 export default function Breakout() {
   const [gameStarted, setGameStarted] = useState(false)
   const [gameEnded, setGameEnded] = useState(false)
-  
+
   const [playerName, setPlayerName] = useState('')
   const [nameSubmit, setNameSubmit] = useState(false)
 
   const [highScores, setHighScores] = useState([])
-  
+
   const getScores = async() => {
     try {
         const response = await fetch('http://localhost:5000/get_top_three')
-  
+
         const jsonData = await response.json()
-  
+
         // console.log(jsonData)
         setHighScores(jsonData)
     } catch (error) {
         console.error(error.message)
     }
-  } 
+  }
 
 
   const handlePlayerName = (e) => {
@@ -55,7 +55,7 @@ export default function Breakout() {
       e.preventDefault()
       setGameEnded(false)
       setGameStarted(true)
-    } 
+    }
   }
 
   const handleGameEnd = () => {
@@ -81,7 +81,7 @@ export default function Breakout() {
           <h1>Game ended Amigo</h1>
           <WelcomePlayer nameSubmit={nameSubmit}>Your score is: {data.playerObject.score}</WelcomePlayer>
           <PressSpace>Press Spacebar to Restart</PressSpace>
-        
+
         </StartScreen>
       ) : gameStarted ? (
         <Board setGameEnded={handleGameEnd} />
@@ -91,8 +91,8 @@ export default function Breakout() {
 
           <NameDisplay>
             <Form action="#" onSubmit={handlePlayerName} nameSubmit={nameSubmit}>
-              <Input type="text" 
-                value={playerName} 
+              <Input type="text"
+                value={playerName}
                 onChange={event => setPlayerName(event.target.value)}
                 maxLength="5"
                 placeholder='Type a name, e.g. Juan'
@@ -161,7 +161,14 @@ const blinkIt = keyframes`
   }
 `
 
+// global style
+// specific style
+// global important style
+// specific important style
+// inline styling
+
 const Title = styled.h1`
+  font-family: 'Press Start 2P', cursive !important;
   font-size: 2em;
   color: #fff;
   text-shadow:
