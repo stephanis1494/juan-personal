@@ -162,6 +162,7 @@ const blinkIt = keyframes`
 `
 
 const Title = styled.h1`
+  font-family: 'Press Start 2P', cursive;
   font-size: 2em;
   color: #fff;
   text-shadow:
