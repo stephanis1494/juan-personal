@@ -12,6 +12,10 @@ const GeneralStyle = createGlobalStyle`
         display: block;
 
     }
+    .tabs__content--innactive {
+        display: none;
+
+    }
 
     .tabs__button--active {
         background: rgb(4,48,83);
@@ -234,7 +238,7 @@ const WidgetSecondaryProjects = () => {
 						</TabsSidebar>
 
 							<TabsContent
-									className={toggleTab === 1 ? 'tabs__content--active' : ''}
+									className={toggleTab === 1 ? 'tabs__content--active' : 'tabs__content-innactive'}
 									>
 									<div className='tabs__title'><span>QR Generator</span><span><FiGithub/><IoMdOpen/></span></div>
 									<p className="tabs__date">March 12 - April 01 2021</p>
@@ -246,7 +250,7 @@ const WidgetSecondaryProjects = () => {
 							</TabsContent>
 
 							<TabsContent
-									className={parseInt(toggleTab) === 2 ? 'tabs__content--active' : ''}
+									className={parseInt(toggleTab) === 2 ? 'tabs__content--active' : 'tabs__content-innactive'}
 									>
 									<div className='tabs__title'>Hola 2</div>
 									<p className="tabs__date"></p>
@@ -254,7 +258,7 @@ const WidgetSecondaryProjects = () => {
 							</TabsContent>
 
 							<TabsContent
-									className={parseInt(toggleTab) === 3 ? 'tabs__content--active' : ''}
+									className={parseInt(toggleTab) === 3 ? 'tabs__content--active' : 'tabs__content-innactive'}
 									>
 									<div className='tabs__ttitle'>Hola 3.2</div>
 							</TabsContent>
