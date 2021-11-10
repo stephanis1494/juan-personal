@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled, { createGlobalStyle } from 'styled-components'
 import {IoMdOpen} from 'react-icons/io'
 import {FiGithub} from 'react-icons/fi'
@@ -133,7 +133,7 @@ const TabsSidebarContainer = styled.div`
         border-bottom: 2px solid rgb(95,126,151);
         flex-direction: row;
     }
-    `
+`
 
 const Button = styled.button`
     background: transparent;
@@ -192,72 +192,77 @@ const HeaderContainer = styled.div`
 `
 
 const WidgetSecondaryProjects = () => {
-    const [toggleTab, setToggleTab] = useState(1)
+	const [toggleTab, setToggleTab] = useState(1)
 
-    const handleToggleTab = (index) => {
-        setToggleTab(index)
-    }
+	const handleToggleTab = (index) => {
+			setToggleTab(index)
+	}
 
-    return (
-        <Container>
-            <GeneralStyle />
+	useEffect(() => {
+		// setToggleTab(1)
+	},[toggleTab])
 
-            <InnerContainer>
-                <HeaderContainer>
-                    <LeftLine />
-                    <SectionTitle>Other projects</SectionTitle>
-                    <Line />
-                </HeaderContainer>
+	return (
+		<Container>
+			{/* global styles */}
+			<GeneralStyle />
 
-                <TabsContainer>
+			<InnerContainer>
+					<HeaderContainer>
+							<LeftLine />
+							<SectionTitle>Other projects</SectionTitle>
+							<Line />
+					</HeaderContainer>
 
-                    <TabsSidebar>
-                        <TabsSidebarContainer>
-                            <Button
-                                onClick={() => {handleToggleTab(1)}}
-                                className={toggleTab === 1 ? 'tabs__button--active' : ''}
-                                >QR Generator</Button>
-                            <Button
-                                onClick={() => {handleToggleTab(2)}}
-                                className={toggleTab === 2 ? 'tabs__button--active' : ''}
-                                >Auto-mail</Button>
-                            <Button
-                                onClick={() => {handleToggleTab(3)}}
-                                className={toggleTab === 3 ? 'tabs__button--active' : ''}
-                                >Clients App</Button>
-                        </TabsSidebarContainer>
-                    </TabsSidebar>
+					<TabsContainer>
 
-                    <TabsContent
-                        className={toggleTab === 1 ? 'tabs__content--active' : ''}
-                        >
-                        <div className='tabs__title'><span>QR Generator</span><span><FiGithub/><IoMdOpen/></span></div>
-                        <p className="tabs__date">March 12 - April 01 2021</p>
+						<TabsSidebar>
+							<TabsSidebarContainer>
+									<Button
+											onClick={() => {handleToggleTab(1)}}
+											className={toggleTab === 1 ? 'tabs__button--active' : ''}
+											>QR Generator</Button>
+									<Button
+											onClick={() => {handleToggleTab(2)}}
+											className={toggleTab === 2 ? 'tabs__button--active' : ''}
+											>Auto-mail</Button>
+									<Button
+											onClick={() => {handleToggleTab(3)}}
+											className={toggleTab === 3 ? 'tabs__button--active' : ''}
+											>Clients App</Button>
+							</TabsSidebarContainer>
+						</TabsSidebar>
 
-                        <p className="tabs_content">A QR Code generartor, made to automate the process of batch generating QR Codes with the information contanied into a .XLSX Workbook (EXCEL Workbook).</p>
+							<TabsContent
+									className={toggleTab === 1 ? 'tabs__content--active' : ''}
+									>
+									<div className='tabs__title'><span>QR Generator</span><span><FiGithub/><IoMdOpen/></span></div>
+									<p className="tabs__date">March 12 - April 01 2021</p>
 
-                        <p className='tabs_content'>
-                        It is built with Vainilla JavaScript, using the capabilities of node js to write on the clients computer.</p>
-                    </TabsContent>
+									<p className="tabs_content">A QR Code generartor, made to automate the process of batch generating QR Codes with the information contanied into a .XLSX Workbook (EXCEL Workbook).</p>
 
-                    <TabsContent
-                        className={parseInt(toggleTab) === 2 ? 'tabs__content--active' : ''}
-                        >
-                        <div className='tabs__title'>Hola 2</div>
-                        <p className="tabs__date"></p>
-                        <p className="tabs_content"></p>
-                    </TabsContent>
+									<p className='tabs_content'>
+									It is built with Vainilla JavaScript, using the capabilities of node js to write on the clients computer.</p>
+							</TabsContent>
 
-                    <TabsContent
-                        className={parseInt(toggleTab) === 3 ? 'tabs__content--active' : ''}
-                        >
-                        <div className='tabs__ttitle'>Hola 3</div>
-                    </TabsContent>
+							<TabsContent
+									className={parseInt(toggleTab) === 2 ? 'tabs__content--active' : ''}
+									>
+									<div className='tabs__title'>Hola 2</div>
+									<p className="tabs__date"></p>
+									<p className="tabs_content"></p>
+							</TabsContent>
 
-                </TabsContainer>
-            </InnerContainer>
-        </Container>
-    )
+							<TabsContent
+									className={parseInt(toggleTab) === 3 ? 'tabs__content--active' : ''}
+									>
+									<div className='tabs__ttitle'>Hola 3.2</div>
+							</TabsContent>
+
+					</TabsContainer>
+			</InnerContainer>
+		</Container>
+	)
 }
 
 export default WidgetSecondaryProjects
