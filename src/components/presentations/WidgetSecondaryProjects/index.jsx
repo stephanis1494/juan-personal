@@ -202,9 +202,9 @@ const WidgetSecondaryProjects = () => {
 			setToggleTab(index)
 	}
 
-	useEffect(() => {
-		// setToggleTab(1)
-	},[toggleTab])
+	// useEffect(() => {
+	// 	// setToggleTab(1)
+	// },[toggleTab])
 
 	return (
 		<Container>
