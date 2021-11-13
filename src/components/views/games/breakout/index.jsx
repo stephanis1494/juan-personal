@@ -24,7 +24,7 @@ export default function Breakout() {
 
   const [highScores, setHighScores] = useState([])
 
-  const getScores = async() => {
+/*  const getScores = async() => {
     try {
         const response = await fetch('http://localhost:5000/get_top_three')
 
@@ -35,7 +35,7 @@ export default function Breakout() {
     } catch (error) {
         console.error(error.message)
     }
-  }
+  }*/
 
 
   const handlePlayerName = (e) => {
@@ -68,7 +68,7 @@ export default function Breakout() {
     document.addEventListener('keydown', handleKeyDown)
 
     // is it okay to do the call here?
-    getScores()
+    // getScores()
 
     return () => document.removeEventListener('keydown', handleKeyDown)
   }, [handleKeyDown])
@@ -98,7 +98,12 @@ export default function Breakout() {
                 placeholder='Type a name, e.g. Juan'
               />
               <Button>
-                  <SendButton playerName={playerName}/>
+                  <AiOutlineSend
+                    style={{
+                      transform: 'scale(2)',
+                      color: playerName ? '#ffffff' : '#fefefe60'
+                    }}
+                  />
               </Button>
             </Form>
           </NameDisplay>
@@ -112,12 +117,13 @@ export default function Breakout() {
 
           <GlobalStyle/>
           <Top3Table>
+            <tbody>
             <tr>
               <th>Player</th>
               <th>Score</th>
               <th>Level</th>
             </tr>
-
+            </tbody>
           {
             highScores.map(highScore => (
               <tr>
@@ -222,11 +228,6 @@ const Button = styled.button`
   border: none;
   cursor: pointer;
   
-`
-const SendButton = styled(AiOutlineSend)`
-  color: ${ p => p.playerName.length > 2 ? '#ffffff' : '#fefefe60'};
-  transform: scale(2);
-  /* margin: 5%; */
 `
 
 const WelcomePlayer = styled.div`

@@ -46,7 +46,6 @@ const RegularNavbar = () => {
         {
           showBar &&
           <Nav
-            fill={true}
             initial={{ y: -67 }}
             animate={{ y: 0 }}
             transition={{
