@@ -11,6 +11,10 @@ const GeneralStyle = createGlobalStyle`
     .tabs__content--active {
         display: block;
     }
+    .tabs__content--innactive {
+        display: none;
+
+    }
 
     .tabs__button--active {
         background: rgb(4,48,83);
@@ -132,7 +136,7 @@ const TabsSidebarContainer = styled.div`
         border-bottom: 2px solid rgb(95,126,151);
         flex-direction: row;
     }
-    `
+`
 
 const Button = styled.button`
     background: transparent;

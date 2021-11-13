@@ -59,7 +59,7 @@ const YellowSquare = styled(motion.div)`
 
 const checkDeath = setTimeout(() => {
     // if(blockLeft>0 &&  blockLeft<20)
-    console.log('hi hi c:')
+    // console.log('hi hi c:')
 }, 10)
 
 const Dinosaur = () => {

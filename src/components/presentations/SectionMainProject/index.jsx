@@ -57,19 +57,6 @@ const SectionContentImage = styled.img`
     display: none;
   }
 `
-const SectionContentBody = styled.div`
-  background: rgb(11, 41, 66);
-  color: rgb(204, 216, 244);
-  padding: 1px 24px;
-  border-radius: 8px;
-
-  font-size: 16px;
-  text-align: right;
-
-  align-self: center;
-  grid-column: 12 / -1;
-  grid-row: 3 / 5;
-`
 
 const SectionContentTechList = styled.div`
   grid-column: -1 / 18;
@@ -261,35 +248,3 @@ const SectionMainProject = () => {
 }
 
 export default SectionMainProject
-
-/*
-*         <Container>
-            <InnerContainer>
-            <SectionTitle>Projects I've built</SectionTitle>
-
-                <SectionContent>
-                    <SectionContentTitle>A Super Project</SectionContentTitle>
-                    <SectionContentImage src='https://assets-global.website-files.com/5fda3048302e579473bfb454/6081869d03bc45778e9e752c_CleanShot%20Slite%20Project%20Proposal%20Template%20-%20Project%20Proposal%20Template%20at%2018.21.39.png'></SectionContentImage>
-                    <SectionContentBody>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus, explicabo? Esse est illum obcaecati neque veniam cum similique velit, at sed et tenetur asperiores consequatur fugit accusantium nihil quo qui?</p>
-                    </SectionContentBody>
-
-                    <SectionContentTechList>
-                        <ul>
-                            <li>NODE</li>
-                            <li>NPM</li>
-                            <li>React</li>
-                            <li>Styled Components</li>
-                        </ul>
-                    </SectionContentTechList>
-
-                    <SectionContentLinks>
-                        <FiGithub className='githubIcon'/>
-                        <IoMdOpen/>
-                    </SectionContentLinks>
-                </SectionContent>
-
-
-            </InnerContainer>
-        </Container>
-* */
