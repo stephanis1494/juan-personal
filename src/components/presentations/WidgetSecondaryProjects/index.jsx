@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import styled, { createGlobalStyle } from 'styled-components'
+import styled, { createGlobalStyle, css } from 'styled-components'
 import {IoMdOpen} from 'react-icons/io'
 import {FiGithub} from 'react-icons/fi'
 import CONSTANTS from '../../global_styles/constants'
@@ -10,7 +10,6 @@ const GeneralStyle = createGlobalStyle`
 
     .tabs__content--active {
         display: block;
-
     }
 
     .tabs__button--active {
@@ -151,12 +150,32 @@ const Button = styled.button`
         transform: translateY(4px);
     }
 
-    
+    ${({ activeTab = false }) => activeTab ? css`      
+        background: rgb(4,48,83);       
+        color: rgb(230,203,46);    
+        box-sizing: border-box;      
+        border-left: 4px solid rgb(230,203,46);   
+        
+        @media (max-width: ${CONSTANTS.breakpoints.tabletX1}) {        
+            border-left: 0px;        
+            border-bottom: 4px solid rgb(230,203,46);        
+        }` : ''};
 `
 
 const TabsContent = styled.div`
     display: none;
     margin-left: 12px;
+
+    ${({ activeTab = false }) => activeTab ? css`      
+        background: rgb(4,48,83);       
+        color: rgb(230,203,46);    
+        box-sizing: border-box;      
+        border-left: 4px solid rgb(230,203,46);   
+        
+        @media (max-width: ${CONSTANTS.breakpoints.tabletX1}) {        
+            border-left: 0px;        
+            border-bottom: 4px solid rgb(230,203,46);        
+        }` : ''};
 `
 
 const Line = styled.div`
@@ -215,22 +234,20 @@ const WidgetSecondaryProjects = () => {
                         <TabsSidebarContainer>
                             <Button
                                 onClick={() => {handleToggleTab(1)}}
-                                className={toggleTab === 1 ? 'tabs__button--active' : ''}
+                                activeTab={toggleTab === 1}
                                 >QR Generator</Button>
                             <Button
                                 onClick={() => {handleToggleTab(2)}}
-                                className={toggleTab === 2 ? 'tabs__button--active' : ''}
+                                activeTab={toggleTab === 2}
                                 >Auto-mail</Button>
                             <Button
                                 onClick={() => {handleToggleTab(3)}}
-                                className={toggleTab === 3 ? 'tabs__button--active' : ''}
+                                activeTab={toggleTab === 3}
                                 >Clients App</Button>
                         </TabsSidebarContainer>
                     </TabsSidebar>
 
-                    <TabsContent
-                        className={toggleTab === 1 ? 'tabs__content--active' : ''}
-                        >
+                    <TabsContent style={{display: toggleTab === 1 ? 'block' : 'none'}}>
                         <div className='tabs__title'><span>QR Generator</span><span><FiGithub/><IoMdOpen/></span></div>
                         <p className="tabs__date">March 12 - April 01 2021</p>
 
@@ -240,20 +257,15 @@ const WidgetSecondaryProjects = () => {
                         It is built with Vainilla JavaScript, using the capabilities of node js to write on the clients computer.</p>
                     </TabsContent>
 
-                    <TabsContent
-                        className={parseInt(toggleTab) === 2 ? 'tabs__content--active' : ''}
-                        >
+                    <TabsContent style={{display: toggleTab === 2 ? 'block' : 'none'}}>
                         <div className='tabs__title'>Hola 2</div>
                         <p className="tabs__date"></p>
                         <p className="tabs_content"></p>
                     </TabsContent>
 
-                    <TabsContent
-                        className={parseInt(toggleTab) === 3 ? 'tabs__content--active' : ''}
-                        >
+                    <TabsContent style={{display: toggleTab === 3 ? 'block' : 'none'}}>
                         <div className='tabs__ttitle'>Hola 3</div>
                     </TabsContent>
-
                 </TabsContainer>
             </InnerContainer>
         </Container>
