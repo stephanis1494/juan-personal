@@ -262,9 +262,9 @@ const WidgetSecondaryProjects = () => {
                     </TabsContent>
 
                     <TabsContent style={{display: toggleTab === 2 ? 'block' : 'none'}}>
-                        <div className='tabs__title'>Hola 2</div>
-                        <p className="tabs__date"></p>
-                        <p className="tabs_content"></p>
+                        <div className='tabs__title'>Miles Calculator</div>
+                        <p className="tabs__date">November 20 - November 26, 2021</p>
+                        <p className="tabs_content">An applicaction inspired on the Tesla UI used for calculating the approximated miles a car car is able to travel based on several variables.</p>
                     </TabsContent>
 
                     <TabsContent style={{display: toggleTab === 3 ? 'block' : 'none'}}>
