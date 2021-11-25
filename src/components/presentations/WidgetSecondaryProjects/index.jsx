@@ -223,55 +223,64 @@ const WidgetSecondaryProjects = () => {
 
     return (
         <Container>
-            <GeneralStyle />
+					<GeneralStyle />
 
-            <InnerContainer>
-                <HeaderContainer>
-                    <LeftLine />
-                    <SectionTitle>Other projects</SectionTitle>
-                    <Line />
-                </HeaderContainer>
+					<InnerContainer>
+						<HeaderContainer>
+							<LeftLine />
+							<SectionTitle>Other projects</SectionTitle>
+							<Line />
+						</HeaderContainer>
 
-                <TabsContainer>
+						<TabsContainer>
 
-                    <TabsSidebar>
-                        <TabsSidebarContainer>
-                            <Button
-                                onClick={() => {handleToggleTab(1)}}
-                                activeTab={toggleTab === 1}
-                                >QR Generator</Button>
-                            <Button
-                                onClick={() => {handleToggleTab(2)}}
-                                activeTab={toggleTab === 2}
-                                >Auto-mail</Button>
-                            <Button
-                                onClick={() => {handleToggleTab(3)}}
-                                activeTab={toggleTab === 3}
-                                >Clients App</Button>
-                        </TabsSidebarContainer>
-                    </TabsSidebar>
+							<TabsSidebar>
+									<TabsSidebarContainer>
+											<Button
+													onClick={() => {handleToggleTab(1)}}
+													activeTab={toggleTab === 1}
+													>QR Generator</Button>
+											<Button
+													onClick={() => {handleToggleTab(2)}}
+													activeTab={toggleTab === 2}
+													>Auto-mail</Button>
+											<Button
+													onClick={() => {handleToggleTab(3)}}
+													activeTab={toggleTab === 3}
+													>Clients App</Button>
+									</TabsSidebarContainer>
+							</TabsSidebar>
 
-                    <TabsContent style={{display: toggleTab === 1 ? 'block' : 'none'}}>
-                        <div className='tabs__title'><span>QR Generator</span><span><FiGithub/><IoMdOpen/></span></div>
-                        <p className="tabs__date">March 12 - April 01 2021</p>
+							<TabsContent style={{display: toggleTab === 1 ? 'block' : 'none'}}>
+								<div className='tabs__title'>
+									<span>QR Generator</span>
+									<span>
+										<FiGithub/>
+										<IoMdOpen/>
+									</span>
+								</div>
+								<p className="tabs__date">March 12 - April 01 2021</p>
+								<p className="tabs_content">A QR Code generartor, made to automate the process of batch generating QR Codes with the information contanied into a .XLSX Workbook (EXCEL Workbook).</p>
+								<p className='tabs_content'>It is built with Vainilla JavaScript, using the capabilities of node js to write on the clients computer.</p>
+							</TabsContent>
 
-                        <p className="tabs_content">A QR Code generartor, made to automate the process of batch generating QR Codes with the information contanied into a .XLSX Workbook (EXCEL Workbook).</p>
+							<TabsContent style={{display: toggleTab === 2 ? 'block' : 'none'}}>
+							<div className='tabs__title'>
+									<span>Miles Calculator</span>
+										<span>
+											<FiGithub/>
+										<IoMdOpen/>
+									</span>
+								</div>
+								<p className="tabs__date">November 20 - November 26, 2021</p>
+								<p className="tabs_content">An applicaction inspired on the Tesla UI used for calculating the approximated miles a car car is able to travel based on several variables.</p>
+							</TabsContent>
 
-                        <p className='tabs_content'>
-                        It is built with Vainilla JavaScript, using the capabilities of node js to write on the clients computer.</p>
-                    </TabsContent>
-
-                    <TabsContent style={{display: toggleTab === 2 ? 'block' : 'none'}}>
-                        <div className='tabs__title'>Miles Calculator</div>
-                        <p className="tabs__date">November 20 - November 26, 2021</p>
-                        <p className="tabs_content">An applicaction inspired on the Tesla UI used for calculating the approximated miles a car car is able to travel based on several variables.</p>
-                    </TabsContent>
-
-                    <TabsContent style={{display: toggleTab === 3 ? 'block' : 'none'}}>
-                        <div className='tabs__ttitle'>Hola 3</div>
-                    </TabsContent>
-                </TabsContainer>
-            </InnerContainer>
+							<TabsContent style={{display: toggleTab === 3 ? 'block' : 'none'}}>
+									<div className='tabs__ttitle'>Hola 3</div>
+							</TabsContent>
+						</TabsContainer>
+					</InnerContainer>
         </Container>
     )
 }
