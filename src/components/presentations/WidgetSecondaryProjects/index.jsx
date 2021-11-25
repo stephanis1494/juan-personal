@@ -243,7 +243,7 @@ const WidgetSecondaryProjects = () => {
 											<Button
 													onClick={() => {handleToggleTab(2)}}
 													activeTab={toggleTab === 2}
-													>Auto-mail</Button>
+													>Miles Calc.</Button>
 											<Button
 													onClick={() => {handleToggleTab(3)}}
 													activeTab={toggleTab === 3}
@@ -267,18 +267,29 @@ const WidgetSecondaryProjects = () => {
 							<TabsContent style={{display: toggleTab === 2 ? 'block' : 'none'}}>
 							<div className='tabs__title'>
 									<span>Miles Calculator</span>
-										<span>
+									<span>
+										<a href="https://github.com/juanluischaurant/tesla-miles">
 											<FiGithub/>
+										</a>
 										<IoMdOpen/>
 									</span>
 								</div>
 								<p className="tabs__date">November 20 - November 26, 2021</p>
-								<p className="tabs_content">An applicaction inspired on the Tesla UI used for calculating the approximated miles a car car is able to travel based on several variables.</p>
+								<p className="tabs_content">An applicaction inspired on the Tesla UI used for calculating the approximated miles a car car is able to travel based on several variables. Made using React.js</p>
 							</TabsContent>
 
-							<TabsContent style={{display: toggleTab === 3 ? 'block' : 'none'}}>
-									<div className='tabs__ttitle'>Hola 3</div>
+							<TabsContent style={{display: toggleTab === 2 ? 'block' : 'none'}}>
+								<div className='tabs__title'>
+									<span>Miles Calculator</span>
+									<span>
+										<FiGithub/>
+										<IoMdOpen/>
+									</span>
+								</div>
+								<p className="tabs__date">November 20 - November 26, 2021</p>
+								<p className="tabs_content">An applicaction inspired on the Tesla UI used for calculating the approximated miles a car car is able to travel based on several variables. Made using React.js</p>
 							</TabsContent>
+
 						</TabsContainer>
 					</InnerContainer>
         </Container>
