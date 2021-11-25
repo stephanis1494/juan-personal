@@ -278,7 +278,7 @@ const WidgetSecondaryProjects = () => {
 								<p className="tabs_content">An applicaction inspired on the Tesla UI used for calculating the approximated miles a car car is able to travel based on several variables. Made using React.js</p>
 							</TabsContent>
 
-							<TabsContent style={{display: toggleTab === 2 ? 'block' : 'none'}}>
+							<TabsContent style={{display: toggleTab === 3 ? 'block' : 'none'}}>
 								<div className='tabs__title'>
 									<span>Miles Calculator</span>
 									<span>
