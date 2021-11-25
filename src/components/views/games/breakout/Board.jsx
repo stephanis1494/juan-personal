@@ -16,7 +16,7 @@ let { ballObject, paddleObject, bricksetObject, playerObject, powerUpObject } =
 
 // const FRAMES_PER_SECOND = 30
 
-const RegisterScore = async e => {
+/*const registerScore = async e => {
   // pass to a function later
   try {
     const body = {
@@ -35,7 +35,7 @@ const RegisterScore = async e => {
   } catch (error) {
       console.error(error.message)
   }
-}
+}*/
 
 export default function Board({ setGameEnded = () => {}, }) {
 
@@ -52,7 +52,7 @@ export default function Board({ setGameEnded = () => {}, }) {
 
     // let canvasPosition = theCanvas.getBoundingClientRect()
     const render = () => {
-  
+
         let canvasPosition = theCanvas.getBoundingClientRect()
 
         // the offset to compensate for the X position where the CANVAS begins
@@ -112,7 +112,7 @@ export default function Board({ setGameEnded = () => {}, }) {
           if(playerObject.ballLaunched){
             BallMovement(theContext, ballObject)
           }
-          
+
           if(playerObject.gameStatus === 'run') {
             requestAnimationFrame(render)
           } else if(playerObject.gameStatus === 'paused') {
@@ -120,38 +120,38 @@ export default function Board({ setGameEnded = () => {}, }) {
           }
 
         } else {
-          RegisterScore()
+          // registerScore()
           ResetGame()
           setGameEnded()
 
         }
-      
+
     }
 
     ResetTheBricks(playerObject, bricksetObject, brickGrid, powerUpObject)
-    
-    
+
+
     const handleKeyDown = (e) => {
       if(e.code === 'KeyS' && playerObject.ballLaunched === false) {
         ResetTheBall(theCanvas, theContext, ballObject, playerObject)
         playerObject.ballLaunched = true
       }
-      
+
       if (e.code === 'KeyP') {
         if(data.playerObject.gameStatus == 'paused') {
           data.playerObject.gameStatus = 'run'
           render()
         } else if (data.playerObject.gameStatus == 'run') {
-          
+
           data.playerObject.gameStatus = 'paused'
           // (theCanvas, theContext, theFillText, x, y)
         }
         // console.log(data.playerObject.gameStatus)
       }
     }
-    
+
     render()
-    
+
     document.addEventListener('keydown', handleKeyDown)
     return () => document.removeEventListener('keydown', handleKeyDown)
   }, [])
