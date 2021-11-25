@@ -229,7 +229,7 @@ const WidgetSecondaryProjects = () => {
 									<Button
 											onClick={() => {handleToggleTab(2)}}
 											className={toggleTab === 2 ? 'tabs__button--active' : ''}
-											>Auto-mail</Button>
+											>Miles Calc.</Button>
 									<Button
 											onClick={() => {handleToggleTab(3)}}
 											className={toggleTab === 3 ? 'tabs__button--active' : ''}
@@ -252,7 +252,7 @@ const WidgetSecondaryProjects = () => {
 							<TabsContent
 									className={parseInt(toggleTab) === 2 ? 'tabs__content--active' : 'tabs__content-innactive'}
 									>
-									<div className='tabs__title'>Hola 2</div>
+									<div className='tabs__title'>Miles Calculator</div>
 									<p className="tabs__date"></p>
 									<p className="tabs_content"></p>
 							</TabsContent>
