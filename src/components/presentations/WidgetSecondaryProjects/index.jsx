@@ -251,7 +251,7 @@ const WidgetSecondaryProjects = () => {
 									<Button
 										onClick={() => {handleToggleTab(3)}}
 										activeTab={toggleTab === 3}
-										>Clients App</Button>
+										>Metronome</Button>
 								</TabsSidebarContainer>
 							</TabsSidebar>
 
@@ -293,14 +293,19 @@ const WidgetSecondaryProjects = () => {
 
 							<TabsContent style={{display: toggleTab === 3 ? 'block' : 'none'}}>
 								<div className='tabs__title'>
-									<span>Miles Calculator</span>
+									<span>Metronome</span>
 									<span>
-										<FiGithub/>
+										<Link
+											href='https://github.com/juanluischaurant/js-metronome'
+											target='_blank'
+										>
+											<FiGithub/>
+										</Link>
 										<IoMdOpen/>
 									</span>
 								</div>
-								<p className="tabs__date">November 20 - November 26, 2021</p>
-								<p className="tabs_content">An applicaction inspired on the Tesla UI used for calculating the approximated miles a car car is able to travel based on several variables.</p>
+								<p className="tabs__date">November 3 - November 15, 2021</p>
+								<p className="tabs_content">An basic app made out of the need for a free metronome that is available for me even when I'm disconnected.</p>
 							</TabsContent>
 
 						</TabsContainer>
