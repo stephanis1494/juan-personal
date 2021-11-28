@@ -214,6 +214,10 @@ const HeaderContainer = styled.div`
     margin: 26px 0;
 `
 
+const Link = styled.a`
+	cursor: pointer;
+`
+
 const WidgetSecondaryProjects = () => {
     const [toggleTab, setToggleTab] = useState(1)
 
@@ -235,47 +239,56 @@ const WidgetSecondaryProjects = () => {
 						<TabsContainer>
 
 							<TabsSidebar>
-									<TabsSidebarContainer>
-											<Button
-													onClick={() => {handleToggleTab(1)}}
-													activeTab={toggleTab === 1}
-													>QR Generator</Button>
-											<Button
-													onClick={() => {handleToggleTab(2)}}
-													activeTab={toggleTab === 2}
-													>Miles Calc.</Button>
-											<Button
-													onClick={() => {handleToggleTab(3)}}
-													activeTab={toggleTab === 3}
-													>Clients App</Button>
-									</TabsSidebarContainer>
+								<TabsSidebarContainer>
+									<Button
+											onClick={() => {handleToggleTab(1)}}
+											activeTab={toggleTab === 1}
+											>QR Generator</Button>
+									<Button
+										onClick={() => {handleToggleTab(2)}}
+										activeTab={toggleTab === 2}
+										>Miles Calc.</Button>
+									<Button
+										onClick={() => {handleToggleTab(3)}}
+										activeTab={toggleTab === 3}
+										>Clients App</Button>
+								</TabsSidebarContainer>
 							</TabsSidebar>
 
 							<TabsContent style={{display: toggleTab === 1 ? 'block' : 'none'}}>
 								<div className='tabs__title'>
 									<span>QR Generator</span>
 									<span>
-										<FiGithub/>
+										<Link
+											href='https://github.com/juanluischaurant/qr-codes'
+											target='_blank'
+										>
+											<FiGithub/>
+										</Link>
 										<IoMdOpen/>
 									</span>
 								</div>
-								<p className="tabs__date">March 12 - April 01 2021</p>
-								<p className="tabs_content">A QR Code generartor, made to automate the process of batch generating QR Codes with the information contanied into a .XLSX Workbook (EXCEL Workbook).</p>
-								<p className='tabs_content'>It is built with Vainilla JavaScript, using the capabilities of node js to write on the clients computer.</p>
+								<p className="tabs__date">October 25 - November 1, 2021</p>
+								<p className="tabs_content">A QR Code generartor, made as a web solution for being accessed on locations where internet connection is not fast.</p>
+								<p className='tabs_content'>It is built with Vainilla JavaScript, and consumes data from an API called QRServer.</p>
 							</TabsContent>
 
 							<TabsContent style={{display: toggleTab === 2 ? 'block' : 'none'}}>
 							<div className='tabs__title'>
 									<span>Miles Calculator</span>
 									<span>
-										<a href="https://github.com/juanluischaurant/tesla-miles">
+										<Link 
+										href="https://github.com/juanluischaurant/tesla-miles"
+										target="_blank"
+										>
 											<FiGithub/>
-										</a>
+										</Link>
 										<IoMdOpen/>
 									</span>
 								</div>
 								<p className="tabs__date">November 20 - November 26, 2021</p>
-								<p className="tabs_content">An applicaction inspired on the Tesla UI used for calculating the approximated miles a car car is able to travel based on several variables. Made using React.js</p>
+								<p className="tabs_content">An applicaction inspired on the Tesla UI used for calculating the approximated miles a car car is able to travel based on several variables.</p>
+								<p className="tabs_content">This app was made using React.js</p>
 							</TabsContent>
 
 							<TabsContent style={{display: toggleTab === 3 ? 'block' : 'none'}}>
@@ -287,7 +300,7 @@ const WidgetSecondaryProjects = () => {
 									</span>
 								</div>
 								<p className="tabs__date">November 20 - November 26, 2021</p>
-								<p className="tabs_content">An applicaction inspired on the Tesla UI used for calculating the approximated miles a car car is able to travel based on several variables. Made using React.js</p>
+								<p className="tabs_content">An applicaction inspired on the Tesla UI used for calculating the approximated miles a car car is able to travel based on several variables.</p>
 							</TabsContent>
 
 						</TabsContainer>
