@@ -216,6 +216,7 @@ const HeaderContainer = styled.div`
 
 const Link = styled.a`
 	cursor: pointer;
+	color: rgb(204,215,245);
 `
 
 const WidgetSecondaryProjects = () => {
@@ -265,7 +266,11 @@ const WidgetSecondaryProjects = () => {
 										>
 											<FiGithub/>
 										</Link>
-										<IoMdOpen/>
+										<Link
+											href='https://admiring-perlman-ef199e.netlify.app/'
+										>
+											<IoMdOpen/>
+										</Link>
 									</span>
 								</div>
 								<p className="tabs__date">October 25 - November 1, 2021</p>
@@ -283,12 +288,16 @@ const WidgetSecondaryProjects = () => {
 										>
 											<FiGithub/>
 										</Link>
-										<IoMdOpen/>
+										<Link
+											href='https://confident-khorana-aed6df.netlify.app/'
+										>
+											<IoMdOpen/>
+										</Link>
 									</span>
 								</div>
 								<p className="tabs__date">November 20 - November 26, 2021</p>
 								<p className="tabs_content">An applicaction inspired on the Tesla UI used for calculating the approximated miles a car car is able to travel based on several variables.</p>
-								<p className="tabs_content">This app was made using React.js</p>
+								<p className="tabs_content">This app was made using React.js.</p>
 							</TabsContent>
 
 							<TabsContent style={{display: toggleTab === 3 ? 'block' : 'none'}}>
@@ -301,11 +310,19 @@ const WidgetSecondaryProjects = () => {
 										>
 											<FiGithub/>
 										</Link>
-										<IoMdOpen/>
+										<Link
+											href='https://confident-minsky-cc2de5.netlify.app/'
+											target='_blank'
+											>
+											<IoMdOpen/>
+										</Link>
 									</span>
 								</div>
 								<p className="tabs__date">November 3 - November 15, 2021</p>
-								<p className="tabs_content">An basic app made out of the need for a free metronome that is available for me even when I'm disconnected.</p>
+								<p className="tabs_content">A basic app made out of the need for a free metronome that is available for me even when I'm disconnected.</p>
+								<p className="class_content">
+									This one is made with vanilla JS.
+								</p>
 							</TabsContent>
 
 						</TabsContainer>
