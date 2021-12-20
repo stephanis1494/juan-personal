@@ -75,7 +75,7 @@ export default function Breakout() {
 
 
   return (
-    <GameContainer>
+    <GameContainer id='game-container'>
       {gameEnded ? (
         <StartScreen>
           <h1>Game ended Amigo</h1>

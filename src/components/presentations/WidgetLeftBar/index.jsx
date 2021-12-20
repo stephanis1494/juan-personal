@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { FaLinkedin, FaTwitterSquare, FaGithubSquare, FaEnvelopeSquare } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
 const LeftSidebar = styled.div`
   /* width: 50px; */
@@ -36,10 +37,18 @@ const LeftSidebar = styled.div`
 const WidgetLeftBar = () => {
     return (
         <LeftSidebar>
-            <FaLinkedin />
+          <Link href='https://www.linkedin.com/in/juanluischaurant/' target='_blank'>
+            <FaLinkedin style={{ color: 'white' }}/>
+          </Link>
+          <Link href='https://twitter.com/juanluis_nt' target='_blank' style={{ color: 'white' }}>
             <FaTwitterSquare />
+          </Link>
+          <Link href='https://github.com/juanluischaurant' target='_blank' style={{ color: 'white' }}>
             <FaGithubSquare />
+          </Link>
+          <a href='mailto:juanluischaurant@gmail.com' style={{ color: 'white' }}>
             <FaEnvelopeSquare />
+          </a>
         </LeftSidebar>
     )
 }
