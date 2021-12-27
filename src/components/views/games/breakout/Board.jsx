@@ -120,10 +120,12 @@ export default function Board({ setGameEnded = () => {}, }) {
           }
 
         } else {
-          // registerScore()
+          setGameEnded({
+            score : playerObject.score,
+            name : playerObject.name,
+            level : playerObject.level
+          })
           ResetGame()
-          setGameEnded()
-
         }
 
     }

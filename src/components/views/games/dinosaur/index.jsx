@@ -76,7 +76,6 @@ const Dinosaur = () => {
   }, [reset])
 
   const handleKeyDown = (e) => {
-    console.log({ e })
     if (e.code === 'KeyZ') {
       setJump(true)
     }

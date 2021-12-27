@@ -3,6 +3,8 @@ import Board from './Board'
 import styled, { keyframes, createGlobalStyle } from 'styled-components'
 import data from './data'
 import { AiOutlineSend } from 'react-icons/ai'
+import { useSelector, useDispatch } from 'react-redux'
+import { updateScores } from "../../../../store/breakTheHeckOutSlice";
 
 const GameContainer = styled.div`
   width: min-content;
@@ -18,11 +20,11 @@ const GameContainer = styled.div`
 export default function Breakout() {
   const [gameStarted, setGameStarted] = useState(false)
   const [gameEnded, setGameEnded] = useState(false)
+  const highScores = useSelector(state => state.breakTheHeckOut.highScores)
+  const dispatch = useDispatch()
 
   const [playerName, setPlayerName] = useState('')
   const [nameSubmit, setNameSubmit] = useState(false)
-
-  const [highScores, setHighScores] = useState([])
 
 /*  const getScores = async() => {
     try {
@@ -58,7 +60,10 @@ export default function Breakout() {
     }
   }
 
-  const handleGameEnd = () => {
+  const handleGameEnd = ({ score, name, level }) => {
+    if (name && level) {
+      dispatch(updateScores({ score, name, level }))
+    }
     setGameEnded(true)
     setGameStarted(false)
   }
@@ -127,7 +132,7 @@ export default function Breakout() {
           {
             highScores.map(highScore => (
               <tr>
-                <td>{highScore.player_name}</td>
+                <td>{highScore.name}</td>
                 <td>{highScore.score}</td>
                 <td>{highScore.level ? highScore.level : 'unknown'}</td>
               </tr>
