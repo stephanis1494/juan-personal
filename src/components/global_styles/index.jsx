@@ -1,16 +1,15 @@
 import { createGlobalStyle } from "styled-components";
-import CONSTANTS from "./constants";
-
+import theme from "./theme";
 const GeneralPageStyling = createGlobalStyle`
     * {
-        font-family: 'Open Sans' !important;
-        font-size: 16px;
+        box-sizing: border-box;
+        font-family: 'Open Sans';
     }
 
     body {
+        box-sizing: inherit;
         margin: 0;
         padding: 0;
-        background: ${CONSTANTS.colors.primaryColor};
     }
 `
 

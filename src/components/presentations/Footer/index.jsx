@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './Footer.css'
 import { YoutubeIcon, TwitterIcon, GoTopIcon } from '../Icons'
 
+
 const Icon = ({ children, color, hoverColor, ...props }) => {
   const [hover, setHover] = useState(false)
   const activeColor = (hover && hoverColor) || color
