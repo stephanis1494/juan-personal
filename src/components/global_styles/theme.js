@@ -1,6 +1,7 @@
 const theme = {
   colors: {
     primaryColor: '#011627',
+    primaryColorClear: 'rgb(4,48,83)',
     secondaryColor: 'rgb(229,202,64)',
     accentColor: '#e5ca40',
     fontMainColor: '#ccd7f5'
@@ -11,6 +12,8 @@ const theme = {
     largeX1: '992px',
     extraLargeX1: '1200px'
   },
+  // we'll stop using this one
+  // in favor of global styles
   fontScale: {
     smallScreen: {
       small: '1rem',

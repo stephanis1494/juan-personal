@@ -1,21 +1,32 @@
 import React from 'react'
 import styled, { ThemeProvider } from 'styled-components'
-// import CONSTANTS from "../global_styles/constants";
 import theme from '../global_styles/theme';
 
 const InnerContainer = styled.div`
-  background: ${props=>props.theme.colors.primaryColor}; 
-  height: 100vh; 
-  padding: 4em 2em;
+
+  padding-inline: 2em;
+	background: ${props=>props.theme.colors.primaryColor};
+	
+	@media (min-width: ${props=>props.theme.breakpoints.tabletX1}) {
+		padding-inline: 8em;
+	}
+	@media (min-width: ${props=>props.theme.breakpoints.largeX1}) {
+		padding-inline: 12em;
+	}
+	@media (min-width: ${props=>props.theme.breakpoints.extraLargeX1}) 
+  {
+		padding-inline: max(20em, 24vw);
+	}
   
 `
 
 const SectionTitle = styled.h2`
+	margin: 0;
   padding: 0;
-  margin: 0;
-  color: ${props=>props.theme.colors.fontMainColor}; 
-
+  font-size: ${props=>props.theme.fontScale.smallScreen.medium};
+  color: ${props=>props.theme.colors.fontMainColor};
 `
+
 
 const Line = styled.div`
   flex-grow: 1;
@@ -36,23 +47,42 @@ const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1em;
+  row-gap: 4em;
+
+  @media ((min-width: ${props=>props.theme.breakpoints.largeX1})) {
+    flex-direction: row;
+    column-gap: 2em
+  }
 `
 
 const ProfileImage = styled.img.attrs({
     src: 'https://res.cloudinary.com/dm7mqsupu/image/upload/v1624994587/Asset_3_4x-8_omtwm0.png'
   })`
-    display: block;
-    max-width: 50%;
+    max-width: 70%;
     margin: 0;
-    border-radius: 3px;
+    flex: 1 1 50%;
+    
+    @media ((min-width: ${props=>props.theme.breakpoints.largeX1})) {
+      max-width: 40%;
+      align-self: flex-start;
+    }
   `
 
 const InfoContainer = styled.div`
   color: ${props=>props.theme.colors.fontMainColor}; 
   font-size: ${props=>props.theme.fontScale.smallScreen.small}; 
+  line-height: 1.8em;
+  flex: 1 1 50%;
+
+  & > p:first-child {
+    margin-top: 0;
+  }
+  & > p > * {
+    margin-bottom: 1.4em;
+  }
   
   & > .tech-stack{
+    margin-top: 1.4em;
     display: grid;
     grid-template-columns: repeat(3, minmax(100px, 200px));
     grid-gap: 1em;
@@ -87,7 +117,6 @@ const HeaderContainer = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 2em;
-  
 `
 
 const AbouMe = () => {
@@ -96,13 +125,12 @@ const AbouMe = () => {
       <InnerContainer id='about-me'>
         
         <HeaderContainer>
-            <LeftLine />
-            <SectionTitle>About Me</SectionTitle>
-            <Line />
+          <LeftLine />
+          <SectionTitle>About Me</SectionTitle>
+          <Line />
         </HeaderContainer>
         
         <ContentContainer>
-          <ProfileImage />
           <InfoContainer>
             <p>While hacking my way into computers, I discovered my passion for programming and making cool stuff happen with my old desktop computer. My current objective, is to be part of projects involving both, logic and creativity.</p>
 
@@ -121,6 +149,9 @@ const AbouMe = () => {
             </div>
 
           </InfoContainer>
+          
+          <ProfileImage />
+
         </ContentContainer>
 
       </InnerContainer>

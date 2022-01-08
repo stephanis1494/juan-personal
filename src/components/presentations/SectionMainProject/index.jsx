@@ -6,9 +6,21 @@ import theme from '../../global_styles/theme'
 import { ThemeProvider } from 'styled-components'
 
 const InnerContainer = styled.div`
-  height: 100vh;
+  height: auto;
   background: ${props=>props.theme.colors.primaryColor};
-  padding: 4em 2em;
+  padding-inline: 2em;
+  
+	@media (min-width: ${props=>props.theme.breakpoints.tabletX1}) {
+		padding-inline: 8em;
+	}
+	@media (min-width: ${props=>props.theme.breakpoints.largeX1}) {
+		padding-inline: 12em;
+	}
+	@media (
+    (min-width: ${props=>props.theme.breakpoints.extraLargeX1}) 
+    and (min-height: 950px)) {
+		padding-inline: max(20em, 24vw);
+	}
 `
 
 const HeaderContainer = styled.div`
@@ -43,19 +55,38 @@ const BodyContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2em;
-`
+  gap: 1.3em;
 
+  @media ((min-width: ${props=>props.theme.breakpoints.largeX1}) ) {
+    flex-direction: row;
+  }
+  `
+
+const BodyImgContainer = styled.div`
+  width: 50%;
+  min-width: 350px;
+
+  @media ((min-width: ${props=>props.theme.breakpoints.largeX1})) {
+    flex: 1 2 300px;
+
+    position: relative;
+    z-index: 2;
+  }
+`
 const BodyImg = styled.img`
-  display: block;
-  max-width: 85%;
+  /* margin: 0; */
+  max-width: 100%;
 `
 
 const BodyContent = styled.div`
   /* margin-left: -64px; */
   display: flex;
   flex-direction: column;
+  
+  @media ((min-width: ${props=>props.theme.breakpoints.largeX1})) {
+    flex: 1 1 auto;
 
+  }
 `
 
 const BoySubtitle = styled.div`
@@ -77,6 +108,15 @@ const BodyText = styled.div`
   /* text-align: right; */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
+  @media ((min-width: ${props=>props.theme.breakpoints.largeX1})) {
+    position: relative;
+    left: -4em;
+    width: calc(100% + 4em);
+    padding-left: calc(4em + 1em);
+    padding-right: 2em;
+    z-index: 1;
+
+  }
 `
 
 const LinkContainer = styled.div`
@@ -95,14 +135,16 @@ const ListItem = styled.div`
 const IconContainer = styled.div`
   display: flex;
   justify-content: flex-end;
+  column-gap: .4em;
   /* align-items: flex-end; */
-  color: $${props=>props.theme.colors.fontMainColor};
+  color: ${props=>props.theme.colors.fontMainColor};
   margin-top: 8px;
-  /* font-size: 45px; */
 
-  & ${IoMdOpen} ${FiGithub} {
-    font-size: 80px;
+  & > * {
+    cursor: pointer;
   }
+  
+
 `
 
 const SectionMainProject = () => {
@@ -118,7 +160,9 @@ const SectionMainProject = () => {
         
         <BodyContainer>
           
-          <BodyImg src='https://assets-global.website-files.com/5fda3048302e579473bfb454/6081869d03bc45778e9e752c_CleanShot%20Slite%20Project%20Proposal%20Template%20-%20Project%20Proposal%20Template%20at%2018.21.39.png'></BodyImg>
+          <BodyImgContainer>
+            <BodyImg src='https://assets-global.website-files.com/5fda3048302e579473bfb454/6081869d03bc45778e9e752c_CleanShot%20Slite%20Project%20Proposal%20Template%20-%20Project%20Proposal%20Template%20at%2018.21.39.png'></BodyImg>
+          </BodyImgContainer>
           
           <BodyContent>
             <BoySubtitle>A Super Project</BoySubtitle>
@@ -133,8 +177,8 @@ const SectionMainProject = () => {
             </LinkContainer>
 
             <IconContainer>
-              <IoMdOpen size="1rem"></IoMdOpen>
-              <FiGithub size="1rem"></FiGithub>
+              <IoMdOpen size="2rem"></IoMdOpen>
+              <FiGithub size="2rem"></FiGithub>
             </IconContainer>
 
           </BodyContent>
