@@ -124,6 +124,7 @@ const HeaderContainer = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 2em;
+  margin-top: 2em;
 `
 
 const AbouMe = () => {

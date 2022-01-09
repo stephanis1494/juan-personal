@@ -3,9 +3,8 @@ import styled, { ThemeProvider } from 'styled-components'
 import theme from '../global_styles/theme';
 
 import {scrollIntoView} from "../utils/scrollIntoView";
-import WidgetLeftBar from '../presentations/WidgetLeftBar'
-import {BsChevronDoubleDown} from 'react-icons/bs'
 
+import {BsChevronDoubleDown} from 'react-icons/bs'
 
 const HeaderContainer = styled.div`
 
@@ -119,7 +118,7 @@ const Hero = () => {
         Juan Luis<span className='block'>Chaurant.</span>
         </HeaderMainTitle>
         <HeaderSubtitle>
-        Developer. Musician. Educator.
+          Developer. Musician. Educator.
         </HeaderSubtitle>
         
         <HeaderDescription>
