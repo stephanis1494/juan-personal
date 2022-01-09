@@ -1,28 +1,3 @@
-.footer-container {
-    background: rgb(1,17,29);
-    min-height:124px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    position: relative;
-}
-
-.to-top {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 60px;
-    height: 60px;
-    background-color: rgba(224, 23, 81, 1);
-
-    position: absolute;
-    transform: translateY(-65px);
-    cursor: pointer;
-    border-radius: 3px;
-}
 
 .buttons-container {
     margin: 0;

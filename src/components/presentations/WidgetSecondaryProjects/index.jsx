@@ -44,19 +44,28 @@ const GeneralStyle = createGlobalStyle`
 	}
 `
 
-const InnerContainer = styled.div`
-	padding-inline: 2em;
+const OuterContainer = styled.div`
+	padding-inline: 1em;
 	background: ${props=>props.theme.colors.primaryColor};
 	
-	@media (min-width: ${props=>props.theme.breakpoints.tabletX1}) {
-		padding-inline: 8em;
-	}
-	@media (min-width: ${props=>props.theme.breakpoints.largeX1}) {
-		padding-inline: 12em;
-	}
-	@media (min-width: ${props=>props.theme.breakpoints.extraLargeX1}) {
-		padding-inline: max(20em, 24vw);
-	}
+	display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+`
+
+const InnerContainer = styled.div`
+	margin: 2em auto 4em auto;
+	width: 95%;
+  max-width: 1000px;
+	
+	@media ((min-width: ${props=>props.theme.breakpoints.tabletX1})) {
+    width: 80%;
+  }
+  @media ((min-width: ${props=>props.theme.breakpoints.extraLargeX1})) {
+    width: 70%;
+  }
 `
 
 const HeaderContainer = styled.div`
@@ -75,7 +84,7 @@ const SectionTitle = styled.h2`
 `
 
 const TabsContainer = styled.div`
-	max-width: 1000px;
+	/* max-width: 1000px; */
 	margin: 0 auto;
 	display: flex;
 	flex-direction: column;
@@ -85,6 +94,7 @@ const TabsContainer = styled.div`
 	@media (min-width: ${props=>props.theme.breakpoints.tabletX1}) {        
 		flex-direction: row;
 	}
+	
 `
 
 const TabsSidebar = styled.div`
@@ -92,9 +102,12 @@ const TabsSidebar = styled.div`
 	min-width: 130px;
 	flex-shrink: 0;
 	/* z-index: 6; */
-	overflow-y: scroll;
-
-`
+	overflow: scroll;
+	min-height: calc(2em);
+	padding: .5em 0;
+	@media (min-width: ${props=>props.theme.breakpoints.tabletX1}) {        
+	}
+	`
 
 const TabsSidebarContainer = styled.div`
 	display: flex;
@@ -203,103 +216,108 @@ const WidgetSecondaryProjects = () => {
 			<ThemeProvider theme={theme}>
 				<GeneralStyle />
 
-				<InnerContainer>
-					<HeaderContainer>
-						<LeftLine />
-						<SectionTitle>Other projects</SectionTitle>
-						<Line />
-					</HeaderContainer>
+				<OuterContainer>
+					<InnerContainer>
+						<HeaderContainer>
+							<LeftLine />
+							<SectionTitle>Other projects</SectionTitle>
+							<Line />
+						</HeaderContainer>
 
-					<TabsContainer>
+						<TabsContainer>
 
-						<TabsSidebar>
-							<TabsSidebarContainer>
-								<Button
-										onClick={() => {handleToggleTab(1)}}
-										activeTab={toggleTab === 1}
-										>QR Generator</Button>
-								<Button
-									onClick={() => {handleToggleTab(2)}}
-									activeTab={toggleTab === 2}
-									>Miles Calc.</Button>
-								<Button
-									onClick={() => {handleToggleTab(3)}}
-									activeTab={toggleTab === 3}
-									>Metronome</Button>
-							</TabsSidebarContainer>
-						</TabsSidebar>
+							<TabsSidebar>
+								<TabsSidebarContainer>
+									<Button
+											onClick={() => {handleToggleTab(1)}}
+											activeTab={toggleTab === 1}
+											>QR Generator</Button>
+									<Button
+										onClick={() => {handleToggleTab(2)}}
+										activeTab={toggleTab === 2}
+										>Miles Calc.</Button>
+									<Button
+										onClick={() => {handleToggleTab(3)}}
+										activeTab={toggleTab === 3}
+										>Metronome</Button>
+								</TabsSidebarContainer>
+							</TabsSidebar>
 
-						<TabsContent style={{display: toggleTab === 1 ? 'block' : 'none'}}>
-							<div className='tabs__title'>
-								<span>QR Generator</span>
-								<span>
-									<Link
-										href='https://github.com/juanluischaurant/qr-codes'
-										target='_blank'
-									>
-										<FiGithub/>
-									</Link>
-									<Link
-										href='https://admiring-perlman-ef199e.netlify.app/'
-									>
-										<IoMdOpen/>
-									</Link>
-								</span>
-							</div>
-							<p className="tabs__date">October 25 - November 1, 2021</p>
-							<p className="tabs_content">A QR Code generartor, made as a web solution for being accessed on locations where internet connection is not fast.</p>
-							<p className='tabs_content'>It is built with Vainilla JavaScript, and consumes data from an API called QRServer.</p>
-						</TabsContent>
-
-						<TabsContent style={{display: toggleTab === 2 ? 'block' : 'none'}}>
-						<div className='tabs__title'>
-							<span>Miles Calculator</span>
-							<span>
-								<Link 
-								href="https://github.com/juanluischaurant/tesla-miles"
-								target="_blank"
-								>
-									<FiGithub/>
-								</Link>
-								<Link
-									href='https://confident-khorana-aed6df.netlify.app/'
-								>
-									<IoMdOpen/>
-								</Link>
-							</span>
-							</div>
-							<p className="tabs__date">November 20 - November 26, 2021</p>
-							<p className="tabs_content">An applicaction inspired on the Tesla UI used for calculating the approximated miles a car car is able to travel based on several variables.</p>
-							<p className="tabs_content">This app was made using React.js.</p>
-						</TabsContent>
-
-						<TabsContent style={{display: toggleTab === 3 ? 'block' : 'none'}}>
-							<div className='tabs__title'>
-								<span>Metronome</span>
-								<span>
-									<Link
-										href='https://github.com/juanluischaurant/js-metronome'
-										target='_blank'
-									>
-										<FiGithub/>
-									</Link>
-									<Link
-										href='https://confident-minsky-cc2de5.netlify.app/'
-										target='_blank'
+							<TabsContent style={{display: toggleTab === 1 ? 'block' : 'none'}}>
+								<div className='tabs__title'>
+									<span>QR Generator</span>
+									<span>
+										<Link
+											href='https://github.com/juanluischaurant/qr-codes'
+											target='_blank'
 										>
+											<FiGithub/>
+										</Link>
+										<Link
+											href='https://admiring-perlman-ef199e.netlify.app/'
+											target="_blank"
+										>
+											<IoMdOpen/>
+										</Link>
+									</span>
+								</div>
+								<p className="tabs__date">October 25 - November 1, 2021</p>
+								<p className="tabs_content">A QR Code generartor, made as a web solution for being accessed on locations where internet connection is not fast.</p>
+								<p className='tabs_content'>It is built with Vainilla JavaScript, and consumes data from an API called QRServer.</p>
+							</TabsContent>
+
+							<TabsContent style={{display: toggleTab === 2 ? 'block' : 'none'}}>
+							<div className='tabs__title'>
+								<span>Miles Calculator</span>
+								<span>
+									<Link 
+									href="https://github.com/juanluischaurant/tesla-miles"
+									target="_blank"
+									>
+										<FiGithub/>
+									</Link>
+									<Link
+										href='https://confident-khorana-aed6df.netlify.app/'
+										target="_blank"
+									>
 										<IoMdOpen/>
 									</Link>
 								</span>
-							</div>
-							<p className="tabs__date">November 3 - November 15, 2021</p>
-							<p className="tabs_content">A basic app made out of the need for a free metronome that is available for me even when I'm disconnected.</p>
-							<p className="class_content">
-								This one is made with vanilla JS.
-							</p>
-						</TabsContent>
+								</div>
+								<p className="tabs__date">November 20 - November 26, 2021</p>
+								<p className="tabs_content">An applicaction inspired on the Tesla UI used for calculating the approximated miles a car car is able to travel based on several variables.</p>
+								<p className="tabs_content">This app was made using React.js.</p>
+							</TabsContent>
 
-					</TabsContainer>
-				</InnerContainer>
+							<TabsContent style={{display: toggleTab === 3 ? 'block' : 'none'}}>
+								<div className='tabs__title'>
+									<span>Metronome</span>
+									<span>
+										<Link
+											href='https://github.com/juanluischaurant/js-metronome'
+											target='_blank'
+										>
+											<FiGithub/>
+										</Link>
+										<Link
+											href='https://confident-minsky-cc2de5.netlify.app/'
+											target='_blank'
+											>
+											<IoMdOpen/>
+										</Link>
+									</span>
+								</div>
+								<p className="tabs__date">November 3 - November 15, 2021</p>
+								<p className="tabs_content">A basic app made out of the need for a free metronome that is available for me even when I'm disconnected.</p>
+								<p className="class_content">
+									This one is made with vanilla JS.
+								</p>
+							</TabsContent>
+
+						</TabsContainer>
+					</InnerContainer>
+
+				</OuterContainer>
 			</ThemeProvider>
     )
 }

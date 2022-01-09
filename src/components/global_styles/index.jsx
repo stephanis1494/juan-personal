@@ -10,7 +10,7 @@ const GeneralPageStyling = createGlobalStyle`
     :root {
         /* font-sizes */
         --fs-900: 3.5rem;
-        --fs-800: 3.5rem;
+        --fs-800: 2.5rem;
         --fs-700: 1.5rem;
         --fs-600: 1rem;
         --fs-500: 1.75rem;
@@ -34,6 +34,8 @@ const GeneralPageStyling = createGlobalStyle`
         :root {
             /* font-sizes */
             --fs-900: 4.4rem;
+            --fs-800: 3rem;
+            --fs-700: 2.5rem;
             --fs-600: 1.2rem;
         }   
     }

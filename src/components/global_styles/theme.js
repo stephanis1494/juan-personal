@@ -4,7 +4,8 @@ const theme = {
     primaryColorClear: 'rgb(4,48,83)',
     secondaryColor: 'rgb(229,202,64)',
     accentColor: '#e5ca40',
-    fontMainColor: '#ccd7f5'
+    fontMainColor: '#ccd7f5',
+    fontSecondaryColor: 'rgb(88,117,141)'
   },
   breakpoints: {
     phoneX1: '480px',

@@ -5,22 +5,27 @@ import { FiGithub } from 'react-icons/fi'
 import theme from '../../global_styles/theme'
 import { ThemeProvider } from 'styled-components'
 
+const OuterContainer = styled.section`
+  padding-inline: 1em;
+	background: ${props=>props.theme.colors.primaryColor};
+	
+	display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
+
 const InnerContainer = styled.div`
-  height: auto;
-  background: ${props=>props.theme.colors.primaryColor};
-  padding-inline: 2em;
-  
-	@media (min-width: ${props=>props.theme.breakpoints.tabletX1}) {
-		padding-inline: 8em;
-	}
-	@media (min-width: ${props=>props.theme.breakpoints.largeX1}) {
-		padding-inline: 12em;
-	}
-	@media (
-    (min-width: ${props=>props.theme.breakpoints.extraLargeX1}) 
-    and (min-height: 950px)) {
-		padding-inline: max(20em, 24vw);
-	}
+  margin: 2em auto 4em auto;
+	width: 95%;
+  max-width: 1000px;
+	
+	@media ((min-width: ${props=>props.theme.breakpoints.tabletX1})) {
+    width: 80%;
+  }
+  @media ((min-width: ${props=>props.theme.breakpoints.extraLargeX1})) {
+    width: 70%;
+  }
 `
 
 const HeaderContainer = styled.div`
@@ -64,7 +69,7 @@ const BodyContainer = styled.div`
 
 const BodyImgContainer = styled.div`
   width: 50%;
-  min-width: 350px;
+  min-width: 300px;
 
   @media ((min-width: ${props=>props.theme.breakpoints.largeX1})) {
     flex: 1 2 300px;
@@ -150,41 +155,43 @@ const IconContainer = styled.div`
 const SectionMainProject = () => {
   return (
     <ThemeProvider theme={theme}>
-      <InnerContainer>
-        
-        <HeaderContainer>
-          <LeftLine />
-          <SectionTitle>Check Out!</SectionTitle>
-          <Line />
-        </HeaderContainer>
-        
-        <BodyContainer>
+      <OuterContainer>
+        <InnerContainer>
           
-          <BodyImgContainer>
-            <BodyImg src='https://assets-global.website-files.com/5fda3048302e579473bfb454/6081869d03bc45778e9e752c_CleanShot%20Slite%20Project%20Proposal%20Template%20-%20Project%20Proposal%20Template%20at%2018.21.39.png'></BodyImg>
-          </BodyImgContainer>
+          <HeaderContainer>
+            <LeftLine />
+            <SectionTitle>Check Out!</SectionTitle>
+            <Line />
+          </HeaderContainer>
           
-          <BodyContent>
-            <BoySubtitle>A Super Project</BoySubtitle>
-            <BodyText>
-              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus, explicabo? Esse est illum obcaecati neque veniam cum similique velit, at sed et tenetur asperiores consequatur fugit accusantium nihil quo qui?</p>
-            </BodyText>
+          <BodyContainer>
+            
+            <BodyImgContainer>
+              <BodyImg src='https://assets-global.website-files.com/5fda3048302e579473bfb454/6081869d03bc45778e9e752c_CleanShot%20Slite%20Project%20Proposal%20Template%20-%20Project%20Proposal%20Template%20at%2018.21.39.png'></BodyImg>
+            </BodyImgContainer>
+            
+            <BodyContent>
+              <BoySubtitle>A Super Project</BoySubtitle>
+              <BodyText>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus, explicabo? Esse est illum obcaecati neque veniam cum similique velit, at sed et tenetur asperiores consequatur fugit accusantium nihil quo qui?</p>
+              </BodyText>
 
-            <LinkContainer>
-              <ListItem>NODE</ListItem>
-              <ListItem>NPM</ListItem>
-              <ListItem>React</ListItem>
-            </LinkContainer>
+              <LinkContainer>
+                <ListItem>NODE</ListItem>
+                <ListItem>NPM</ListItem>
+                <ListItem>React</ListItem>
+              </LinkContainer>
 
-            <IconContainer>
-              <IoMdOpen size="2rem"></IoMdOpen>
-              <FiGithub size="2rem"></FiGithub>
-            </IconContainer>
+              <IconContainer>
+                <IoMdOpen size="2rem"></IoMdOpen>
+                <FiGithub size="2rem"></FiGithub>
+              </IconContainer>
 
-          </BodyContent>
+            </BodyContent>
 
-        </BodyContainer>
-      </InnerContainer>
+          </BodyContainer>
+        </InnerContainer>
+      </OuterContainer>
 
     </ThemeProvider>
   )

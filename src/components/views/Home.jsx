@@ -6,6 +6,7 @@ import AboutMe from './AbouMe'
 import SectionMainProject from '../presentations/SectionMainProject'
 import WidgetSecondaryProjects from '../presentations/WidgetSecondaryProjects'
 import Footer from '../presentations/Footer'
+import WidgetLeftBar from '../presentations/WidgetLeftBar'
 
 // // import PlayAGame from "../views/PlayAGame"
 // // import Music from '../views/Music'
@@ -16,6 +17,7 @@ const Home = () => {
   return (
     <>
       <RegularNavbar></RegularNavbar>
+      <WidgetLeftBar/>
       <Hero />
       <AboutMe />
       <SectionMainProject />

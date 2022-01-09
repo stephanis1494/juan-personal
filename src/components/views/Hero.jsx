@@ -9,6 +9,7 @@ import {BsChevronDoubleDown} from 'react-icons/bs'
 
 const HeaderContainer = styled.div`
 
+  background-url: 
   padding-inline: auto;
   background: ${props => props.theme.colors.primaryColor};
   position: relative;
@@ -50,7 +51,10 @@ const HeaderMainTitle = styled.h1`
   font-size: var(--fs-900);
   font-weight: ${props => props.theme.fontWeight.extraBold800};
   color: ${props => props.theme.colors.fontMainColor};
-
+  
+  & > .block {
+    display: block;
+  }
   @media ((min-width: ${props=>props.theme.breakpoints.tabletX1})) {
     /* white-space: nowrap; */
   }
@@ -112,7 +116,7 @@ const Hero = () => {
         </HeaderIntroText>
         
         <HeaderMainTitle>
-        Juan Luis Chaurant.
+        Juan Luis<span className='block'>Chaurant.</span>
         </HeaderMainTitle>
         <HeaderSubtitle>
         Developer. Musician. Educator.
@@ -130,7 +134,7 @@ const Hero = () => {
       
       </HeaderContainer>
       
-      <WidgetLeftBar />
+      {/* <WidgetLeftBar /> */}
     </ThemeProvider>
 
     )
