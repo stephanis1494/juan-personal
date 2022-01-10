@@ -5,6 +5,10 @@ const initialState = {
   highScores: []
 }
 
+const updateHighScore = (name, score, level) => {
+
+}
+
 export const breakTheHeckOutSlice = createSlice({
   name: 'breakTheHeckOut',
   initialState,
@@ -21,6 +25,9 @@ export const breakTheHeckOutSlice = createSlice({
       )
 
       if (isTopScore) {
+
+        updateHighScore(action.payload.name, action.payload.score, action.payload.level)
+
         const newScores = [
           ...state.highScores,
           {
