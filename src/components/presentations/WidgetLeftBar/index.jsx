@@ -38,7 +38,8 @@ const LeftSidebar = styled.div`
     font-size: 1.4rem;
   }
   @media ((min-width: ${props=>props.theme.breakpoints.extraLargeX1})) {
-    font-size: 1.6rem;
+    font-size: 2rem;
+    gap: .6em;
   }
 `
 

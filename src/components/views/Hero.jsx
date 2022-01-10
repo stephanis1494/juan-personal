@@ -1,20 +1,32 @@
 import React from 'react'
-import styled, { ThemeProvider } from 'styled-components'
+import styled, { keyframes, ThemeProvider } from 'styled-components'
 import theme from '../global_styles/theme';
 
 import {scrollIntoView} from "../utils/scrollIntoView";
 
 import {BsChevronDoubleDown} from 'react-icons/bs'
 
-const HeaderContainer = styled.div`
-
-  background-url: 
-  padding-inline: auto;
-  background: ${props => props.theme.colors.primaryColor};
-  position: relative;
+const OuterContainer = styled.section`  
+  padding-inline: 1em;
+	display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;  
 
   height: 100vh;
   max-height: 100vh;
+  background: ${props=>props.theme.colors.primaryColor};
+`
+
+const HeaderContainer = styled.div`
+
+	background-image: url('quote.svg');
+  background-repeat: no-repeat;
+  background-size: 25vh;
+  background-position: 100% -10%;
+
+  padding-inline: auto;
+  position: relative;
   
   display: grid;
   place-content: center; // align the grid
@@ -94,6 +106,17 @@ const Highlight = styled.span`
   color: rgb(229,202,64);
 `
 
+const DownArrowAnimation = keyframes`
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(4px);
+  }
+  60% {
+    transform: translateY(8px);
+  }
+`
 const HeaderDownArrow = styled.div`
   width: 100%;
   display: flex;
@@ -103,35 +126,40 @@ const HeaderDownArrow = styled.div`
   font-size: 48px;
   color: #ccd8f4;
   cursor: pointer;
+  animation: ${DownArrowAnimation} 2s infinite;
 `
 
 const Hero = () => {
   return (
     <ThemeProvider theme={theme}>
       
-      <HeaderContainer>
-        <HeaderIntroText>
-        Hello there, I am
-        </HeaderIntroText>
+      <OuterContainer>
+
+        <HeaderContainer>
+          <HeaderIntroText>
+          Hello there, I am
+          </HeaderIntroText>
+          
+          <HeaderMainTitle>
+          Juan Luis<span className='block'>Chaurant.</span>
+          </HeaderMainTitle>
+          <HeaderSubtitle>
+            Developer. Musician. Educator.
+          </HeaderSubtitle>
+          
+          <HeaderDescription>
+            I enjoy solving <Highlight>real world problems</Highlight>,<br /> making use of <Highlight>new technologies</Highlight>.
+          </HeaderDescription>
+          
+          <HeaderDownArrow
+          onClick={() => scrollIntoView('about-me', 'start')}
+          >
+            <BsChevronDoubleDown style={{ width: '32px', height: '32px' }}/>
+          </HeaderDownArrow>
         
-        <HeaderMainTitle>
-        Juan Luis<span className='block'>Chaurant.</span>
-        </HeaderMainTitle>
-        <HeaderSubtitle>
-          Developer. Musician. Educator.
-        </HeaderSubtitle>
-        
-        <HeaderDescription>
-          I enjoy solving <Highlight>real world problems</Highlight>,<br /> making use of <Highlight>new technologies</Highlight>.
-        </HeaderDescription>
-        
-        <HeaderDownArrow
-        onClick={() => scrollIntoView('about-me', 'start')}
-        >
-          <BsChevronDoubleDown style={{ width: '32px', height: '32px' }}/>
-        </HeaderDownArrow>
-      
-      </HeaderContainer>
+        </HeaderContainer>
+
+      </OuterContainer>
       
       {/* <WidgetLeftBar /> */}
     </ThemeProvider>

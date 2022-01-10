@@ -54,9 +54,6 @@ const GeneralPageStyling = createGlobalStyle`
         padding: 0;
     }
 
-    #root {
-        
-    }
 `
 
 export default GeneralPageStyling

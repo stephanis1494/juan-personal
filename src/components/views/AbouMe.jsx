@@ -5,15 +5,15 @@ import theme from '../global_styles/theme';
 const OuterContainer = styled.section`
   padding-inline: 1em;
 	background: ${props=>props.theme.colors.primaryColor};
+  color: ${({theme}) => theme.colors.fontBodyColor};  
 	
 	display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;  
-`
+  `
 
 const InnerContainer = styled.div`
-
   margin: 2em auto 4em auto;
 	width: 95%;
   max-width: 1000px;
@@ -21,7 +21,7 @@ const InnerContainer = styled.div`
 	@media ((min-width: ${props=>props.theme.breakpoints.tabletX1})) {
     width: 80%;
   }
-  @media ((min-width: ${props=>props.theme.breakpoints.extraLargeX1})) {
+  @media ((min-width: ${({theme}) => theme.breakpoints.extraLargeX1})) {
     width: 70%;
   }
   
@@ -30,8 +30,8 @@ const InnerContainer = styled.div`
 const SectionTitle = styled.h2`
 	margin: 0;
   padding: 0;
-  font-size: ${props=>props.theme.fontScale.smallScreen.medium};
-  color: ${props=>props.theme.colors.fontMainColor};
+  font-size: ${({theme}) => theme.fontScale.smallScreen.medium};
+  color: ${({theme}) => theme.colors.fontMainColor};
 `
 
 
@@ -56,7 +56,7 @@ const ContentContainer = styled.div`
   align-items: center;
   row-gap: 4em;
 
-  @media ((min-width: ${props=>props.theme.breakpoints.largeX1})) {
+  @media ((min-width: ${({theme}) => theme.breakpoints.largeX1})) {
     flex-direction: row;
     column-gap: 2em
   }
@@ -69,15 +69,14 @@ const ProfileImage = styled.img.attrs({
     margin: 0;
     flex: 1 1 50%;
     
-    @media ((min-width: ${props=>props.theme.breakpoints.largeX1})) {
+    @media ((min-width: ${({theme}) => theme.breakpoints.largeX1})) {
       max-width: 40%;
       align-self: flex-start;
     }
   `
 
 const InfoContainer = styled.div`
-  color: ${props=>props.theme.colors.fontMainColor}; 
-  font-size: ${props=>props.theme.fontScale.smallScreen.small}; 
+  font-size: ${({theme}) => theme.fontScale.smallScreen.small}; 
   line-height: 1.8em;
   flex: 1 1 50%;
 

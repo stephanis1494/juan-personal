@@ -10,7 +10,6 @@ const OuterContainer = styled.section`
 	background: ${props=>props.theme.colors.primaryColor};
 	
 	display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
 `
@@ -35,10 +34,10 @@ const HeaderContainer = styled.div`
   margin: 0 0 1.4em;
 `
 const SectionTitle = styled.h2`
+  color: ${({theme}) => theme.colors.fontMainColor};
   margin: 0;
   padding: 0;
   font-size: ${props=>props.theme.fontScale.smallScreen.medium};
-  color: ${props=>props.theme.colors.fontMainColor};
 `
 
 const Line = styled.div`
@@ -61,11 +60,12 @@ const BodyContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  column-gap: 4em;
+  
   margin-top: calc(4em + 2em);
-
+  
   @media ((min-width: ${props=>props.theme.breakpoints.largeX1}) ) {
     flex-direction: row;
+    column-gap: 4em;
   }
 `
 
@@ -74,21 +74,20 @@ const BodyContainer = styled.div`
 
 const FeaturedContainer = styled.div`
   background: rgb(11, 41, 66);
-  color: ${({theme}) => theme.colors.fontMainColor};
   display: flex;
+
   flex-direction: column;
   align-items: center;
 
   margin-top: 2em;
   padding-bottom: 4em;
-  max-width: 35em;
 `
 
 const FeaturedContainerImage = styled.div`
   width: 80%;
   height: 80%;
-  max-width: 23em;
-  max-height: 23em;
+  max-width: 30em;
+  max-height: 30em;
   transform: translateY(-4em);
 
 `
@@ -104,16 +103,19 @@ const FeaturedContainerContent = styled.div`
 
 
 const FeaturedContainerDate = styled.div`
-  /* color: rgb(95, 126, 151); */
   color: ${({theme}) => theme.colors.accentColor};
 `
 const FeaturedContainerTitle = styled.h3`
+  color: ${({theme}) => theme.colors.fontMainColor};
+
   font-size: var(--fs-500);
   margin-top: 0;
   margin-bottom: .0em;
 `
 
 const FeaturedContainerText = styled.div`
+  color: ${({theme}) => theme.colors.fontBodyColor};
+
   line-height: 1.5em;
   padding-bottom: 1em;
 `
@@ -160,7 +162,7 @@ const SectionMainProject = () => {
           
           <HeaderContainer>
             <LeftLine />
-            <SectionTitle>Check Out!</SectionTitle>
+            <SectionTitle>Les Projects</SectionTitle>
             <Line />
           </HeaderContainer>
           

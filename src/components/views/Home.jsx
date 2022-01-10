@@ -7,8 +7,8 @@ import SectionMainProject from '../presentations/SectionMainProject'
 import WidgetSecondaryProjects from '../presentations/WidgetSecondaryProjects'
 import Footer from '../presentations/Footer'
 import WidgetLeftBar from '../presentations/WidgetLeftBar'
+import PlayAGame from "../views/PlayAGame"
 
-// // import PlayAGame from "../views/PlayAGame"
 // // import Music from '../views/Music'
 
 const Home = () => {
@@ -20,12 +20,12 @@ const Home = () => {
       <WidgetLeftBar/>
       <Hero />
       <AboutMe />
+      <PlayAGame />
       <SectionMainProject />
       <WidgetSecondaryProjects />
 
-{/*
-      <PlayAGame />
 
+{/*
       <Music />*/}
       <Footer/>
     </>

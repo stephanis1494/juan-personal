@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import styled from 'styled-components'
-import { ThemeProvider } from 'styled-components'
+import styled, { keyframes, ThemeProvider } from 'styled-components'
 import theme from '../../global_styles/theme'
 import './Footer.css'
 import { YoutubeIcon, TwitterIcon, GoTopIcon } from '../Icons'
@@ -30,6 +29,17 @@ const FooterContainer = styled.footer `
   position: relative;
 `
 
+const UpArrowAnimation = keyframes`
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-3px);
+  }
+  60% {
+    transform: translateY(-6px);
+  }
+`
 const FooterContainerTopButton = styled.div`
   display: flex;
   justify-content: center;
@@ -40,9 +50,13 @@ const FooterContainerTopButton = styled.div`
 
   position: absolute;
   top: -30px;
-  /* transform: translateY(-173px); */
   cursor: pointer;
   border-radius: 3px;
+
+  & > * {
+    animation: ${UpArrowAnimation} 2s infinite;
+
+  }
 `
 
 const FooterLayout = styled.div`
@@ -59,10 +73,11 @@ const FooterLayout = styled.div`
 `
 
 const FooterLayoutTextContent = styled.div`
-  color: ${({theme})=>theme.colors.fontMainColor};
   margin-bottom: 3em;
+  color: ${({theme}) => theme.colors.fontBodyColor};
 
   & > h2 {
+    color: ${({theme}) => theme.colors.fontMainColor};
     font-size: var(--fs-700);
     margin-bottom: .5em;
   }
@@ -178,20 +193,6 @@ const Footer = () => {
 
         </FooterLayout>
         
-        
-        
-        {/*<div className="buttons-container">
-          <a href='https://www.youtube.com/user/ululu93' target="_blank" rel="noreferrer">
-            <Icon size='24' color='white' hoverColor='#f70002'>
-              <YoutubeIcon />
-            </Icon>
-          </a>
-          <a href='https://twitter.com/juanluis_nt' target="_blank" rel="noreferrer">
-            <Icon size='24' color='white' hoverColor='#00ACED'>
-              <TwitterIcon />
-            </Icon>
-          </a>
-        </div> */}
       </FooterContainer>
 
     </ThemeProvider>
