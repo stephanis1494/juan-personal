@@ -1,166 +1,170 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { keyframes, ThemeProvider } from 'styled-components'
+import theme from '../global_styles/theme';
+
 import {scrollIntoView} from "../utils/scrollIntoView";
-import WidgetLeftBar from '../presentations/WidgetLeftBar'
+
 import {BsChevronDoubleDown} from 'react-icons/bs'
-import CONSTANTS from '../global_styles/constants'
 
-let {breakpoints, colors, fontScale, fontWeight, fontSpacing} = CONSTANTS
-
-const Header = styled.div`
-  width: 100%;
-  height: 100vh;
-  background: #011627;
-  display: flex;
-  justify-content: center;
-  /* min-height: 480px; */
-  /* max-height: 100vh; */
-  /* background-size: cover; */
-  /* background-image: url('https://res.cloudinary.com/df0ll615k/image/upload/v1624845820/Asset_3_2x.png'); */
-  /* filter: blur(8px); */
-  /* margin: 0 auto; */
-  /* flex-wrap: wrap; */
-  @media (max-width: ${breakpoints.phoneX1}) {
-    height: 100vh;
-  }
-`
-
-const HeaderInnerContainer = styled.div`
-  max-width: 850px;
-    
-  display: flex;
+const OuterContainer = styled.section`  
+  padding-inline: 1em;
+	display: flex;
   flex-direction: column;
   justify-content: center;
-  /* align-items: flex-start; */
+  align-items: center;  
 
-  @media (max-width: ${breakpoints.largeX1}) {
-    margin: 0 52px;
+  height: 100vh;
+  max-height: 100vh;
+  background: ${props=>props.theme.colors.primaryColor};
+`
+
+const HeaderContainer = styled.div`
+
+	background-image: url('quote.svg');
+  background-repeat: no-repeat;
+  background-size: 25vh;
+  background-position: 100% -10%;
+
+  padding-inline: auto;
+  position: relative;
+  
+  display: grid;
+  place-content: center; // align the grid
+  align-items: center; // align items inside the grid
+  grid-template-rows: min-content min-content min-content auto min-content;
+  grid-gap: .4em;
+  
+  @media ((min-width: ${props=>props.theme.breakpoints.tabletX1})) {
+    padding-inline: auto;
+    grid-gap: .5em;
   }
-  @media (max-width: ${breakpoints.tabletX1}) {
-    margin: 0 36px;
+
+`
+const HeaderIntroText = styled.p`
+  margin: 0; 
+  padding: 0;
+  letter-spacing: .1em;
+  
+  font-size: var(--fs-600);
+  font-weight: ${props => props.theme.fontWeight.bold700};
+  color: ${props => props.theme.colors.accentColor};
+  text-transform: uppercase;
+`
+
+const HeaderMainTitle = styled.h1`
+  margin: 0px;
+  padding: 0px;
+  max-width: min-content;
+  line-height: 1.1em;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  
+  font-size: var(--fs-900);
+  font-weight: ${props => props.theme.fontWeight.extraBold800};
+  color: ${props => props.theme.colors.fontMainColor};
+  
+  & > .block {
+    display: block;
   }
-  @media (max-width: ${breakpoints.phoneX1}) {
-    margin: 0 28px;
+  @media ((min-width: ${props=>props.theme.breakpoints.tabletX1})) {
+    /* white-space: nowrap; */
+  }
+  @media ((min-width: ${props=>props.theme.breakpoints.largeX1}) and (orientation: landscape)) {
   }
 
 `
 
 const HeaderSubtitle = styled.p`
-  font-size: ${({fontSize}) => fontSize};
-  color: ${({color}) => color};
-  font-weight: ${({fontWeight}) => fontWeight ? fontWeight : '400'};
-  /* text-align: center; */
   margin: 0px;
   padding: 0px;
-  /* max-width: 350px; */
-  line-height: 1.3em;
+  line-height: 1.1em;
+  letter-spacing: .05em;
+  padding: 0.25em 1em;
+  max-width: fit-content;
+  text-transform: uppercase;
 
-  @media (max-width: ${breakpoints.extraLargeX1}) {
-    font-size: ${fontScale.bigX2}
-  }
-  @media (max-width: ${breakpoints.largeX1}) {
-    font-size: ${fontScale.bigX2};
-  }
-  @media (max-width: ${breakpoints.tabletX1}) {
-    font-size: ${fontScale.bigX1};
-  }
-  @media (max-width: ${breakpoints.phoneX1}) {
-    font-size: ${fontScale.medium}
-  }
+  background: ${props => props.theme.colors.accentColor};
+  
+  color: ${props => props.theme.colors.primaryColor};
+  font-weight: ${props => props.theme.fontWeight.bold700};
+  font-size: var(--fs-600);
+
+  position: relative;
+  left: -1em;
+`
+
+const HeaderDescription = styled.p`
+  margin-top: max(2em, 4vh);
+  margin-bottom: max(2em, 4vh);
+  align-self: flex-start;
+  font-size: var(--fs-600);
+  color: ${props => props.theme.colors.fontMainColor};
 
 `
-const HeaderSubText = styled.p`
-  font-size: ${({fontSize}) => fontSize};
-  color: ${({color}) => color};
-  font-weight: ${({fontWeight}) => fontWeight ? fontWeight : '400'};
-  /* text-align: center; */
-  margin: ${({margin}) => margin ? margin : 0}; 
-  max-width: 450px;
-  letter-spacing: ${({letterSpacing}) => letterSpacing ? letterSpacing : 'normal' };
-  padding: 0;
-
-  @media (max-width: ${breakpoints.tabletX1}) {
-    font-size: ${fontScale.small};
-  }
-  @media (max-width: ${breakpoints.phoneX1}) {
-    font-size: ${fontScale.small}
-  }
-  `
 
 const Highlight = styled.span`
   color: rgb(229,202,64);
-  font-size: ${fontScale.regular};
-  
-  @media (max-width: ${breakpoints.tabletX1}) {
-    font-size: ${fontScale.small};
-  }
-  @media (max-width: ${breakpoints.phoneX1}) {
-    font-size: ${fontScale.small}
-  }
 `
 
+const DownArrowAnimation = keyframes`
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(4px);
+  }
+  60% {
+    transform: translateY(8px);
+  }
+`
 const HeaderDownArrow = styled.div`
   width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  margin-top: 24px;
+  justify-content: flex-start;
   font-size: 48px;
   color: #ccd8f4;
   cursor: pointer;
+  animation: ${DownArrowAnimation} 2s infinite;
 `
 
 const Hero = () => {
-    return (
-        <Header>
-          <HeaderInnerContainer>
-            <HeaderSubText
-                fontSize={fontScale.small}
-                color={colors.accentColor}
-                fontWeight={fontWeight.extraBold800}
-                margin='0 0 12px 0'
-                letterSpacing={fontSpacing.regularSpacing}
-            >
-                Hello there, I am
-            </HeaderSubText>
+  return (
+    <ThemeProvider theme={theme}>
+      
+      <OuterContainer>
 
-            <HeaderSubtitle
-                fontSize={fontScale.bigX2}
-                color='#ccd8f4'
-                fontWeight={fontWeight.extraBold800}
-                margin={'0 0 0 0'}
-            >
-                Juan Luis Chaurant.
-            </HeaderSubtitle>
-            <HeaderSubtitle
-                fontSize={fontScale.bigX2}
-                color='rgb(132,159,182)'
-                fontWeight='800'
-                margin={'0 0 0 0'}
-            >
-                Making the web.
-            </HeaderSubtitle>
+        <HeaderContainer>
+          <HeaderIntroText>
+          Hello there, I am
+          </HeaderIntroText>
+          
+          <HeaderMainTitle>
+          Juan Luis<span className='block'>Chaurant.</span>
+          </HeaderMainTitle>
+          <HeaderSubtitle>
+            Developer. Musician. Educator.
+          </HeaderSubtitle>
+          
+          <HeaderDescription>
+            I enjoy solving <Highlight>real world problems</Highlight>,<br /> making use of <Highlight>new technologies</Highlight>.
+          </HeaderDescription>
+          
+          <HeaderDownArrow
+          onClick={() => scrollIntoView('about-me', 'start')}
+          >
+            <BsChevronDoubleDown style={{ width: '32px', height: '32px' }}/>
+          </HeaderDownArrow>
+        
+        </HeaderContainer>
 
-            <HeaderSubText
-                fontSize={fontScale.regular}
-                color='#ccd8f4'
-                margin={'16px 0 0 0'}
-                fontSpacing={fontSpacing.smallSpacing}
-            >
-                I enjoy solving <Highlight>real world problems</Highlight><br /> making use of <Highlight>new technologies</Highlight>.
-            </HeaderSubText>
+      </OuterContainer>
+      
+      {/* <WidgetLeftBar /> */}
+    </ThemeProvider>
 
-            <HeaderDownArrow
-                onClick={() => scrollIntoView('about-me', 'start')}
-            >
-                <BsChevronDoubleDown style={{ width: '32px', height: '32px' }}/>
-            </HeaderDownArrow>
-
-          </HeaderInnerContainer>
-
-            <WidgetLeftBar />
-        </Header>
     )
 }
-
+  
 export default Hero

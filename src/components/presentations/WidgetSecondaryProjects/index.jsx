@@ -1,141 +1,127 @@
 import React, { useState } from 'react'
-import styled, { createGlobalStyle, css } from 'styled-components'
+import styled, { createGlobalStyle, css, ThemeProvider } from 'styled-components'
 import {IoMdOpen} from 'react-icons/io'
 import {FiGithub} from 'react-icons/fi'
-import CONSTANTS from '../../global_styles/constants'
-
-// should not this coponent be at views folder?
+import theme from '../../global_styles/theme'
 
 const GeneralStyle = createGlobalStyle`
 
-    .tabs__content--active {
-        display: block;
-    }
-    .tabs__content--innactive {
-        display: none;
+	.tabs__content--active {
+		display: inline;
+	}
+	.tabs__content--innactive {
+		display: none;
+	}
 
-    }
+	.tabs__button--active {
+		background: ${props=>props.theme.colors.primaryColorClear};
+		color: ${props=>props.theme.colors.accentColor};
+		box-sizing: border-box;
+		border-bottom: 4px solid ${props=>props.theme.colors.accentColor};
+		
+		@media (min-width: ${props=>props.theme.breakpoints.tabletX1}) {
+			border-left: 4px solid ${props=>props.theme.colors.accentColor};
+		}
+	}
 
-    .tabs__button--active {
-        background: rgb(4,48,83);
-        color: rgb(230,203,46);
-        box-sizing: border-box;
-        border-left: 4px solid rgb(230,203,46);
+	.tabs__title {
+		font-weight: bold;
+		font-size: 24px;
+		display: flex;
+		justify-content: space-between;
+		/* margin: 0; */
+	}
 
-        @media (max-width: ${CONSTANTS.breakpoints.tabletX1}) {
-            border-left: 0px;
-            border-bottom: 4px solid rgb(230,203,46);
-        }
-    }
-    /* .tabs__button--active::before {
-        content: '';
-        display: block;
-        position: absolute;
-        height: calc(5% );
-        transform: translate(-150%, -10%);
-        width: 10px;
-        background: rgb(126,151,170);
-    } */
+	.tabs__date {
+		color: rgb(95,126,151);
+		font-size: 12px;
+		/* padding: 0; */
+		margin-top: 0;
+	}
 
-    .tabs__title {
-        font-weight: bold;
-        font-size: 24px;
-        display: flex;
-        justify-content: space-between;
-        /* margin: 0; */
-    }
-
-    .tabs__date {
-        color: rgb(95,126,151);
-        font-size: 12px;
-        /* padding: 0; */
-        margin-top: 0;
-    }
-
-    .tabs__content {
-        font-size: 16px;
-    }
+	.tabs__content {
+		font-size: 16px;
+	}
 `
 
-const Container = styled.div`
-    /* height: 100vh; */
-    width: 100vw;
-    
-    background:rgb(1,22,39);
-    box-sizing: border-box;
-    
-    padding: 4em 0;
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    @media (max-width: ${`${CONSTANTS.breakpoints.tabletX1}`}) {
-      
-    }
+const OuterContainer = styled.div`
+	padding-inline: 1em;
+	background: ${props=>props.theme.colors.primaryColor};
+	
+	display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
 `
 
 const InnerContainer = styled.div`
+	margin: 2em auto 4em auto;
+	width: 95%;
+  max-width: 1000px;
+	
+	@media ((min-width: ${props=>props.theme.breakpoints.tabletX1})) {
     width: 80%;
-    max-width: 850px;
+  }
+  @media ((min-width: ${props=>props.theme.breakpoints.extraLargeX1})) {
+    width: 70%;
+  }
+`
 
-    @media (max-width: ${CONSTANTS.breakpoints.phoneX1}) {
-        /* width: 300px; */
-    }
+const HeaderContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+	margin-bottom: 2em;
 `
 
 const SectionTitle = styled.h2`
-    font-size: ${CONSTANTS.fontScale.medium};
-    color: rgb(204, 215, 245);
-    display: flex;
-
-    @media (max-width: ${`${CONSTANTS.breakpoints.tabletX1}`}) {
-        font-size: 24px;
-    }
+	margin: 0;
+  padding: 0;
+  font-size: ${props=>props.theme.fontScale.smallScreen.medium};
+  color: ${props=>props.theme.colors.fontMainColor};
 `
 
 const TabsContainer = styled.div`
-    max-width: 850px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: row;
-    color: rgb(204,215,245);
-    @media (max-width: ${`${CONSTANTS.breakpoints.tabletX1}`}) {
-        min-width: 400px;
-        /* background-color: red; */
-        flex-direction: column;
-        /* overflow: hidden; */
-    }
-    @media (max-width: ${CONSTANTS.breakpoints.phoneX1}) {
-        min-width: 300px;
-    }
+	/* max-width: 1000px; */
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+	color: rgb(204,215,245);
+
+	@media (min-width: ${props=>props.theme.breakpoints.tabletX1}) {        
+		flex-direction: row;
+	}
+	
 `
 
 const TabsSidebar = styled.div`
-    display: flex;
-    flex-direction: column;
-    width: 135px;
-    flex-shrink: 0;
-    z-index: 6;
-    @media (max-width: ${`${CONSTANTS.breakpoints.tabletX1}`}) {
-        width: 100%;
-        margin-bottom: 16px;
-        flex-direction: row;
-        overflow-x: scroll;
-    }
-    `
+	display: flex;
+	min-width: 130px;
+	flex-shrink: 0;
+	/* z-index: 6; */
+	overflow: scroll;
+	min-height: calc(2em);
+	padding: .5em 0;
+	@media (min-width: ${props=>props.theme.breakpoints.tabletX1}) {        
+	}
+	`
 
 const TabsSidebarContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    border-left: 2px solid rgb(95,126,151);
-    width: 100%;
-    @media (max-width: ${`${CONSTANTS.breakpoints.tabletX1}`}) {
-        width: fit-content;
-        border-left: 0px;
-        border-bottom: 2px solid rgb(95,126,151);
-        flex-direction: row;
-    }
+	display: flex;
+	flex-direction: row;
+	width: fit-content;
+	border-bottom: 2px solid rgb(95,126,151);
+	
+	@media (min-width: ${props=>props.theme.breakpoints.tabletX1}) {        
+		flex-direction: column;
+		width: 100%;
+		border-right: 2px solid rgb(95,126,151);
+		border-bottom: none;
+	}
+
 `
 
 const Button = styled.button`
@@ -146,40 +132,47 @@ const Button = styled.button`
     transform: translateX(-4px);
     font-size: 12px;
     cursor: pointer;
-    width: 100%;
+		width: fit-content;
+		min-width: 125px;
+		transform: translateY(4px);
     
-    @media (max-width: ${`${CONSTANTS.breakpoints.tabletX1}`}) {
-        width: fit-content;
-        min-width: 125px;
-        transform: translateY(4px);
-    }
+    /* @media (min-width: ${`${props=>props.theme.breakpoints.tabletX1}`}) {
+			width: 100%;
+    } */
 
-    ${({ activeTab = false }) => activeTab ? css`      
+    ${
+			({ activeTab = false }) => activeTab ? css`      
         background: rgb(4,48,83);       
-        color: rgb(230,203,46);    
+        color: ${props=>props.theme.colors.accentColor};    
         box-sizing: border-box;      
-        border-left: 4px solid rgb(230,203,46);   
+				border-bottom: 4px solid ${props=>props.theme.colors.accentColor};        
         
-        @media (max-width: ${CONSTANTS.breakpoints.tabletX1}) {        
-            border-left: 0px;        
-            border-bottom: 4px solid rgb(230,203,46);        
-        }` : ''};
+        @media (min-width: ${props=>props.theme.breakpoints.tabletX1}) {        
+					border-right: 4px solid ${props=>props.theme.colors.accentColor};   
+					border-bottom: none;
+					transform: translateX(.4em);
+        }` 
+			: ''
+		};
 `
 
 const TabsContent = styled.div`
-    display: none;
-    margin-left: 12px;
-
-    ${({ activeTab = false }) => activeTab ? css`      
-        background: rgb(4,48,83);       
-        color: rgb(230,203,46);    
-        box-sizing: border-box;      
-        border-left: 4px solid rgb(230,203,46);   
-        
-        @media (max-width: ${CONSTANTS.breakpoints.tabletX1}) {        
-            border-left: 0px;        
-            border-bottom: 4px solid rgb(230,203,46);        
-        }` : ''};
+	display: none;
+	min-height: 25ch;	
+	
+	${
+		({ activeTab = false }) => activeTab ?? css`    
+			background: rgb(4,48,83);       
+			color: ${props=>props.theme.colors.accentColor};    
+			box-sizing: border-box;      
+			border-left: 4px solid ${props=>props.theme.colors.accentColor};   
+			
+			@media (min-width: ${props=>props.theme.breakpoints.tabletX1}) {        
+				border-left: 0px;        
+				border-bottom: 4px solid ${props=>props.theme.colors.accentColor};        
+			}
+		`
+	};
 `
 
 const Line = styled.div`
@@ -188,7 +181,7 @@ const Line = styled.div`
   background: rgb(95, 126, 151);
   margin-left: 16px;
 
-  @media (max-width: ${`${CONSTANTS.breakpoints.extraLargeX1}`}) {
+  @media (min-width: ${`${props=>props.theme.breakpoints.extraLargeX1}`}) {
     margin-right: 16px;
   }
 `
@@ -200,19 +193,12 @@ const LeftLine = styled.div`
   background: rgb(95, 126, 151);
   margin-left: 16px;
 
-  @media (max-width: ${`${CONSTANTS.breakpoints.extraLargeX1}`}) {
+  @media (min-width: ${`${props=>props.theme.breakpoints.extraLargeX1}`}) {
     display: inline-block;
     margin-right: 16px;
   }
 `
 
-const HeaderContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 100%;
-    margin: 26px 0;
-`
 
 const Link = styled.a`
 	cursor: pointer;
@@ -220,16 +206,17 @@ const Link = styled.a`
 `
 
 const WidgetSecondaryProjects = () => {
-    const [toggleTab, setToggleTab] = useState(1)
+	const [toggleTab, setToggleTab] = useState(1)
 
-    const handleToggleTab = (index) => {
-        setToggleTab(index)
-    }
+	const handleToggleTab = (index) => {
+		setToggleTab(index)
+	}
 
     return (
-        <Container>
-					<GeneralStyle />
+			<ThemeProvider theme={theme}>
+				<GeneralStyle />
 
+				<OuterContainer>
 					<InnerContainer>
 						<HeaderContainer>
 							<LeftLine />
@@ -268,6 +255,7 @@ const WidgetSecondaryProjects = () => {
 										</Link>
 										<Link
 											href='https://admiring-perlman-ef199e.netlify.app/'
+											target="_blank"
 										>
 											<IoMdOpen/>
 										</Link>
@@ -280,20 +268,21 @@ const WidgetSecondaryProjects = () => {
 
 							<TabsContent style={{display: toggleTab === 2 ? 'block' : 'none'}}>
 							<div className='tabs__title'>
-									<span>Miles Calculator</span>
-									<span>
-										<Link 
-										href="https://github.com/juanluischaurant/tesla-miles"
+								<span>Miles Calculator</span>
+								<span>
+									<Link 
+									href="https://github.com/juanluischaurant/tesla-miles"
+									target="_blank"
+									>
+										<FiGithub/>
+									</Link>
+									<Link
+										href='https://confident-khorana-aed6df.netlify.app/'
 										target="_blank"
-										>
-											<FiGithub/>
-										</Link>
-										<Link
-											href='https://confident-khorana-aed6df.netlify.app/'
-										>
-											<IoMdOpen/>
-										</Link>
-									</span>
+									>
+										<IoMdOpen/>
+									</Link>
+								</span>
 								</div>
 								<p className="tabs__date">November 20 - November 26, 2021</p>
 								<p className="tabs_content">An applicaction inspired on the Tesla UI used for calculating the approximated miles a car car is able to travel based on several variables.</p>
@@ -327,7 +316,9 @@ const WidgetSecondaryProjects = () => {
 
 						</TabsContainer>
 					</InnerContainer>
-        </Container>
+
+				</OuterContainer>
+			</ThemeProvider>
     )
 }
 
