@@ -57,7 +57,7 @@ const RegularNavbar = () => {
             exit={{ y: -67 }}
           >
             <Logo onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-              Juan Luis
+              JL
             </Logo>
             <div>
               <Hamburger onClick={() => setIsOpen(!isOpen)}>

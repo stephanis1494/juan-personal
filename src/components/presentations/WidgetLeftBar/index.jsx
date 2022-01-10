@@ -1,56 +1,67 @@
 import React from 'react'
 import styled from 'styled-components'
 import { FaLinkedin, FaTwitterSquare, FaGithubSquare, FaEnvelopeSquare } from 'react-icons/fa'
+import { FiLinkedin, FiTwitter, FiGithub, FiMail } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 
+import theme from '../../global_styles/theme';
+import { ThemeProvider } from 'styled-components'
+
 const LeftSidebar = styled.div`
-  /* width: 50px; */
-  height: 360px; 
+  display: none;
   position: fixed;
-  top: 42%;
-  left: 94vw;
-  z-index: 1;
-  margin-right: 20px;
-  /* background: red; */
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+  right: 5vw;
+  bottom: 0;
+  z-index: 1; 
   
-  font-size: 32px;
-  color:#ccd8f4;
-
   &:after {
-      margin: 5px;
-      content: '';
-      width: 2px;
-      height: 180px;
-      background: #304a5f;
+    content: '';
+    width: 2px;
+    height: 35vh;
+    background: ${props=>props.theme.colors.primaryColorClear};
   }
 
-  @media (max-width: 800px) {
-    display: none;
+  & > a {
+    color: ${({theme})=>theme.colors.fontMainColor};
+
+  }
+  & > a:hover {
+    color: ${({theme})=>theme.colors.accentColor};
+  }
+  
+  @media ((min-width: ${props=>props.theme.breakpoints.largeX1}) and (orientation: landscape)) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    font-size: 1.4rem;
+  }
+  @media ((min-width: ${props=>props.theme.breakpoints.extraLargeX1})) {
+    font-size: 2rem;
+    gap: .6em;
   }
 `
 
 const WidgetLeftBar = () => {
-    return (
-        <LeftSidebar>
-          <Link href='https://www.linkedin.com/in/juanluischaurant/' target='_blank'>
-            <FaLinkedin style={{ color: 'white' }}/>
-          </Link>
-          <Link href='https://twitter.com/juanluis_nt' target='_blank' style={{ color: 'white' }}>
-            <FaTwitterSquare />
-          </Link>
-          <Link href='https://github.com/juanluischaurant' target='_blank' style={{ color: 'white' }}>
-            <FaGithubSquare />
-          </Link>
-          <a href='mailto:juanluischaurant@gmail.com' style={{ color: 'white' }}>
-            <FaEnvelopeSquare />
-          </a>
-        </LeftSidebar>
-    )
+  return (
+    <ThemeProvider theme={theme}>
+      <LeftSidebar>
+        <a href='https://www.linkedin.com/in/juanluischaurant/' target='_blank'>
+          <FiLinkedin/>
+        </a>
+        <a href='https://twitter.com/juanluis_nt' target='_blank'>
+          <FiTwitter />
+        </a>
+        <a href='https://github.com/juanluischaurant' target='_blank'>
+          <FiGithub />
+        </a>
+        <a href='mailto:juanluischaurant@gmail.com'>
+          <FiMail />
+        </a>
+      </LeftSidebar>
+    </ThemeProvider>
+  )
 }
 
 export default WidgetLeftBar
