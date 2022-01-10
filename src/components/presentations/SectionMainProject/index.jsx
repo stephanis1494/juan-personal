@@ -60,67 +60,67 @@ const BodyContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.3em;
+  justify-content: center;
+  column-gap: 4em;
+  margin-top: calc(4em + 2em);
 
   @media ((min-width: ${props=>props.theme.breakpoints.largeX1}) ) {
     flex-direction: row;
   }
-  `
-
-const BodyImgContainer = styled.div`
-  width: 50%;
-  min-width: 300px;
-
-  @media ((min-width: ${props=>props.theme.breakpoints.largeX1})) {
-    flex: 1 2 300px;
-
-    position: relative;
-    z-index: 2;
-  }
 `
-const BodyImg = styled.img`
-  /* margin: 0; */
+
+// new component
+// ++++++++++++++++++
+
+const FeaturedContainer = styled.div`
+  background: rgb(11, 41, 66);
+  color: ${({theme}) => theme.colors.fontMainColor};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-top: 2em;
+  padding-bottom: 4em;
+  max-width: 35em;
+`
+
+const FeaturedContainerImage = styled.div`
+  width: 80%;
+  height: 80%;
+  max-width: 23em;
+  max-height: 23em;
+  transform: translateY(-4em);
+
+`
+const Image = styled.img.attrs({
+  src: 'https://assets-global.website-files.com/5fda3048302e579473bfb454/6081869d03bc45778e9e752c_CleanShot%20Slite%20Project%20Proposal%20Template%20-%20Project%20Proposal%20Template%20at%2018.21.39.png'
+})`
   max-width: 100%;
 `
 
-const BodyContent = styled.div`
-  /* margin-left: -64px; */
-  display: flex;
-  flex-direction: column;
-  
-  @media ((min-width: ${props=>props.theme.breakpoints.largeX1})) {
-    flex: 1 1 auto;
-
-  }
+const FeaturedContainerContent = styled.div`
+  max-width: 85%;
 `
 
-const BoySubtitle = styled.div`
-  margin-bottom: .5em;
-  padding-left: 1.2em;
-  font-weight: bold;
-  font-size: ${props=>props.theme.fontScale.smallScreen.regular};
-  /* text-align: right; */
-  color: ${props=>props.theme.colors.fontMainColor};
+
+const FeaturedContainerDate = styled.div`
+  /* color: rgb(95, 126, 151); */
+  color: ${({theme}) => theme.colors.accentColor};
+`
+const FeaturedContainerTitle = styled.h3`
+  font-size: var(--fs-500);
+  margin-top: 0;
+  margin-bottom: .0em;
 `
 
-const BodyText = styled.div`
-  margin-top: 8px;
-  background: rgb(11, 41, 66);
-  color: ${props=>props.theme.colors.fontMainColor};
-  padding: 1px 24px;
-  border-radius: 8px;
-  font-size: 16px;
-  /* text-align: right; */
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+const FeaturedContainerText = styled.div`
+  line-height: 1.5em;
+  padding-bottom: 1em;
+`
 
-  @media ((min-width: ${props=>props.theme.breakpoints.largeX1})) {
-    position: relative;
-    left: -4em;
-    width: calc(100% + 4em);
-    padding-left: calc(4em + 1em);
-    padding-right: 2em;
-    z-index: 1;
-
+const FeaturedContainerFooter = styled.div`
+  & > *:first-child {
+    margin-bottom: .8em;
   }
 `
 
@@ -132,7 +132,7 @@ const LinkContainer = styled.div`
   justify-content: right;
 `
 
-const ListItem = styled.div`
+const LinkItem = styled.div`
     font-size: ${props=>props.theme.fontScale.smallScreen.small};
     margin-right: 8px;
     color: rgb(95, 126, 151);
@@ -165,29 +165,76 @@ const SectionMainProject = () => {
           </HeaderContainer>
           
           <BodyContainer>
+
+            <FeaturedContainer>
+              
+              <FeaturedContainerImage>
+                <Image></Image>
+              </FeaturedContainerImage>
+              
+              <FeaturedContainerContent>
+                
+                <FeaturedContainerDate>October 25 - November 1, 2021</FeaturedContainerDate>
+                <FeaturedContainerTitle>A cool Project</FeaturedContainerTitle>
+                
+                <FeaturedContainerText>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. A, unde? Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, est!</p>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. A, unde?</p>
+                </FeaturedContainerText>  
+
+                <FeaturedContainerFooter>
+                  <LinkContainer>
+                    <LinkItem>NODE</LinkItem>
+                    <LinkItem>NPM</LinkItem>
+                    <LinkItem>React</LinkItem>
+                  </LinkContainer>
+
+                  <IconContainer>
+                    <IoMdOpen size="2rem"></IoMdOpen>
+                    <FiGithub size="2rem"></FiGithub>
+                  </IconContainer>
+                </FeaturedContainerFooter>
+
+              </FeaturedContainerContent>
+
+            </FeaturedContainer>
+            {/* end of FeaturedContainer */}
+
+            <FeaturedContainer>
+              
+              <FeaturedContainerImage>
+                <Image></Image>
+              </FeaturedContainerImage>
+              
+              <FeaturedContainerContent>
+                
+                <FeaturedContainerDate>October 25 - November 1, 2021</FeaturedContainerDate>
+                <FeaturedContainerTitle>A cool Project</FeaturedContainerTitle>
+                
+                <FeaturedContainerText>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. A, unde? Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, est!</p>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. A, unde?</p>
+                </FeaturedContainerText>  
+
+                <FeaturedContainerFooter>
+                  <LinkContainer>
+                    <LinkItem>NODE</LinkItem>
+                    <LinkItem>NPM</LinkItem>
+                    <LinkItem>React</LinkItem>
+                  </LinkContainer>
+
+                  <IconContainer>
+                    <IoMdOpen size="2rem"></IoMdOpen>
+                    <FiGithub size="2rem"></FiGithub>
+                  </IconContainer>
+                </FeaturedContainerFooter>
+
+              </FeaturedContainerContent>
+
+            </FeaturedContainer>
+            {/* end of FeaturedContainer */}
+
             
-            <BodyImgContainer>
-              <BodyImg src='https://assets-global.website-files.com/5fda3048302e579473bfb454/6081869d03bc45778e9e752c_CleanShot%20Slite%20Project%20Proposal%20Template%20-%20Project%20Proposal%20Template%20at%2018.21.39.png'></BodyImg>
-            </BodyImgContainer>
-            
-            <BodyContent>
-              <BoySubtitle>A Super Project</BoySubtitle>
-              <BodyText>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus, explicabo? Esse est illum obcaecati neque veniam cum similique velit, at sed et tenetur asperiores consequatur fugit accusantium nihil quo qui?</p>
-              </BodyText>
-
-              <LinkContainer>
-                <ListItem>NODE</ListItem>
-                <ListItem>NPM</ListItem>
-                <ListItem>React</ListItem>
-              </LinkContainer>
-
-              <IconContainer>
-                <IoMdOpen size="2rem"></IoMdOpen>
-                <FiGithub size="2rem"></FiGithub>
-              </IconContainer>
-
-            </BodyContent>
 
           </BodyContainer>
         </InnerContainer>
@@ -198,3 +245,6 @@ const SectionMainProject = () => {
 }
 
 export default SectionMainProject
+
+    
+
