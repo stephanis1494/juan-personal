@@ -52,7 +52,6 @@ export default function Board({ setGameEnded = () => {}, }) {
 
     // let canvasPosition = theCanvas.getBoundingClientRect()
     const render = () => {
-
         let canvasPosition = theCanvas.getBoundingClientRect()
 
         // the offset to compensate for the X position where the CANVAS begins
@@ -64,13 +63,13 @@ export default function Board({ setGameEnded = () => {}, }) {
         DrawUiText(
             theCanvas,
             theContext,
-            `Left to go: ${bricksetObject.bricksLeft}`,
+            `bricks: ${bricksetObject.bricksLeft}`,
             50,
             30
         )
         DrawUiText(theCanvas, theContext, playerObject.name, 50, theCanvas.height-10)
-        DrawUiText(theCanvas, theContext, `Score: ${playerObject.score}`, 280, 30)
-        DrawUiText(theCanvas, theContext, `Level: ${playerObject.level}`, 380, 30)
+        DrawUiText(theCanvas, theContext, `scr: ${playerObject.score}`, 280, 30)
+        DrawUiText(theCanvas, theContext, `lvl: ${playerObject.level}`, 380, 30)
 
         LivesManagement(theCanvas, theContext, playerObject)
 
@@ -93,8 +92,6 @@ export default function Board({ setGameEnded = () => {}, }) {
             playerObject,
             powerUpObject
         )
-
-
         Paddle(theContext, theCanvas, paddleObject, ballObject)
 
         if (bricksetObject.specialBrickDestroyed && powerUpObject.y <= theCanvas.height) {
@@ -116,7 +113,7 @@ export default function Board({ setGameEnded = () => {}, }) {
           if(playerObject.gameStatus === 'run') {
             requestAnimationFrame(render)
           } else if(playerObject.gameStatus === 'paused') {
-            DrawUiText(theCanvas, theContext, 'Paused', theCanvas.width/2-30, theCanvas.height/2)
+            DrawUiText(theCanvas, theContext, 'press P to resume', theCanvas.width/2-60, theCanvas.height/2)
           }
 
         } else {
@@ -160,7 +157,6 @@ export default function Board({ setGameEnded = () => {}, }) {
     <Canvas
       height="500px"
       width="800px"
-      // onKeyPress = {}
       onMouseMove={(event) =>
         (paddleObject.paddleX =
           event.clientX -

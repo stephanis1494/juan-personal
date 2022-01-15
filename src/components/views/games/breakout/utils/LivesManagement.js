@@ -1,3 +1,4 @@
+// this function is in charge of rendering the remaining lives on the canvas
 export default function LivesManagement(theCanvas, theContext, playerObject) {
     let xPositionAdd = 10
     for(let i = 1; i<=playerObject.livesRemaining; i++) {

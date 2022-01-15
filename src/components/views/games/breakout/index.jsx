@@ -10,7 +10,6 @@ const GameContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 32px;
   border-radius: 3px;
   border: 1px solid rgba(255, 255, 255, 0.1);
 `
@@ -24,18 +23,18 @@ export default function Breakout() {
 
   const [highScores, setHighScores] = useState([])
 
-/*  const getScores = async() => {
-    try {
-        const response = await fetch('http://localhost:5000/get_top_three')
+  /*  const getScores = async() => {
+      try {
+          const response = await fetch('http://localhost:5000/get_top_three')
 
-        const jsonData = await response.json()
+          const jsonData = await response.json()
 
-        // console.log(jsonData)
-        setHighScores(jsonData)
-    } catch (error) {
-        console.error(error.message)
-    }
-  }*/
+          // console.log(jsonData)
+          setHighScores(jsonData)
+      } catch (error) {
+          console.error(error.message)
+      }
+    }*/
 
 
   const handlePlayerName = (e) => {
@@ -98,12 +97,12 @@ export default function Breakout() {
                 placeholder='Type a name, e.g. Juan'
               />
               <Button>
-                  <AiOutlineSend
-                    style={{
-                      transform: 'scale(2)',
-                      color: playerName ? '#ffffff' : '#fefefe60'
-                    }}
-                  />
+                <AiOutlineSend
+                  style={{
+                    transform: 'scale(2)',
+                    color: playerName ? '#ffffff' : '#fefefe60'
+                  }}
+                />
               </Button>
             </Form>
           </NameDisplay>
@@ -184,46 +183,9 @@ const Title = styled.h1`
     0 0 82px #0fa;
 `
 
-const Input = styled.input.attrs(props => ({
-  type: 'text',
-  size: props.small ? 5 : undefined,
-}))`
-  &:focus {
-    outline: none;
-  }
-  
-  background-color: transparent;
-  /* border-radius: 3px; */
-  border-top: none;
-  border-right: none;
-  border-left: none;
-  border-bottom: 1.5px solid #ffffff;
-  
-  /* display: block; */
-  size: 5;
-  
-  margin: 0 0;
-  
-  color: #ffffff;
-  padding: ${props => props.padding};
-  
-  font-size: 1.2em;
-  text-shadow:
-    0 0 7px #fff,
-    0 0 10px #fff,
-    0 0 42px #ff0000;
-/* 
-  ::focus {
-    outline: none;
-  } */
-  ::placeholder {
-    color: #ffffff;
-  }
-`
 
 const Button = styled.button`
   margin-left: 10px;
-  /* color: #fff; */
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -236,10 +198,8 @@ const WelcomePlayer = styled.div`
 `
 
 const PressSpace = styled.p`
-  /* display: ${ p => p.nameSubmit ? 'flex' : 'none' }; */
   animation: ${blinkIt} 1.5s linear infinite;
   font-size: .8em;
-
 `
 
 const RedGlitch = styled.span`
@@ -281,3 +241,36 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 `;
+
+
+const Input = styled.input.attrs(props => ({
+  type: 'text',
+  size: props.small ? 5 : undefined,
+}))`
+  &:focus {
+    outline: none;
+  }
+  
+  background-color: transparent;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: 1.5px solid #ffffff;
+  
+  size: 5;
+  
+  margin: 0 0;
+  
+  color: #ffffff;
+  padding: ${props => props.padding};
+  
+  font-size: 1.2em;
+  text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 42px #ff0000;
+
+  ::placeholder {
+    color: #ffffff;
+  }
+`
