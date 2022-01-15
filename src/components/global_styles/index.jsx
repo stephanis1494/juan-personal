@@ -2,6 +2,7 @@ import { createGlobalStyle } from "styled-components";
 import theme from "./theme";
 
 const GeneralPageStyling = createGlobalStyle`
+    
     * {
         box-sizing: border-box;
         font-family: 'Open Sans';
