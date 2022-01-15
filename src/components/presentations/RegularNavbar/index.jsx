@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import { CloseIcon } from '../Icons'
 import { debounce } from 'throttle-debounce'
 import { scrollIntoView } from "../../utils/scrollIntoView"
@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 const RegularNavbar = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const [showBar, setShowBar] = useState(true)
+  const [showBar, setShowBar] = useState(false)
   const [lastScrollPositionY, setLastScrollPositionY] = useState(window.scrollY)
 
   useEffect(() => {
@@ -21,13 +21,11 @@ const RegularNavbar = () => {
   const handleScroll = debounce(10, true, () => {
     const position = window.scrollY
 
-    if (position < lastScrollPositionY && !showBar) {
+    if (position > 60 && !showBar) {
       setShowBar(true)
-    } else if (position > lastScrollPositionY && showBar) {
+    } else if (position < 60 && showBar) {
       setShowBar(false)
     }
-
-    setLastScrollPositionY(window.scrollY)
   })
 
   useEffect(() => {
@@ -42,6 +40,7 @@ const RegularNavbar = () => {
   }
 
   return (
+    <div>
       <AnimatePresence>
         {
           showBar &&
@@ -55,6 +54,7 @@ const RegularNavbar = () => {
               duration: 0.4
             }}
             exit={{ y: -67 }}
+            floating={true}
           >
             <Logo onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
               JL
@@ -74,6 +74,24 @@ const RegularNavbar = () => {
           </Nav>
         }
       </AnimatePresence>
+      <Nav>
+        <Logo onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+          JL
+        </Logo>
+        <div>
+          <Hamburger onClick={() => setIsOpen(!isOpen)}>
+            <span />
+            <span />
+            <span />
+          </Hamburger>
+          <MenuLink onClick={() => scrollIntoView('game-container')}>Game</MenuLink>
+          <MenuLink onClick={() => scrollIntoView('music-container')}>Music</MenuLink>
+        </div>
+        {
+          isOpen && <Menu onClose={() => setIsOpen(false)} handleMobileMenuSelect={handleMobileMenuSelect} />
+        }
+      </Nav>
+    </div>
   )
 }
 
@@ -119,19 +137,21 @@ const Menu = ({ onClose = () => {}, handleMobileMenuSelect = () => {} }) => (
 )
 
 const Nav = styled(motion.div)`
-    z-index:5;
     box-sizing: border-box;
     width: 100%;
-    position: fixed;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    background-color: rgba(2, 22, 38, 0.95);
     padding: 15px;
-    transition: background-color 250ms ease;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    backdrop-filter: blur(2px);
+    background-color: #011627;
+    ${({ floating = false }) => floating && css`
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      backdrop-filter: blur(2px);
+      transition: background-color 250ms ease;
+      z-index:5;
+      position: fixed;
+    `}
 `
 
 const Logo = styled.div`
@@ -141,6 +161,7 @@ const Logo = styled.div`
     font-size: 1.7rem;
     color: #fff;
     cursor: pointer;
+    margin-left: 4px;
 `
 
 const Hamburger = styled.div`

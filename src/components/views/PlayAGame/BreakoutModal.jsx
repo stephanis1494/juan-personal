@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import Breakout from "../games/breakout";
+import { AiOutlineCloseCircle } from 'react-icons/all'
+import { AnimatePresence, motion } from 'framer-motion'
 
 
 const OuterContainer = styled.div`
@@ -17,27 +19,49 @@ const OuterContainer = styled.div`
   justify-content: center;
 `
 
-const CloseIcon = styled.div`
-  color: white;
-  position: fixed;
-  top: 2vw;
-  left: 4vw;
+const InnerContainer = styled(motion.div)`
+  position: relative;
+`
+
+const IconContainer = styled.div`
+  position: absolute;
+  right: -28px;
 `
 
 const BreakoutModal = ({isModalOpened, setModalState}) => {
+  const [closeHover, setCloseHover] = useState(false)
   return (
     <>
       {isModalOpened ? (
         <OuterContainer>
-          <CloseIcon
-            onClick={()=>setModalState(prev=>!prev)}
-          >X</CloseIcon>
-          <Breakout></Breakout>
-
-          
+          <AnimatePresence>
+            <InnerContainer
+              key='breakout-game-wrapper'
+              initial={{ y: 1000 }}
+              animate={{ y: 0 }}
+              exit={{ y: -1000 }}
+              transition={{
+                type: 'tween',
+                stiffness: 200,
+                damping: 30,
+                duration: 0.5
+              }}
+            >
+              <IconContainer
+                onMouseEnter={() => setCloseHover(true)}
+                onMouseLeave={() => setCloseHover(false)}
+              >
+                <AiOutlineCloseCircle
+                  onClick={()=>setModalState(prev=>!prev)}
+                  size='24'
+                  style={{ opacity: closeHover ? '1' : '0.75', transition: 'opacity 150ms ease', cursor: 'pointer' }}
+                />
+              </IconContainer>
+              <Breakout></Breakout>
+            </InnerContainer>
+          </AnimatePresence>
         </OuterContainer>
       ) : null}
-      
     </>
   )
 }

@@ -102,7 +102,7 @@ const TabsSidebar = styled.div`
 	min-width: 130px;
 	flex-shrink: 0;
 	/* z-index: 6; */
-	overflow: scroll;
+	overflow: auto;
 	min-height: calc(2em);
 	padding: .5em 0;
 	@media (min-width: ${props=>props.theme.breakpoints.tabletX1}) {        
@@ -270,7 +270,7 @@ const WidgetSecondaryProjects = () => {
 							<div className='tabs__title'>
 								<span>Miles Calculator</span>
 								<span>
-									<Link 
+									<Link
 									href="https://github.com/juanluischaurant/tesla-miles"
 									target="_blank"
 									>

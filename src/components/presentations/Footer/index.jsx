@@ -62,7 +62,6 @@ const FooterContainerTopButton = styled.div`
 const FooterLayout = styled.div`
   margin: 2em auto 4em auto;
   width: 95%;
-  max-width: 1000px;
 
   @media ((min-width: ${props=>props.theme.breakpoints.tabletX1})) {
     width: 80%;
@@ -111,7 +110,7 @@ const FooterLayoutTextContent = styled.div`
   & > a:hover:after {
     border-bottom: solid 3px ${({theme})=>theme.colors.accentColor};
   }
-` 
+`
 
 const FooterLayoutSocialMedia = styled.div`
 
@@ -163,10 +162,10 @@ const Footer = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      
+
       <FooterContainer>
-      
-        <FooterContainerTopButton 
+
+        <FooterContainerTopButton
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         >
           <Icon>
@@ -192,7 +191,7 @@ const Footer = () => {
           </FooterLayoutSocialMedia>
 
         </FooterLayout>
-        
+
       </FooterContainer>
 
     </ThemeProvider>
