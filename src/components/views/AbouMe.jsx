@@ -68,6 +68,8 @@ const ProfileImage = styled.img.attrs({
     max-width: 80%;
     margin: 0;
     flex: 1 1 50%;
+    border-radius: 3px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.38);
     
     @media ((min-width: ${({theme}) => theme.breakpoints.largeX1})) {
       max-width: 40%;
@@ -131,13 +133,13 @@ const AbouMe = () => {
     <ThemeProvider theme={theme}>
       <OuterContainer>
         <InnerContainer id='about-me'>
-          
+
           <HeaderContainer>
             <LeftLine />
             <SectionTitle>About Me</SectionTitle>
             <Line />
           </HeaderContainer>
-          
+
           <ContentContainer>
             <InfoContainer>
               <p>While hacking my way into computers, I discovered my passion for programming and making cool stuff happen with my old desktop computer. My current objective, is to be part of projects involving both, logic and creativity.</p>
@@ -157,7 +159,7 @@ const AbouMe = () => {
               </div>
 
             </InfoContainer>
-            
+
             <ProfileImage />
 
           </ContentContainer>
