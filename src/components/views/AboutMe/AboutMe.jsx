@@ -91,14 +91,23 @@ const TechStack = styled.div`
   margin-bottom: 2.5em;
 
   ul {
+    position: relative;
+    list-style: none;
     font-size: 1em;
     padding: 0 3em 1em 1em;
     margin: 0;
   }
+
   & > .tech {
   }
-  li::marker {
+  li::before {
+    position: absolute;
+    left: 0px;
+
+    content: '○';
     color: ${(props) => props.theme.colors.accentColor};
+    font-size: 0.8em;
+    margin-right: 1em;
   }
 `
 
@@ -137,7 +146,7 @@ const AbouMe = () => {
 
             <TechStack>
               <ul>
-                <li className="tech">ES6 JavaScript</li>
+                <li className="tech js">ES6 JavaScript</li>
                 <li className="tech">React</li>
                 <li className="tech">Styled-Components</li>
                 <li className="tech">Terminal</li>
