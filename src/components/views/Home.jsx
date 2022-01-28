@@ -2,12 +2,12 @@ import React, { memo } from 'react'
 import { useHistory } from 'react-router-dom'
 import RegularNavbar from '../presentations/RegularNavbar'
 import Hero from './Hero'
-import AboutMe from './AbouMe'
+import AboutMe from './AboutMe/AboutMe'
 import SectionMainProject from '../presentations/SectionMainProject'
 import WidgetSecondaryProjects from '../presentations/WidgetSecondaryProjects'
 import Footer from '../presentations/Footer'
 import WidgetLeftBar from '../presentations/WidgetLeftBar'
-import PlayAGame from "./PlayAGame/PlayAGame"
+import PlayAGame from './PlayAGame/PlayAGame'
 
 // // import Music from '../views/Music'
 
@@ -17,17 +17,16 @@ const Home = () => {
   return (
     <>
       <RegularNavbar></RegularNavbar>
-      <WidgetLeftBar/>
+      <WidgetLeftBar />
       <Hero />
       <AboutMe />
       <PlayAGame />
       <SectionMainProject />
       <WidgetSecondaryProjects />
 
-
-{/*
+      {/*
       <Music />*/}
-      <Footer/>
+      <Footer />
     </>
   )
 }
