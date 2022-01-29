@@ -61,6 +61,46 @@ const ContentContainer = styled.div`
   width: 100%;
 `
 
+const LeftColumn = styled.div`
+  ul {
+    list-style: none;
+  }
+  li {
+    position: relative;
+  }
+  li::before {
+    position: absolute;
+    left: -15px;
+
+    content: '○';
+    color: ${(props) => props.theme.colors.accentColor};
+    font-size: 0.8em;
+    margin-right: 1em;
+  }
+`
+
+const OpenModal = styled.button`
+  position: relative;
+  margin-top: 2em;
+
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  background: none;
+  padding: 10px 20px;
+
+  border: 1.5px solid ${(props) => props.theme.colors.accentColor};
+  font-size: 0.9em;
+  color: ${(props) => props.theme.colors.accentColor};
+  transition: all 300ms ease-in-out;
+
+  &:hover,
+  &:focus {
+    background: ${(props) => props.theme.colors.accentColor};
+    color: ${(props) => props.theme.colors.primaryColor};
+  }
+`
+
 const PlayAGame = () => {
   const [openModal, setOpenModal] = useState(false)
 
@@ -79,7 +119,27 @@ const PlayAGame = () => {
           </HeaderContainer>
 
           <ContentContainer>
-            <p onClick={() => setOpenModal((prev) => !prev)}>click here</p>
+            <LeftColumn>
+              <p>
+                Making games, lends itself to learning more about how to write
+                good software. It plays an important role in my growth as a
+                software developer.
+              </p>
+              <p>Some technical stuff I enjoy:</p>
+              <ul>
+                <li>
+                  Creating maps with data structures (2D arrays) on platform
+                  games.
+                </li>
+                <li>Collision detection making use of IF statements.</li>
+                <li>Animating sprites using FOR loops. </li>
+              </ul>
+              If you're on desktop, open up the modal and play "Break the heck
+              out" and let your score registered.
+            </LeftColumn>
+            <OpenModal onClick={() => setOpenModal((prev) => !prev)}>
+              Play game!
+            </OpenModal>
             <BreakoutModal
               isModalOpened={openModal}
               setModalState={setOpenModal}

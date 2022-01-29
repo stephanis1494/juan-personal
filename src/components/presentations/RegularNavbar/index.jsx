@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import styled, { css } from "styled-components"
+import styled, { css } from 'styled-components'
 import { CloseIcon } from '../Icons'
 import { debounce } from 'throttle-debounce'
-import { scrollIntoView } from "../../utils/scrollIntoView"
+import { scrollIntoView } from '../../utils/scrollIntoView'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const RegularNavbar = () => {
@@ -12,9 +12,9 @@ const RegularNavbar = () => {
 
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden'
     } else {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = 'auto'
     }
   }, [isOpen])
 
@@ -42,8 +42,7 @@ const RegularNavbar = () => {
   return (
     <div>
       <AnimatePresence>
-        {
-          showBar &&
+        {showBar && (
           <Nav
             initial={{ y: -67 }}
             animate={{ y: 0 }}
@@ -56,7 +55,9 @@ const RegularNavbar = () => {
             exit={{ y: -67 }}
             floating={true}
           >
-            <Logo onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+            <Logo
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            >
               JL
             </Logo>
             <div>
@@ -65,14 +66,24 @@ const RegularNavbar = () => {
                 <span />
                 <span />
               </Hamburger>
-              <MenuLink onClick={() => scrollIntoView('game-container')}>Game</MenuLink>
-              <MenuLink onClick={() => scrollIntoView('music-container')}>Music</MenuLink>
+              <MenuLink onClick={() => scrollIntoView('game-container')}>
+                About Me
+              </MenuLink>
+              <MenuLink onClick={() => scrollIntoView('game-container')}>
+                Games
+              </MenuLink>
+              <MenuLink onClick={() => scrollIntoView('music-container')}>
+                Projects
+              </MenuLink>
             </div>
-            {
-              isOpen && <Menu onClose={() => setIsOpen(false)} handleMobileMenuSelect={handleMobileMenuSelect} />
-            }
+            {isOpen && (
+              <Menu
+                onClose={() => setIsOpen(false)}
+                handleMobileMenuSelect={handleMobileMenuSelect}
+              />
+            )}
           </Nav>
-        }
+        )}
       </AnimatePresence>
       <Nav>
         <Logo onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
@@ -84,12 +95,22 @@ const RegularNavbar = () => {
             <span />
             <span />
           </Hamburger>
-          <MenuLink onClick={() => scrollIntoView('game-container')}>Game</MenuLink>
-          <MenuLink onClick={() => scrollIntoView('music-container')}>Music</MenuLink>
+          <MenuLink onClick={() => scrollIntoView('game-container')}>
+            About Me
+          </MenuLink>
+          <MenuLink onClick={() => scrollIntoView('game-container')}>
+            Games
+          </MenuLink>
+          <MenuLink onClick={() => scrollIntoView('music-container')}>
+            Projects
+          </MenuLink>
         </div>
-        {
-          isOpen && <Menu onClose={() => setIsOpen(false)} handleMobileMenuSelect={handleMobileMenuSelect} />
-        }
+        {isOpen && (
+          <Menu
+            onClose={() => setIsOpen(false)}
+            handleMobileMenuSelect={handleMobileMenuSelect}
+          />
+        )}
       </Nav>
     </div>
   )
@@ -121,75 +142,82 @@ const MenuItem = styled.p`
 `
 
 const Menu = ({ onClose = () => {}, handleMobileMenuSelect = () => {} }) => (
-    <MenuContainer>
-        <MenuItem onClick={() => handleMobileMenuSelect('game-container')}>Game</MenuItem>
-        <MenuItem onClick={() => handleMobileMenuSelect('music-container')}>Music</MenuItem>
-      <CloseIcon
-        style={{
-          position: 'fixed',
-          top: '8px',
-          right: '8px',
-          cursor: 'pointer'
-        }}
-        onClick={onClose}
-      />
-    </MenuContainer>
+  <MenuContainer>
+    <MenuItem onClick={() => handleMobileMenuSelect('game-container')}>
+      Game
+    </MenuItem>
+    <MenuItem onClick={() => handleMobileMenuSelect('music-container')}>
+      Music
+    </MenuItem>
+    <CloseIcon
+      style={{
+        position: 'fixed',
+        top: '8px',
+        right: '8px',
+        cursor: 'pointer'
+      }}
+      onClick={onClose}
+    />
+  </MenuContainer>
 )
 
 const Nav = styled(motion.div)`
-    box-sizing: border-box;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    padding: 15px;
-    background-color: #011627;
-    ${({ floating = false }) => floating && css`
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 15px;
+  background-color: #011627;
+  ${({ floating = false }) =>
+    floating &&
+    css`
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+        0 6px 20px 0 rgba(0, 0, 0, 0.19);
       backdrop-filter: blur(2px);
       transition: background-color 250ms ease;
-      z-index:5;
+      z-index: 5;
       position: fixed;
     `}
 `
 
 const Logo = styled.div`
-    /* padding: .0rem 0; */
-    text-decoration: none;
-    font-weight: 800;
-    font-size: 1.7rem;
-    color: #fff;
-    cursor: pointer;
-    margin-left: 4px;
+  /* padding: .0rem 0; */
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 1.7rem;
+  color: #fff;
+  cursor: pointer;
+  margin-left: 4px;
 `
 
 const Hamburger = styled.div`
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
 
-    span {
-        height: 5px;
-        width: 25px;
-        background-color: #fff;
-        margin-bottom: 5px;
-        border-radius: 5px;
-    }
+  span {
+    height: 5px;
+    width: 25px;
+    background-color: #fff;
+    margin-bottom: 5px;
+    border-radius: 5px;
+  }
 
-    @media (max-width: 768px) {
-        display: flex;
-    }
+  @media (max-width: 768px) {
+    display: flex;
+  }
 `
 
 const MenuLink = styled.a`
-    padding: 0 16px;
-    text-align: center;
-    cursor: pointer;
-    text-decoration: none;
-    color: #fff;
-    font-size: 16px;
-    font-weight: 500;
+  padding: 0 16px;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
 
   @media (max-width: 768px) {
     display: none;
