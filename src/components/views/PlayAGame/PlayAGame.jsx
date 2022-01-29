@@ -81,7 +81,7 @@ const LeftColumn = styled.div`
 
 const OpenModal = styled.button`
   position: relative;
-  margin-top: 2em;
+  margin-top: 1em;
 
   font-weight: 700;
   letter-spacing: 3px;
@@ -128,14 +128,16 @@ const PlayAGame = () => {
               <p>Some technical stuff I enjoy:</p>
               <ul>
                 <li>
-                  Creating maps with data structures (2D arrays) on platform
-                  games.
+                  Creating maps based on data structures (2D arrays) for
+                  platform games.
                 </li>
                 <li>Collision detection making use of IF statements.</li>
                 <li>Animating sprites using FOR loops. </li>
               </ul>
-              If you're on desktop, open up the modal and play "Break the heck
-              out" and let your score registered.
+              <p>
+                If you're on desktop, open up the modal and play "Break the heck
+                out" and let your score registered.
+              </p>
             </LeftColumn>
             <OpenModal onClick={() => setOpenModal((prev) => !prev)}>
               Play game!
