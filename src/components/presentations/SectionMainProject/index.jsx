@@ -162,7 +162,7 @@ const SectionMainProject = () => {
 
           <HeaderContainer>
             <LeftLine />
-            <SectionTitle>Les Projects</SectionTitle>
+            <SectionTitle id='project-container'>Les Projects</SectionTitle>
             <Line />
           </HeaderContainer>
 

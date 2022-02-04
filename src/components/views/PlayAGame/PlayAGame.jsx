@@ -114,7 +114,7 @@ const PlayAGame = () => {
       <OuterContainer>
         <InnerContainer>
           <HeaderContainer>
-            <SectionTitle>Games</SectionTitle>
+            <SectionTitle id='game-container'>Games</SectionTitle>
             <Line />
           </HeaderContainer>
 

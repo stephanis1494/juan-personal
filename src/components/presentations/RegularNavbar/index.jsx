@@ -66,13 +66,13 @@ const RegularNavbar = () => {
                 <span />
                 <span />
               </Hamburger>
-              <MenuLink onClick={() => scrollIntoView('game-container')}>
+              <MenuLink onClick={() => scrollIntoView('about-me', 'start')}>
                 About Me
               </MenuLink>
-              <MenuLink onClick={() => scrollIntoView('game-container')}>
+              <MenuLink onClick={() => scrollIntoView('game-container', 'start')}>
                 Games
               </MenuLink>
-              <MenuLink onClick={() => scrollIntoView('music-container')}>
+              <MenuLink onClick={() => scrollIntoView('project-container', 'start')}>
                 Projects
               </MenuLink>
             </div>
@@ -95,13 +95,13 @@ const RegularNavbar = () => {
             <span />
             <span />
           </Hamburger>
-          <MenuLink onClick={() => scrollIntoView('game-container')}>
+          <MenuLink onClick={() => scrollIntoView('about-me', 'start')}>
             About Me
           </MenuLink>
-          <MenuLink onClick={() => scrollIntoView('game-container')}>
+          <MenuLink onClick={() => scrollIntoView('game-container', 'start')}>
             Games
           </MenuLink>
-          <MenuLink onClick={() => scrollIntoView('music-container')}>
+          <MenuLink onClick={() => scrollIntoView('project-container', 'start')}>
             Projects
           </MenuLink>
         </div>
