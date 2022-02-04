@@ -19,10 +19,10 @@ const InnerContainer = styled.div`
 	width: 95%;
   max-width: 1000px;
 	
-	@media ((min-width: ${props=>props.theme.breakpoints.tabletX1})) {
+	@media (min-width: ${props=>props.theme.breakpoints.tabletX1}) {
     width: 80%;
   }
-  @media ((min-width: ${props=>props.theme.breakpoints.extraLargeX1})) {
+  @media (min-width: ${props=>props.theme.breakpoints.extraLargeX1}) {
     width: 70%;
   }
 `
@@ -63,7 +63,7 @@ const BodyContainer = styled.div`
   
   margin-top: calc(4em + 2em);
   
-  @media ((min-width: ${props=>props.theme.breakpoints.largeX1}) ) {
+  @media (min-width: ${props=>props.theme.breakpoints.largeX1}) {
     flex-direction: row;
     column-gap: 4em;
   }
@@ -159,30 +159,30 @@ const SectionMainProject = () => {
     <ThemeProvider theme={theme}>
       <OuterContainer>
         <InnerContainer>
-          
+
           <HeaderContainer>
             <LeftLine />
             <SectionTitle>Les Projects</SectionTitle>
             <Line />
           </HeaderContainer>
-          
+
           <BodyContainer>
 
             <FeaturedContainer>
-              
+
               <FeaturedContainerImage>
                 <Image></Image>
               </FeaturedContainerImage>
-              
+
               <FeaturedContainerContent>
-                
+
                 <FeaturedContainerDate>October 25 - November 1, 2021</FeaturedContainerDate>
                 <FeaturedContainerTitle>A cool Project</FeaturedContainerTitle>
-                
+
                 <FeaturedContainerText>
                   <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. A, unde? Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, est!</p>
                   <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. A, unde?</p>
-                </FeaturedContainerText>  
+                </FeaturedContainerText>
 
                 <FeaturedContainerFooter>
                   <LinkContainer>
@@ -203,20 +203,20 @@ const SectionMainProject = () => {
             {/* end of FeaturedContainer */}
 
             <FeaturedContainer>
-              
+
               <FeaturedContainerImage>
                 <Image></Image>
               </FeaturedContainerImage>
-              
+
               <FeaturedContainerContent>
-                
+
                 <FeaturedContainerDate>October 25 - November 1, 2021</FeaturedContainerDate>
                 <FeaturedContainerTitle>A cool Project</FeaturedContainerTitle>
-                
+
                 <FeaturedContainerText>
                   <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. A, unde? Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, est!</p>
                   <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. A, unde?</p>
-                </FeaturedContainerText>  
+                </FeaturedContainerText>
 
                 <FeaturedContainerFooter>
                   <LinkContainer>
@@ -224,7 +224,6 @@ const SectionMainProject = () => {
                     <LinkItem>NPM</LinkItem>
                     <LinkItem>React</LinkItem>
                   </LinkContainer>
-
                   <IconContainer>
                     <IoMdOpen size="2rem"></IoMdOpen>
                     <FiGithub size="2rem"></FiGithub>
@@ -236,7 +235,7 @@ const SectionMainProject = () => {
             </FeaturedContainer>
             {/* end of FeaturedContainer */}
 
-            
+
 
           </BodyContainer>
         </InnerContainer>
@@ -248,5 +247,5 @@ const SectionMainProject = () => {
 
 export default SectionMainProject
 
-    
+
 
